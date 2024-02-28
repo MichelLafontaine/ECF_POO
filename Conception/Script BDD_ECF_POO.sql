@@ -35,7 +35,6 @@ create table CLIENT
 (
    ID_CLIENT            int not null auto_increment,
    ID_SOCIETE           int not null,
-   NOM_SOCIETE          varchar(100) not null,
    CA_CLIENT            float(8,2) not null CHECK (CA_CLIENT >= 200),
    NBRE_EMPLOYE         int not null CHECK (NBRE_EMPLOYE > 0),
    primary key (ID_CLIENT)
@@ -59,7 +58,6 @@ create table PROSPECT
 (
    ID_PROSPECRT         int not null auto_increment,
    ID_SOCIETE           int not null,
-   NOM_SOCIETE          varchar(100) not null,
    DATE_PROSPECT        date not null,
    INTERET_PROSPECT     int not null CHECK (INTERET_PROSPECT IN (0,1)),
    primary key (ID_PROSPECRT)
@@ -103,4 +101,27 @@ alter table PROSPECT add constraint FK_ASSOCIATION_6 foreign key (ID_SOCIETE)
 
 alter table SOCIETE add constraint FK_SE_SITUER foreign key (ID_ADRESSE)
       references ADRESSE (ID_ADRESSE) on delete restrict on update restrict;
+	  
+INSERT INTO `ville` (`ID_VILLE`, `NOM_VILLE`) VALUES (NULL, 'FROUARD');
+INSERT INTO `ville` (`ID_VILLE`, `NOM_VILLE`) VALUES (NULL, 'NANCY');
+INSERT INTO `ville` (`ID_VILLE`, `NOM_VILLE`) VALUES (NULL, 'METZ');
 
+INSERT INTO `code_postal` (`ID_CP`, `ID_VILLE`, `NUM_CP`) VALUES (NULL, '1', '54390');
+INSERT INTO `code_postal` (`ID_CP`, `ID_VILLE`, `NUM_CP`) VALUES (NULL, '2', '54000');
+INSERT INTO `code_postal` (`ID_CP`, `ID_VILLE`, `NUM_CP`) VALUES (NULL, '3', '57000');
+
+INSERT INTO `adresse` (`ID_ADRESSE`, `ID_CP`, `NUM_ADRESSE`, `RUE_ADRESSE`) VALUES (NULL, '1', '56', 'Square Eugène Herzog');
+INSERT INTO `adresse` (`ID_ADRESSE`, `ID_CP`, `NUM_ADRESSE`, `RUE_ADRESSE`) VALUES (NULL, '2', '1', 'Place Stanislas');
+INSERT INTO `adresse` (`ID_ADRESSE`, `ID_CP`, `NUM_ADRESSE`, `RUE_ADRESSE`) VALUES (NULL, '3', '1', 'Place d\'Armes');
+
+INSERT INTO `societe` (`ID_SOCIETE`, `NOM_SOCIETE`, `ID_ADRESSE`, `TEL_SOCIETE`, `MAIL_SOCIETE`, `COM_SOCIETE`) 
+VALUES (NULL, 'AFPA', '1', '0972723936', 'contactafpaPompey@afpa.fr', 'Centre de formation ');
+INSERT INTO `societe` (`ID_SOCIETE`, `NOM_SOCIETE`, `ID_ADRESSE`, `TEL_SOCIETE`, `MAIL_SOCIETE`, `COM_SOCIETE`) 
+VALUES (NULL, 'Mairie de Nancy', '2', '0383853000', 'contact@nancy.fr', 'Bâtiment de la mairie placé sur une zone piétonne.');
+INSERT INTO `societe` (`ID_SOCIETE`, `NOM_SOCIETE`, `ID_ADRESSE`, `TEL_SOCIETE`, `MAIL_SOCIETE`, `COM_SOCIETE`) 
+VALUES (NULL, 'Mairie de Metz', '1', '0800891891', 'contact@metz.fr', 'Mairie placé en face de la cathédrale');
+
+INSERT INTO `client` (`ID_CLIENT`, `ID_SOCIETE`, `CA_CLIENT`, `NBRE_EMPLOYE`) VALUES (NULL, '1', '1000000.00', '20');
+
+INSERT INTO `prospect` (`ID_PROSPECRT`, `ID_SOCIETE`, `DATE_PROSPECT`, `INTERET_PROSPECT`) VALUES (NULL, '2', '2024-02-13', '1');
+INSERT INTO `prospect` (`ID_PROSPECRT`, `ID_SOCIETE`, `DATE_PROSPECT`, `INTERET_PROSPECT`) VALUES (NULL, '3', '2024-02-28', '0');

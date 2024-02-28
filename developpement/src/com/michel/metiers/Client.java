@@ -66,7 +66,7 @@ public class Client extends Societe{
      */
     @Override
     public String toString() {
-        return "L'entreprise " + super.getRaisonSociale() + "est un client." +
+        return "L'entreprise " + super.getRaisonSociale() + " est un client." +
                 "\nElle a pour identifiant : " + super.getIdentifiant() +
                 "\n" + super.getAdresse().toString() +
                 "\nLe mail de contact est : " + super.getEmail() +

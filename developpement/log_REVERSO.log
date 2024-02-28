@@ -26,3 +26,128 @@
 27/02/2024 15:45:48 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
 27/02/2024 15:48:44 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
 28/02/2024 08:38:42 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 10:25:45 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 10:25:45 Level : SEVERE / Message : problème ouverture BDD FileNotFoundExceptiondatabase.properties (Le fichier spécifié est introuvable) java.io.FileNotFoundException: database.properties (Le fichier spécifié est introuvable) / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 10:26:25 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 10:26:25 Level : SEVERE / Message : problème ouverture BDD FileNotFoundException..\database.properties (Le fichier spécifié est introuvable) java.io.FileNotFoundException: ..\database.properties (Le fichier spécifié est introuvable) / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 10:29:04 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 10:30:04 Level : SEVERE / Message : problème ouverture BDD SQLExceptionNo suitable driver found for jdbc:mysql://127.0.0.1/jdbc-test?serverTimezone=UTC java.sql.SQLException: No suitable driver found for jdbc:mysql://127.0.0.1/jdbc-test?serverTimezone=UTC / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 10:30:06 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 10:30:06 Level : SEVERE / Message : problème ouverture BDD SQLExceptionNo suitable driver found for jdbc:mysql://127.0.0.1/jdbc-test?serverTimezone=UTC java.sql.SQLException: No suitable driver found for jdbc:mysql://127.0.0.1/jdbc-test?serverTimezone=UTC / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 10:38:45 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 10:38:45 Level : SEVERE / Message : problème ouverture BDD SQLExceptionNo suitable driver found for jdbc:mysql://127.0.0.1/jdbc-test?serverTimezone=UTC java.sql.SQLException: No suitable driver found for jdbc:mysql://127.0.0.1/jdbc-test?serverTimezone=UTC / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 10:39:42 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 10:39:42 Level : SEVERE / Message : problème ouverture BDD SQLExceptionNo suitable driver found for jdbc:mysql://127.0.0.1/jdbc-test?serverTimezone=UTC java.sql.SQLException: No suitable driver found for jdbc:mysql://127.0.0.1/jdbc-test?serverTimezone=UTC / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 10:41:53 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 10:41:53 Level : INFO / Message : ouverture base de données / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 10:53:46 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 10:53:46 Level : INFO / Message : ouverture base de données / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 10:55:45 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 10:55:45 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 10:57:45 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 10:57:46 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 11:00:14 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 11:00:14 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 11:00:14 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+28/02/2024 11:40:09 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 11:40:09 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 11:41:23 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 11:41:24 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 11:41:24 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+28/02/2024 11:41:29 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 11:41:29 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 11:41:55 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+28/02/2024 11:41:56 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 11:41:56 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 11:53:20 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+28/02/2024 11:53:25 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 11:53:25 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 11:53:25 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+28/02/2024 11:58:06 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 11:58:06 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 11:58:06 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+28/02/2024 12:02:44 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 12:02:44 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 12:02:44 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+28/02/2024 12:03:10 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 12:03:10 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 12:03:10 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+28/02/2024 13:54:38 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 13:54:38 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 13:55:21 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 13:55:21 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 13:55:21 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+28/02/2024 13:56:08 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 13:56:08 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 13:57:15 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 13:57:15 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 13:57:16 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+28/02/2024 13:57:42 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 13:57:43 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 13:58:20 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+28/02/2024 13:59:26 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 13:59:27 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 13:59:27 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+28/02/2024 14:45:18 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 14:45:18 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 14:45:18 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+28/02/2024 14:45:43 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 14:45:43 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 14:45:51 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 14:45:51 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 14:47:28 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 14:47:28 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 14:47:28 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+28/02/2024 14:47:37 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 14:47:37 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 14:47:37 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+28/02/2024 16:10:58 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 16:10:58 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 16:13:02 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 16:13:02 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 16:13:02 Level : SEVERE / Message : problème lecture BDDStatement.executeQuery() cannot issue statements that do not produce result sets. java.sql.SQLException: Statement.executeQuery() cannot issue statements that do not produce result sets. / Méthode : creerAdresse / Classe : com.michel.dao.DaoUtilitaires
+28/02/2024 16:13:02 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+28/02/2024 16:15:18 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 16:15:18 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 16:15:18 Level : SEVERE / Message : problème lecture BDDStatement.executeQuery() cannot issue statements that do not produce result sets. java.sql.SQLException: Statement.executeQuery() cannot issue statements that do not produce result sets. / Méthode : creerAdresse / Classe : com.michel.dao.DaoUtilitaires
+28/02/2024 16:15:18 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+28/02/2024 16:15:30 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 16:15:30 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 16:18:05 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+28/02/2024 16:18:08 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 16:18:09 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 16:19:45 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 16:19:46 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 16:20:15 Level : SEVERE / Message : problème lecture BDDStatement.executeQuery() cannot issue statements that do not produce result sets. java.sql.SQLException: Statement.executeQuery() cannot issue statements that do not produce result sets. / Méthode : creerAdresse / Classe : com.michel.dao.DaoUtilitaires
+28/02/2024 16:21:28 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+28/02/2024 16:21:30 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 16:21:30 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 16:22:14 Level : SEVERE / Message : problème lecture BDDStatement.executeQuery() cannot issue statements that do not produce result sets. java.sql.SQLException: Statement.executeQuery() cannot issue statements that do not produce result sets. / Méthode : creerAdresse / Classe : com.michel.dao.DaoUtilitaires
+28/02/2024 16:23:01 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 16:23:02 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 16:23:24 Level : SEVERE / Message : problème lecture BDDStatement.executeQuery() cannot issue statements that do not produce result sets. java.sql.SQLException: Statement.executeQuery() cannot issue statements that do not produce result sets. / Méthode : creerAdresse / Classe : com.michel.dao.DaoUtilitaires
+28/02/2024 16:24:29 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+28/02/2024 16:24:31 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 16:24:31 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 16:25:33 Level : SEVERE / Message : problème lecture BDDStatement.executeQuery() cannot issue statements that do not produce result sets. java.sql.SQLException: Statement.executeQuery() cannot issue statements that do not produce result sets. / Méthode : creerAdresse / Classe : com.michel.dao.DaoUtilitaires
+28/02/2024 16:31:38 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+28/02/2024 16:31:39 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 16:31:39 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 16:32:28 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+28/02/2024 16:35:13 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 16:35:13 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 16:35:13 Level : SEVERE / Message : problème lecture BDDStatement.executeQuery() cannot issue statements that do not produce result sets. java.sql.SQLException: Statement.executeQuery() cannot issue statements that do not produce result sets. / Méthode : creerAdresse / Classe : com.michel.dao.DaoUtilitaires
+28/02/2024 16:35:13 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+28/02/2024 16:36:46 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 16:36:46 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 16:36:47 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+28/02/2024 16:37:58 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 16:37:59 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 16:38:30 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 16:38:30 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 16:38:30 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+28/02/2024 16:49:45 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 16:49:45 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 16:50:27 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+28/02/2024 16:50:27 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+28/02/2024 16:50:27 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
