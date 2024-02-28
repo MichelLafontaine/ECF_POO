@@ -1,16 +1,11 @@
 import com.michel.exceptions.MetierException;
-import com.michel.metier.Adresse;
-import com.michel.metier.Prospect;
-import com.michel.metier.Societe;
+import com.michel.metiers.Adresse;
+import com.michel.metiers.Prospect;
+import com.michel.metiers.Societe;
 import com.michel.utilitaires.LancerLog;
-import com.michel.utilitaires.LoggerReverso;
-import com.michel.utilitaires.Utilitaires;
 
 import java.text.ParseException;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.Locale;
 
 public class Main {
     public static void main(String[] args) throws MetierException, ParseException {

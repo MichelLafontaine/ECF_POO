@@ -1,11 +1,9 @@
 package tests;
 
 import com.michel.exceptions.MetierException;
-import com.michel.metier.Client;
-import org.junit.jupiter.api.Test;
+import com.michel.metiers.Client;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.opentest4j.MultipleFailuresError;
 
 import static org.junit.jupiter.api.Assertions.*;
 

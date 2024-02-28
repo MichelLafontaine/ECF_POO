@@ -1,7 +1,7 @@
 package tests;
 
 import com.michel.exceptions.MetierException;
-import com.michel.metier.Adresse;
+import com.michel.metiers.Adresse;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.NullSource;

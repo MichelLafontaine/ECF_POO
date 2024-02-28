@@ -1,4 +1,4 @@
-package com.michel.metier;
+package com.michel.metiers;
 
 import com.michel.exceptions.MetierException;
 import com.michel.utilitaires.Utilitaires;

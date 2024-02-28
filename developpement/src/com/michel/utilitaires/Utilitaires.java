@@ -23,6 +23,6 @@ public class Utilitaires {
 
     //format date Local
     public static DateTimeFormatter formatDate (){
-        return DateTimeFormatter.ofPattern("dd MMMM yyyy");
+        return DateTimeFormatter.ofPattern("dd/MM/yyyy");
     }
 }
