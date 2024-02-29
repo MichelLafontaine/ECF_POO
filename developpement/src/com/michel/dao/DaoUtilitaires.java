@@ -1,5 +1,6 @@
 package com.michel.dao;
 
+import com.michel.exceptions.DaoException;
 import com.michel.metiers.Adresse;
 import com.michel.utilitaires.LoggerReverso;
 
@@ -9,9 +10,9 @@ import java.sql.Statement;
 import java.util.logging.Level;
 
 public class DaoUtilitaires {
-    public static void creerAdresse (Adresse adresse) {
+    public static int creerAdresse (Adresse adresse) throws SQLException {
 
-
+        int idAdresse = 0;
         int idVille = 0;
         String queryVille = "SELECT NOM_VILLE FROM ville WHERE NOM_VILLE LIKE '" + adresse.getVille() + "';";
         String queryIdVIlle = "SELECT ID_VILLE FROM ville WHERE NOM_VILLE LIKE '" + adresse.getVille() + "';";
@@ -42,22 +43,34 @@ public class DaoUtilitaires {
             if (idCP == 0) {
                 stmt.execute("INSERT INTO `code_postal` (`ID_CP`, `ID_VILLE`, `NUM_CP`) " +
                         "VALUES (NULL, '" + idVille + "', '" + adresse.getCodePostal() + "');", Statement.RETURN_GENERATED_KEYS);
-                String queryIdCP = "SELECT MAX(ID_CP) AS 'idCP' from code_postal";
                 ResultSet rsIdCP = stmt.getGeneratedKeys();
                 while (rsIdCP.next()){
                     idCP = rsIdCP.getInt(1);
                 }
             }
 
-            // Insetion nouvelle adresse
-            stmt.execute("INSERT INTO `adresse` (`ID_ADRESSE`, `ID_CP`, `NUM_ADRESSE`, `RUE_ADRESSE`) " +
-                    "VALUES (NULL, '" + idCP + "', '" + adresse.getNumero() + "', '" + adresse.getNomRue() + "');");
-
-
+            // Insetion nouvelle adresse si inexistante
+            String queryAdresseExiste = "SELECT * FROM `adresse` WHERE ID_CP = " + idCP +
+                    " AND NUM_ADRESSE = " + adresse.getNumero() + " AND RUE_ADRESSE = '" + adresse.getNomRue() + "';";
+            ResultSet rsAdresse = stmt.executeQuery(queryAdresseExiste);
+            //si vide inserer nouvelle adresse + retour clé primaire créer
+            while (rsAdresse.next()){
+                idAdresse = rsAdresse.getInt(1);
+            }
+            if (idAdresse == 0) {
+                stmt.execute("INSERT INTO `adresse` (`ID_ADRESSE`, `ID_CP`, `NUM_ADRESSE`, `RUE_ADRESSE`) " +
+                        "VALUES (NULL, '" + idCP + "', '" + adresse.getNumero() + "', '" + adresse.getNomRue() + "');",
+                        Statement.RETURN_GENERATED_KEYS);
+                ResultSet rsIdAdresse = stmt.getGeneratedKeys();
+                while (rsIdAdresse.next()) {
+                    idAdresse = rsIdAdresse.getInt(1);
+                }
+            // si existante retour de la clé primaire existante
+            }
         } catch (SQLException e) {
-            LoggerReverso.LOGGER.log(Level.SEVERE, "problème lecture BDD" +
+            LoggerReverso.LOGGER.log(Level.SEVERE, "problème insertion adresse" +
                     e.getMessage() + " " + e);
         }
-
+        return idAdresse;
     }
 }

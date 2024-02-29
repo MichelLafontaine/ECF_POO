@@ -3,9 +3,7 @@ package com.michel.metiers;
 import com.michel.exceptions.MetierException;
 import com.michel.utilitaires.Utilitaires;
 
-import java.text.ParseException;
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Prospect extends Societe{
 
@@ -16,9 +14,8 @@ public class Prospect extends Societe{
         return dateProspect;
     }
 
-    public void setDateProspect(LocalDate dateProspect) throws MetierException, ParseException {
-        final Date aujourdhui = new Date();
-        if (dateProspect.isAfter(LocalDate.now())){
+    public void setDateProspect(LocalDate dateProspect) throws MetierException {
+            if (dateProspect.isAfter(LocalDate.now())){
             throw new MetierException("Attention, la date doit être inférieur ou égal à aujourd'hui");
         }
         this.dateProspect = dateProspect;
@@ -39,7 +36,7 @@ public class Prospect extends Societe{
     }
 
     public Prospect(int identifiant, String raisonSociale, String email, String telephone, String commentaire,
-                    Adresse adresse, LocalDate dateProspect, int interetProspect) throws MetierException, ParseException {
+                     Adresse adresse, LocalDate dateProspect, int interetProspect) throws MetierException {
         super(identifiant, raisonSociale, email, telephone, commentaire, adresse);
         setDateProspect(dateProspect);
         setInteretProspect(interetProspect);

@@ -1,6 +1,8 @@
 import com.michel.dao.DaoClient;
 import com.michel.dao.DaoConnection;
+import com.michel.dao.DaoProspect;
 import com.michel.dao.DaoUtilitaires;
+import com.michel.exceptions.MetierException;
 import com.michel.metiers.Adresse;
 import com.michel.metiers.Client;
 import com.michel.utilitaires.LancerLog;
@@ -21,13 +23,15 @@ public class Main {
 
         try{
 //            Adresse adresse = new Adresse("123", "rue de la rep", "MAXEVILLE", 54000);
-            Connection connection = DaoConnection.getInstance();
-            Client client = DaoClient.findByNameClient("AFPA");
-            System.out.println(client.getAdresse().getCodePostal());
-//            DaoUtilitaires.creerAdresse(adresse);
-        }catch (SQLException sqlE){
-
-        } catch (Exception e){
+//            System.out.println(DaoUtilitaires.creerAdresse(adresse));
+//            Client client = new Client(1, "ma petite", "michel_lafontaine@orange.fr", "0235467894", " ", adresse, 500, 21);
+//            System.out.println(client);
+//            DaoClient.deleteClient(4);
+            System.out.println(DaoProspect.findAllProspect());
+        } catch (MetierException metierException){
+            System.out.println("Erreur de Saise : " + metierException.getMessage());
+        }
+        catch (Exception e){
 
         }
 

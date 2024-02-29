@@ -22,7 +22,7 @@ public class Adresse {
         if (numero == null || numero.trim().isEmpty() || numero.length() > 10){
             throw new MetierException("Le numéro de la rue n'est pas correct");
         }
-        this.numero = numero;
+        this.numero = numero.toUpperCase();
     }
 
     public String getNomRue() {
@@ -38,7 +38,7 @@ public class Adresse {
         if (nomRue == null || nomRue.trim().isEmpty() || nomRue.length() > 150){
             throw new MetierException("Le nom de la rue n'est pas correct");
         }
-        this.nomRue = nomRue;
+        this.nomRue = nomRue.toUpperCase();
     }
 
     public String getVille() {

@@ -110,16 +110,16 @@ INSERT INTO `code_postal` (`ID_CP`, `ID_VILLE`, `NUM_CP`) VALUES (NULL, '1', '54
 INSERT INTO `code_postal` (`ID_CP`, `ID_VILLE`, `NUM_CP`) VALUES (NULL, '2', '54000');
 INSERT INTO `code_postal` (`ID_CP`, `ID_VILLE`, `NUM_CP`) VALUES (NULL, '3', '57000');
 
-INSERT INTO `adresse` (`ID_ADRESSE`, `ID_CP`, `NUM_ADRESSE`, `RUE_ADRESSE`) VALUES (NULL, '1', '56', 'Square Eugène Herzog');
-INSERT INTO `adresse` (`ID_ADRESSE`, `ID_CP`, `NUM_ADRESSE`, `RUE_ADRESSE`) VALUES (NULL, '2', '1', 'Place Stanislas');
-INSERT INTO `adresse` (`ID_ADRESSE`, `ID_CP`, `NUM_ADRESSE`, `RUE_ADRESSE`) VALUES (NULL, '3', '1', 'Place d\'Armes');
+INSERT INTO `adresse` (`ID_ADRESSE`, `ID_CP`, `NUM_ADRESSE`, `RUE_ADRESSE`) VALUES (NULL, '1', '56', 'SQUARE EUGENE HERZOG');
+INSERT INTO `adresse` (`ID_ADRESSE`, `ID_CP`, `NUM_ADRESSE`, `RUE_ADRESSE`) VALUES (NULL, '2', '1', 'PLACE STANISLAS');
+INSERT INTO `adresse` (`ID_ADRESSE`, `ID_CP`, `NUM_ADRESSE`, `RUE_ADRESSE`) VALUES (NULL, '3', '1', 'PLACE D\'ARMES');
 
 INSERT INTO `societe` (`ID_SOCIETE`, `NOM_SOCIETE`, `ID_ADRESSE`, `TEL_SOCIETE`, `MAIL_SOCIETE`, `COM_SOCIETE`) 
-VALUES (NULL, 'AFPA', '1', '0972723936', 'contactafpaPompey@afpa.fr', 'Centre de formation ');
+VALUES (NULL, 'AFPA', '1', '0972723936', 'contactafpapompey@afpa.fr', 'Centre de formation ');
 INSERT INTO `societe` (`ID_SOCIETE`, `NOM_SOCIETE`, `ID_ADRESSE`, `TEL_SOCIETE`, `MAIL_SOCIETE`, `COM_SOCIETE`) 
-VALUES (NULL, 'Mairie de Nancy', '2', '0383853000', 'contact@nancy.fr', 'Bâtiment de la mairie placé sur une zone piétonne.');
+VALUES (NULL, 'MAIRIE DE NANCY', '2', '0383853000', 'contact@nancy.fr', 'Bâtiment de la mairie placé sur une zone piétonne.');
 INSERT INTO `societe` (`ID_SOCIETE`, `NOM_SOCIETE`, `ID_ADRESSE`, `TEL_SOCIETE`, `MAIL_SOCIETE`, `COM_SOCIETE`) 
-VALUES (NULL, 'Mairie de Metz', '1', '0800891891', 'contact@metz.fr', 'Mairie placé en face de la cathédrale');
+VALUES (NULL, 'MAIRIE DE METZ', '1', '0800891891', 'contact@metz.fr', 'Mairie placé en face de la cathédrale');
 
 INSERT INTO `client` (`ID_CLIENT`, `ID_SOCIETE`, `CA_CLIENT`, `NBRE_EMPLOYE`) VALUES (NULL, '1', '1000000.00', '20');
 

@@ -36,7 +36,7 @@ public class Societe {
         if (raisonSociale == null || raisonSociale.trim().isEmpty() || raisonSociale.length() > 100){
             throw new MetierException("La raison sociale n'est pas correcte");
         }
-        this.raisonSociale = raisonSociale;
+        this.raisonSociale = raisonSociale.toUpperCase();
     }
 
     public String getEmail() {
@@ -52,7 +52,7 @@ public class Societe {
         if (email == null || email.trim().isEmpty() || !Utilitaires.PATTERN_MAIL.matcher(email).matches()){
             throw new MetierException("l'adresse email n'est pas correcte");
         }
-        this.email = email;
+        this.email = email.toLowerCase();
     }
 
     public String getTelephone() {
@@ -63,7 +63,7 @@ public class Societe {
         if (telephone == null || telephone.trim().isEmpty() || !Utilitaires.PATTERN_TEL.matcher(telephone).matches()){
             throw new MetierException("Le numéro de téléphone n'est pas correct");
         }
-        this.telephone = telephone;
+        this.telephone = telephone.toLowerCase();
     }
 
     public String getCommentaire() {
