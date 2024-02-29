@@ -1,19 +1,10 @@
-import com.michel.dao.DaoClient;
-import com.michel.dao.DaoConnection;
-import com.michel.dao.DaoProspect;
-import com.michel.dao.DaoUtilitaires;
-import com.michel.exceptions.MetierException;
-import com.michel.metiers.Adresse;
-import com.michel.metiers.Client;
-import com.michel.utilitaires.LancerLog;
 
-import java.sql.Connection;
-import java.sql.SQLException;
+import com.michel.vues.VueFormulaire;
 
 public class Main {
     public static void main(String[] args) {
 
-        LancerLog.lancerLog();
+//        LancerLog.lancerLog();
 
 //        LocalDate date = LocalDate.of(2005,12,21);
 //        Societe societe = new Societe(1, "ma petite entreprise", "dsqfsdf", "1235467894", " ", adresse);
@@ -27,11 +18,10 @@ public class Main {
 //            Client client = new Client(1, "ma petite", "michel_lafontaine@orange.fr", "0235467894", " ", adresse, 500, 21);
 //            System.out.println(client);
 //            DaoClient.deleteClient(4);
-            System.out.println(DaoProspect.findAllProspect());
-        } catch (MetierException metierException){
-            System.out.println("Erreur de Saise : " + metierException.getMessage());
-        }
-        catch (Exception e){
+//            System.out.println(DaoProspect.findAllProspect());
+            VueFormulaire formulaire=new VueFormulaire();
+
+        } catch (Exception e){
 
         }
 
