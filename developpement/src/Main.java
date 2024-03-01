@@ -1,10 +1,16 @@
 
+import com.michel.controllers.ControllerAccueil;
+import com.michel.controllers.ControllerAffichage;
+import com.michel.controllers.ControllerFormulaire;
+import com.michel.dao.DaoProspect;
+import com.michel.utilitaires.LancerLog;
+import com.michel.vues.VueAccueil;
 import com.michel.vues.VueFormulaire;
 
 public class Main {
     public static void main(String[] args) {
 
-//        LancerLog.lancerLog();
+        LancerLog.lancerLog();
 
 //        LocalDate date = LocalDate.of(2005,12,21);
 //        Societe societe = new Societe(1, "ma petite entreprise", "dsqfsdf", "1235467894", " ", adresse);
@@ -19,7 +25,8 @@ public class Main {
 //            System.out.println(client);
 //            DaoClient.deleteClient(4);
 //            System.out.println(DaoProspect.findAllProspect());
-            VueFormulaire formulaire=new VueFormulaire();
+            System.out.println(ControllerAccueil.listeSociete("prospect"));
+            ControllerFormulaire.formulaireInit();
 
         } catch (Exception e){
 

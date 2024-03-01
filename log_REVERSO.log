@@ -1,0 +1,11 @@
+01/03/2024 11:23:45 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+01/03/2024 11:23:45 Level : SEVERE / Message : problème ouverture BDD FileNotFoundExceptiondatabase.properties (Le fichier spécifié est introuvable) java.io.FileNotFoundException: database.properties (Le fichier spécifié est introuvable) / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+01/03/2024 11:24:15 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+01/03/2024 11:24:15 Level : SEVERE / Message : problème ouverture BDD FileNotFoundExceptiondatabase.properties (Le fichier spécifié est introuvable) java.io.FileNotFoundException: database.properties (Le fichier spécifié est introuvable) / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+01/03/2024 11:24:24 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+01/03/2024 11:24:39 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+01/03/2024 11:24:39 Level : SEVERE / Message : problème ouverture BDD FileNotFoundExceptiondatabase.properties (Le fichier spécifié est introuvable) java.io.FileNotFoundException: database.properties (Le fichier spécifié est introuvable) / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+01/03/2024 11:25:54 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+01/03/2024 11:26:46 Level : SEVERE / Message : problème ouverture BDD FileNotFoundExceptiondatabase.properties (Le fichier spécifié est introuvable) java.io.FileNotFoundException: database.properties (Le fichier spécifié est introuvable) / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+01/03/2024 11:27:37 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+01/03/2024 11:27:37 Level : SEVERE / Message : problème ouverture BDD FileNotFoundExceptiondatabase.properties (Le fichier spécifié est introuvable) java.io.FileNotFoundException: database.properties (Le fichier spécifié est introuvable) / Méthode : <init> / Classe : com.michel.dao.DaoConnection

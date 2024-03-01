@@ -1,6 +1,5 @@
 package com.michel.dao;
 
-import com.michel.exceptions.DaoException;
 import com.michel.metiers.Adresse;
 import com.michel.utilitaires.LoggerReverso;
 
@@ -9,7 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 
-public class DaoUtilitaires {
+public class DaoAdresse {
     public static int creerAdresse (Adresse adresse) throws SQLException {
 
         int idAdresse = 0;

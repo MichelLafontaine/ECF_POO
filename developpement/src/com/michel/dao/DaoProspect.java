@@ -119,7 +119,7 @@ public class DaoProspect {
             if(!rsIdClient.next()){
                 int idSociete = 0;
                 //recherche idAdresse et insertion Adresse si inexistante
-                int idAdresse = DaoUtilitaires.creerAdresse(prospect.getAdresse());
+                int idAdresse = DaoAdresse.creerAdresse(prospect.getAdresse());
                 //verfication si raison sociale existe
                 String queryRS = "SELECT ID_SOCIETE, NOM_SOCIETE FROM societe " +
                         "WHERE NOM_SOCIETE LIKE '" + prospect.getRaisonSociale() + "'";
@@ -166,7 +166,7 @@ public class DaoProspect {
     public static void updatePropspect (Prospect prospect, int idSociete) throws SQLException, DaoException {
 
         //recherche idAdresse et insertion Adresse si inexistante
-        int idAdresse = DaoUtilitaires.creerAdresse(prospect.getAdresse());
+        int idAdresse = DaoAdresse.creerAdresse(prospect.getAdresse());
         //verification nouvelle raison sociale n'existe pas dans la base de données avant modification
         String queryRS = "SELECT NOM_SOCIETE FROM societe WHERE NOM_SOCIETE LIKE '" + prospect.getRaisonSociale() + "' " +
                 "AND ID_SOCIETE != " + idSociete + ";";

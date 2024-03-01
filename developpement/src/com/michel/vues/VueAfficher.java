@@ -1,17 +1,15 @@
 package com.michel.vues;
 
-import com.michel.controllers.ControllerAccueil;
-import com.michel.metiers.Client;
-import com.michel.metiers.Prospect;
+import com.michel.controllers.ControllerAffichage;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class VueFormulaire extends JFrame {
+public class VueAfficher extends JFrame{
 
-    private Container formulaire;
+    private Container affichage;
     private Dimension screenSize;
     private int screenWidth;
     private int screenHeight;
@@ -20,8 +18,6 @@ public class VueFormulaire extends JFrame {
     private JButton exit;
     private JLabel trait;
     private JButton accueil;
-    private Client client;
-    private Prospect prospect;
     private JLabel raisonSociale;
     private JTextField tRaisonSociale;
     private JLabel email;
@@ -42,9 +38,10 @@ public class VueFormulaire extends JFrame {
     private JLabel dateProspection;
     private JLabel interetProspect;
 
-    public VueFormulaire (){
 
-        setTitle("formulaire");
+    public VueAfficher(){
+
+        setTitle("Vue Affichage");
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         screenWidth = (int) screenSize.getWidth();
         screenHeight = (int) screenSize.getHeight();
@@ -53,15 +50,16 @@ public class VueFormulaire extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
 
-        formulaire = getContentPane();
-        formulaire.setLayout(null);
+        affichage = getContentPane();
+        affichage.setLayout(null);
 
-        title = new JLabel("FORMULAIRE");
+        title = new JLabel("AFFICHAGE");
         title.setFont(new Font("Arial", Font.PLAIN, 30));
         title.setSize(screenWidth - 250, 50);
         title.setLocation(50, 150);
         title.setHorizontalAlignment(SwingConstants.CENTER);
-        formulaire.add(title);
+        title.setVisible(true);
+        affichage.add(title);
 
         reverso = new JLabel("REVERSO");
         reverso.setFont(new Font("Arial", Font.BOLD, 25));
@@ -69,7 +67,8 @@ public class VueFormulaire extends JFrame {
         reverso.setLocation(50, 50);
         reverso.setHorizontalAlignment(SwingConstants.CENTER);
         reverso.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-        formulaire.add(reverso);
+        reverso.setVisible(true);
+        affichage.add(reverso);
 
         exit = new JButton("Quitter");
         exit.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -80,14 +79,19 @@ public class VueFormulaire extends JFrame {
                 onClose();
             }
         });
-        formulaire.add(exit);
+        exit.setVisible(true);
+        affichage.add(exit);
 
         trait = new JLabel();
         trait.setSize(screenWidth - 250, 2);
         trait.setLocation(50,200);
         trait.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-        formulaire.add(trait);
+        trait.setVisible(true);
+        affichage.add(trait);
 
+        setVisible(true);
+
+        accueil = new JButton();
         accueil = new JButton("Accueil");
         accueil.setFont(new Font("Arial", Font.PLAIN, 15));
         accueil.setSize(150,50);
@@ -97,7 +101,8 @@ public class VueFormulaire extends JFrame {
                 onAccueil();
             }
         });
-        formulaire.add(accueil);
+        accueil.setVisible(true);
+        affichage.add(accueil);
 
         raisonSociale = new JLabel("Raison Sociale");
         raisonSociale.setFont(new Font("Arial", Font.BOLD, 25));
@@ -106,7 +111,7 @@ public class VueFormulaire extends JFrame {
         raisonSociale.setHorizontalAlignment(SwingConstants.CENTER);
         raisonSociale.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         raisonSociale.setVisible(true);
-        formulaire.add(raisonSociale);
+        affichage.add(raisonSociale);
 
         tRaisonSociale = new JTextField();
         tRaisonSociale.setFont(new Font("Arial", Font.BOLD, 25));
@@ -115,7 +120,7 @@ public class VueFormulaire extends JFrame {
         tRaisonSociale.setHorizontalAlignment(SwingConstants.CENTER);
         tRaisonSociale.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         tRaisonSociale.setVisible(true);
-        formulaire.add(tRaisonSociale);
+        affichage.add(tRaisonSociale);
 
         numero = new JLabel("N°");
         numero.setFont(new Font("Arial", Font.BOLD, 25));
@@ -124,7 +129,7 @@ public class VueFormulaire extends JFrame {
         numero.setHorizontalAlignment(SwingConstants.CENTER);
         numero.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         numero.setVisible(true);
-        formulaire.add(numero);
+        affichage.add(numero);
 
         tNumero = new JTextField();
         tNumero.setFont(new Font("Arial", Font.BOLD, 25));
@@ -133,7 +138,7 @@ public class VueFormulaire extends JFrame {
         tNumero.setHorizontalAlignment(SwingConstants.LEFT);
         tNumero.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         tNumero.setVisible(true);
-        formulaire.add(tNumero);
+        affichage.add(tNumero);
 
         nomRue = new JLabel("Nom de Rue");
         nomRue.setFont(new Font("Arial", Font.BOLD, 25));
@@ -142,7 +147,7 @@ public class VueFormulaire extends JFrame {
         nomRue.setHorizontalAlignment(SwingConstants.CENTER);
         nomRue.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         nomRue.setVisible(true);
-        formulaire.add(nomRue);
+        affichage.add(nomRue);
 
         tNomRue = new JTextField();
         tNomRue.setFont(new Font("Arial", Font.BOLD, 25));
@@ -151,7 +156,7 @@ public class VueFormulaire extends JFrame {
         tNomRue.setHorizontalAlignment(SwingConstants.LEFT);
         tNomRue.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         tNomRue.setVisible(true);
-        formulaire.add(tNomRue);
+        affichage.add(tNomRue);
 
         codePostal = new JLabel("Code Postal");
         codePostal.setFont(new Font("Arial", Font.BOLD, 25));
@@ -160,7 +165,7 @@ public class VueFormulaire extends JFrame {
         codePostal.setHorizontalAlignment(SwingConstants.CENTER);
         codePostal.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         codePostal.setVisible(true);
-        formulaire.add(codePostal);
+        affichage.add(codePostal);
 
         tCodePostal = new JTextField();
         tCodePostal.setFont(new Font("Arial", Font.BOLD, 25));
@@ -169,7 +174,7 @@ public class VueFormulaire extends JFrame {
         tCodePostal.setHorizontalAlignment(SwingConstants.LEFT);
         tCodePostal.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         tCodePostal.setVisible(true);
-        formulaire.add(tCodePostal);
+        affichage.add(tCodePostal);
 
         ville = new JLabel("Ville");
         ville.setFont(new Font("Arial", Font.BOLD, 25));
@@ -178,7 +183,7 @@ public class VueFormulaire extends JFrame {
         ville.setHorizontalAlignment(SwingConstants.CENTER);
         ville.setBorder(BorderFactory.createLineBorder(Color.BLACK,2));
         ville.setVisible(true);
-        formulaire.add(ville);
+        affichage.add(ville);
 
         tVille = new JTextField();
         tVille.setFont(new Font("Arial", Font.BOLD, 25));
@@ -187,7 +192,7 @@ public class VueFormulaire extends JFrame {
         tVille.setHorizontalAlignment(SwingConstants.LEFT);
         tVille.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         tVille.setVisible(true);
-        formulaire.add(tVille);
+        affichage.add(tVille);
 
         email = new JLabel("email");
         email.setFont(new Font("Arial", Font.BOLD, 25));
@@ -196,7 +201,7 @@ public class VueFormulaire extends JFrame {
         email.setHorizontalAlignment(SwingConstants.CENTER);
         email.setBorder(BorderFactory.createLineBorder(Color.BLACK,2));
         email.setVisible(true);
-        formulaire.add(email);
+        affichage.add(email);
 
         tEmail = new JTextField();
         tEmail.setFont(new Font("Arial", Font.BOLD, 25));
@@ -205,20 +210,17 @@ public class VueFormulaire extends JFrame {
         tEmail.setHorizontalAlignment(SwingConstants.LEFT);
         tEmail.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         tEmail.setVisible(true);
-        formulaire.add(tEmail);
-
-        telephone = new JLabel();
+        affichage.add(tEmail);
 
         setVisible(true);
-    }
-
-    private void onAccueil() {
-        dispose();
-        ControllerAccueil.initAcceuil();
     }
 
     private void onClose() {
         // add your code here if necessary
         dispose();
+    }
+    private void onAccueil(){
+        dispose();
+        ControllerAffichage.accueil();
     }
 }

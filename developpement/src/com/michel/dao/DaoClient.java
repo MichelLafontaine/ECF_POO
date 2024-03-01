@@ -119,7 +119,7 @@ public class DaoClient {
             if(!rsIdClient.next()){
                 int idSociete = 0;
                 //recherche idAdresse et insertion Adresse si inexistante
-                int idAdresse = DaoUtilitaires.creerAdresse(client.getAdresse());
+                int idAdresse = DaoAdresse.creerAdresse(client.getAdresse());
                 //verfication si raison sociale existe
                 String queryRS = "SELECT ID_SOCIETE, NOM_SOCIETE FROM societe " +
                         "WHERE NOM_SOCIETE LIKE '" + client.getRaisonSociale() + "'";
@@ -166,7 +166,7 @@ public class DaoClient {
     public static void updateCLient (Client client, int idSociete) throws SQLException, DaoException {
 
         //recherche idAdresse et insertion Adresse si inexistante
-        int idAdresse = DaoUtilitaires.creerAdresse(client.getAdresse());
+        int idAdresse = DaoAdresse.creerAdresse(client.getAdresse());
         //verification nouvelle raison sociale n'existe pas dans la base de données avant modification
         String queryRS = "SELECT NOM_SOCIETE FROM societe WHERE NOM_SOCIETE LIKE '" + client.getRaisonSociale() + "' " +
                 "AND ID_SOCIETE != " + idSociete + ";";

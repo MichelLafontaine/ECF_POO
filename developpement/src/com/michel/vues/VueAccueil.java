@@ -1,13 +1,17 @@
 package com.michel.vues;
 
+import com.michel.controllers.ControllerAccueil;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
-public class VueAccueil extends JFrame {
+public class VueAccueil extends JFrame{
 
-    private Container c;
+    private Container accueil;
     private Dimension screenSize;
     private int screenWidth;
     private int screenHeight;
@@ -23,8 +27,13 @@ public class VueAccueil extends JFrame {
     private JButton supprimer;
     private JButton reinitialiser;
     private JButton valider;
+    private JComboBox<String> jComboBoxSociete;
+    private String societes[];
+    private String choix;
+    private String option;
+    private String societe;
 
-    public VueAccueil (){
+    public VueAccueil () {
 
         setTitle("Page d'accueil");
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -35,15 +44,15 @@ public class VueAccueil extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
 
-        c = getContentPane();
-        c.setLayout(null);
+        accueil = getContentPane();
+        accueil.setLayout(null);
 
         title = new JLabel("ACCUEIL");
         title.setFont(new Font("Arial", Font.PLAIN, 30));
         title.setSize(screenWidth - 250, 50);
         title.setLocation(50, 150);
         title.setHorizontalAlignment(SwingConstants.CENTER);
-        c.add(title);
+        accueil.add(title);
 
         reverso = new JLabel("REVERSO");
         reverso.setFont(new Font("Arial", Font.BOLD, 25));
@@ -51,7 +60,7 @@ public class VueAccueil extends JFrame {
         reverso.setLocation(50, 50);
         reverso.setHorizontalAlignment(SwingConstants.CENTER);
         reverso.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-        c.add(reverso);
+        accueil.add(reverso);
 
         exit = new JButton("Quitter");
         exit.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -62,13 +71,13 @@ public class VueAccueil extends JFrame {
                 onClose();
             }
         });
-        c.add(exit);
+        accueil.add(exit);
 
         trait = new JLabel();
         trait.setSize(screenWidth - 250, 2);
         trait.setLocation(50,200);
         trait.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-        c.add(trait);
+        accueil.add(trait);
 
         client = new JButton("Client");
         client.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -87,9 +96,10 @@ public class VueAccueil extends JFrame {
                 supprimer.setText("Supprimer un Client");
                 supprimer.setVisible(true);
                 reinitialiser.setVisible(true);
+                choix = "client";
             }
         });
-        c.add(client);
+        accueil.add(client);
 
         prospect = new JButton("Prospect");
         prospect.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -108,9 +118,10 @@ public class VueAccueil extends JFrame {
                 supprimer.setText("Supprimer un Prospect");
                 supprimer.setVisible(true);
                 reinitialiser.setVisible(true);
+                choix = "prospect";
             }
         });
-        c.add(prospect);
+        accueil.add(prospect);
 
         creer = new JButton("Créer");
         creer.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -122,10 +133,11 @@ public class VueAccueil extends JFrame {
                 modifier.setVisible(false);
                 supprimer.setVisible(false);
                 afficher.setVisible(false);
+                option = "creer";
             }
         });
         creer.setVisible(false);
-        c.add(creer);
+        accueil.add(creer);
 
         modifier = new JButton("Modifier");
         modifier.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -137,10 +149,16 @@ public class VueAccueil extends JFrame {
                 creer.setVisible(false);
                 supprimer.setVisible(false);
                 afficher.setVisible(false);
+                option = "modifier";
+                try {
+                    choixSociete(choix);
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
         modifier.setVisible(false);
-        c.add(modifier);
+        accueil.add(modifier);
 
         afficher = new JButton("Afficher");
         afficher.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -152,10 +170,11 @@ public class VueAccueil extends JFrame {
                 modifier.setVisible(false);
                 supprimer.setVisible(false);
                 creer.setVisible(false);
+                option = "afficher";
             }
         });
         afficher.setVisible(false);
-        c.add(afficher);
+        accueil.add(afficher);
 
         supprimer = new JButton("Afficher");
         supprimer.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -167,10 +186,16 @@ public class VueAccueil extends JFrame {
                 modifier.setVisible(false);
                 creer.setVisible(false);
                 afficher.setVisible(false);
+                option = "supprimer";
+                try {
+                    choixSociete(choix);
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
         supprimer.setVisible(false);
-        c.add(supprimer);
+        accueil.add(supprimer);
 
         reinitialiser = new JButton("Réinitialiser");
         reinitialiser.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -186,10 +211,14 @@ public class VueAccueil extends JFrame {
                 supprimer.setVisible(false);
                 reinitialiser.setVisible(false);
                 valider.setVisible(false);
+                jComboBoxSociete.setVisible(false);
+                choix = null;
+                option = null;
+                societe = null;
             }
         });
         reinitialiser.setVisible(false);
-        c.add(reinitialiser);
+        accueil.add(reinitialiser);
 
         valider = new JButton("Valider");
         valider.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -197,11 +226,30 @@ public class VueAccueil extends JFrame {
         valider.setLocation(50, screenHeight - 170);
         valider.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Message");
+                JOptionPane.showMessageDialog(null, choix + option + societe);
+                dispose();
+                switch (option){
+                    case "creer":
+                        ControllerAccueil.creer(choix);
+                        break;
+                    case "modifier":
+                        ControllerAccueil.modifier(choix);
+                        break;
+                    case "supprimer":
+                        ControllerAccueil.supprimer(choix);
+                        break;
+                    case "afficher":
+                        ControllerAccueil.afficher(choix);
+                        break;
+                    default:
+                        JOptionPane.showMessageDialog(null,"Choix non reconnu");
+                        break;
+                }
+
             }
         });
         valider.setVisible(false);
-        c.add(valider);
+        accueil.add(valider);
 
         setVisible(true);
     }
@@ -209,5 +257,22 @@ public class VueAccueil extends JFrame {
     private void onClose() {
         // add your code here if necessary
         dispose();
+    }
+
+    private void choixSociete (String choix) throws SQLException {
+        ArrayList arrayList = ControllerAccueil.listeSociete(choix);
+        societes = (String[]) arrayList.toArray(new String[arrayList.size()]);
+
+        jComboBoxSociete = new JComboBox(societes);
+        jComboBoxSociete.setFont(new Font("Arial", Font.PLAIN, 15));
+        jComboBoxSociete.setSize(500, 50);
+        jComboBoxSociete.setLocation((screenWidth-250)/2-200, screenHeight/2);
+        accueil.add(jComboBoxSociete);
+        jComboBoxSociete.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                societe = (String) jComboBoxSociete.getSelectedItem();
+            }
+        });
     }
 }
