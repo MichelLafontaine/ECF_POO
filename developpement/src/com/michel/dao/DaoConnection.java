@@ -1,5 +1,6 @@
 package com.michel.dao;
 
+import com.michel.exceptions.DaoException;
 import com.michel.utilitaires.LoggerReverso;
 
 import java.io.File;
@@ -16,7 +17,7 @@ public class DaoConnection {
 
     private static Connection connection = null;
     final Properties dataProperties = new Properties();
-    public DaoConnection() throws SQLException, FileNotFoundException, IOException, Exception{
+    public DaoConnection() {
 
         try {
             File fichier = new File("database.properties");
@@ -57,21 +58,19 @@ public class DaoConnection {
                     System.out.println("Fermeture de la BDD");
                 } catch (SQLException ex) {
                     LoggerReverso.LOGGER.log(Level.SEVERE, "problème fermeture BDD"+ ex.getMessage() + " " + ex);
-                    System.out.println("problème fermeture");
                 }
             }
         }));
     }
 
-    public static Connection getInstance() throws SQLException{
+    public static Connection getInstance() throws DaoException {
         if (connection == null) {
             try{
                 new DaoConnection();
-            }
-            catch (Exception sqle){
+            }catch (Exception e){
                 LoggerReverso.LOGGER.log(Level.SEVERE, "problème ouverture BDD SQLException"+
-                        sqle.getMessage() + " " + sqle);
-                System.out.println("erreur connection");
+                        e.getMessage() + " " + e);
+                throw new DaoException(2, "problème de connection avec la base de données, le logiciel va fermer");
             }
         }
         return connection;

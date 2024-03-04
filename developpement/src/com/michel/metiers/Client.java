@@ -43,6 +43,24 @@ public class Client extends Societe{
 
     /**
      * Constructeur
+     * @param raisonSociale
+     * @param email
+     * @param telephone
+     * @param commentaire
+     * @param adresse
+     * @param chiffreAffaire
+     * @param nbreEmploye
+     * @throws MetierException
+     */
+    public Client(String raisonSociale, String email, String telephone, String commentaire, Adresse adresse,
+                  double chiffreAffaire, int nbreEmploye) throws MetierException {
+        super(raisonSociale, email, telephone, commentaire, adresse);
+        setChiffreAffaire(chiffreAffaire);
+        setNbreEmploye(nbreEmploye);
+    }
+
+    /**
+     * Constructeur
      * @param identifiant
      * @param raisonSociale
      * @param email

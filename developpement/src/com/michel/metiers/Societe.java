@@ -93,6 +93,15 @@ public class Societe {
     public Societe() {
     }
 
+    public Societe(String raisonSociale, String email, String telephone,
+                   String commentaire, Adresse adresse) throws MetierException {
+        setRaisonSociale(raisonSociale);
+        setEmail(email);
+        setTelephone(telephone);
+        setCommentaire(commentaire);
+        setAdresse(adresse);
+    }
+
     /**
      * Constructeur
      * @param identifiant

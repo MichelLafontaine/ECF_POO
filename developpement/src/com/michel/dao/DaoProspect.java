@@ -14,7 +14,7 @@ import java.util.logging.Level;
 
 public class DaoProspect {
 
-    public static ArrayList findAllProspect() throws SQLException, MetierException {
+    public static ArrayList findAllProspect() throws MetierException, DaoException {
 
         String query = "SELECT societe.ID_SOCIETE AS 'identifiant', " +
                 "NOM_SOCIETE AS 'raisonSociale', " +
@@ -58,11 +58,12 @@ public class DaoProspect {
         }catch (SQLException e) {
             LoggerReverso.LOGGER.log(Level.SEVERE, "problème lecture BDD" +
                     e.getMessage() + " " + e);
+            throw new DaoException(2, "problème connection base de donnée, le logiciel va fermer");
         }
         return prospects;
     }
 
-    public static Prospect findByNameClient(String raisonSociale) throws SQLException, MetierException {
+    public static Prospect findByNameClient(String raisonSociale) throws MetierException, DaoException {
 
         Prospect prospect = new Prospect();
 
@@ -100,14 +101,15 @@ public class DaoProspect {
                         rs.getDate("dateProspect").toLocalDate(),
                         rs.getInt("interetProspect"));
             }
-        } catch (SQLException e) {
+        } catch (SQLException | DaoException e) {
             LoggerReverso.LOGGER.log(Level.SEVERE, "problème lecture BDD" +
                     e.getMessage() + " " + e);
+            throw new DaoException(2, "problème connection base de donnée, le logiciel va fermer");
         }
         return prospect;
     }
 
-    public static void createProspect (Prospect prospect) throws SQLException, DaoException {
+    public static void createProspect (Prospect prospect) throws DaoException {
 
         String queryIdProspect = "SELECT ID_CLIENT FROM prospect " +
                 "INNER JOIN societe on prospect.ID_SOCIETE = societe.ID_SOCIETE " +
@@ -155,25 +157,26 @@ public class DaoProspect {
                         "'" + prospect.getInteretProspect() + "');");
                 // si dèjà existante retour message utilisateur
             } else {
-                throw new DaoException("Cette entreprise est prospecte");
+                throw new DaoException(1, "Cette entreprise est prospecte");
             }
         } catch (SQLException e) {
             LoggerReverso.LOGGER.log(Level.SEVERE, "problème lecture BDD" +
                     e.getMessage() + " " + e);
+            throw new DaoException(2, "problème connection base de donnée, le logiciel va fermer");
         }
     }
 
-    public static void updatePropspect (Prospect prospect, int idSociete) throws SQLException, DaoException {
+    public static void updatePropspect (Prospect prospect, int idSociete) throws DaoException {
 
         //recherche idAdresse et insertion Adresse si inexistante
         int idAdresse = DaoAdresse.creerAdresse(prospect.getAdresse());
         //verification nouvelle raison sociale n'existe pas dans la base de données avant modification
-        String queryRS = "SELECT NOM_SOCIETE FROM societe WHERE NOM_SOCIETE LIKE '" + prospect.getRaisonSociale() + "' " +
-                "AND ID_SOCIETE != " + idSociete + ";";
+        String queryRS = "SELECT NOM_SOCIETE FROM societe WHERE NOM_SOCIETE LIKE '" + prospect.getRaisonSociale() +
+                "' " + "AND ID_SOCIETE != " + idSociete + ";";
         try (Statement stmt = DaoConnection.getInstance().createStatement()) {
             ResultSet rsRaisonSociale = stmt.executeQuery(queryRS);
             if(rsRaisonSociale.next()){
-                throw new DaoException("Raison sociale déjà existante");
+                throw new DaoException(1, "Raison sociale déjà existante");
             }
             stmt.execute("UPDATE societe SET NOM_SOCIETE ='" + prospect.getRaisonSociale() + "'," +
                     "ID_ADRESSE='" + idAdresse + "'," +
@@ -186,10 +189,11 @@ public class DaoProspect {
         } catch (SQLException e) {
             LoggerReverso.LOGGER.log(Level.SEVERE, "problème lecture BDD" +
                     e.getMessage() + " " + e);
+            throw new DaoException(2, "problème connection base de donnée, le logiciel va fermer");
         }
     }
 
-    public static void deleteProspect (int idSociete) throws SQLException {
+    public static void deleteProspect (int idSociete) throws DaoException {
 
         try(Statement stmt = DaoConnection.getInstance().createStatement()){
             //supprimer dans la table client
@@ -203,6 +207,7 @@ public class DaoProspect {
         } catch (SQLException e) {
             LoggerReverso.LOGGER.log(Level.SEVERE, "problème lecture BDD" +
                     e.getMessage() + " " + e);
+            throw new DaoException(2, "problème connection base de donnée, le logiciel va fermer");
         }
     }
 }

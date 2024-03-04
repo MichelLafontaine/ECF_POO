@@ -1,5 +1,6 @@
 package com.michel.dao;
 
+import com.michel.exceptions.DaoException;
 import com.michel.utilitaires.LoggerReverso;
 
 import java.sql.ResultSet;
@@ -10,7 +11,7 @@ import java.util.logging.Level;
 
 public class DaoSociete {
 
-    public static ArrayList raisonSociales (String choixClientProspect) throws SQLException {
+    public static ArrayList raisonSociales (String choixClientProspect) throws DaoException {
 
         ArrayList<String> societes = new ArrayList<>();
         societes.add("");
@@ -24,6 +25,7 @@ public class DaoSociete {
         } catch (SQLException sqlException){
             LoggerReverso.LOGGER.log(Level.SEVERE, "problème lecture BDD" +
                     sqlException.getMessage() + " " + sqlException);
+            throw new DaoException(2, "problème connection base de donnée, le logiciel va fermer");
         }
         return societes;
     }

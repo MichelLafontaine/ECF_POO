@@ -1,6 +1,8 @@
 package com.michel.utilitaires;
 
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 public class Utilitaires {
@@ -20,5 +22,17 @@ public class Utilitaires {
     //format date Local
     public static DateTimeFormatter formatDate (){
         return DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    }
+
+    public static ArrayList<String> years (){
+        ArrayList<String> listAnnee = new ArrayList<>();
+        listAnnee.add("");
+        int anneeActuelle = LocalDate.now().getYear();
+
+        for (int annee = 2020; annee <= anneeActuelle ; annee++){
+            listAnnee.add(String.valueOf(annee));
+        }
+
+        return listAnnee;
     }
 }

@@ -15,8 +15,11 @@ public class Prospect extends Societe{
     }
 
     public void setDateProspect(LocalDate dateProspect) throws MetierException {
-            if (dateProspect.isAfter(LocalDate.now())){
+        if (dateProspect.isAfter(LocalDate.now())){
             throw new MetierException("Attention, la date doit être inférieur ou égal à aujourd'hui");
+        }
+        if (dateProspect.isEqual(LocalDate.of(1900,1,1))){
+            throw new MetierException("Attention la date n'est pas bonne");
         }
         this.dateProspect = dateProspect;
     }
@@ -35,8 +38,15 @@ public class Prospect extends Societe{
     public Prospect() {
     }
 
+    public Prospect(String raisonSociale, String email, String telephone, String commentaire, Adresse adresse,
+                    LocalDate dateProspect, int interetProspect) throws MetierException {
+        super(raisonSociale, email, telephone, commentaire, adresse);
+        this.dateProspect = dateProspect;
+        this.interetProspect = interetProspect;
+    }
+
     public Prospect(int identifiant, String raisonSociale, String email, String telephone, String commentaire,
-                     Adresse adresse, LocalDate dateProspect, int interetProspect) throws MetierException {
+                    Adresse adresse, LocalDate dateProspect, int interetProspect) throws MetierException {
         super(identifiant, raisonSociale, email, telephone, commentaire, adresse);
         setDateProspect(dateProspect);
         setInteretProspect(interetProspect);

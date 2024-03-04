@@ -1,5 +1,6 @@
 package com.michel.dao;
 
+import com.michel.exceptions.DaoException;
 import com.michel.metiers.Adresse;
 import com.michel.utilitaires.LoggerReverso;
 
@@ -9,7 +10,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 
 public class DaoAdresse {
-    public static int creerAdresse (Adresse adresse) throws SQLException {
+    public static int creerAdresse (Adresse adresse) throws DaoException {
 
         int idAdresse = 0;
         int idVille = 0;
@@ -68,7 +69,9 @@ public class DaoAdresse {
             }
         } catch (SQLException e) {
             LoggerReverso.LOGGER.log(Level.SEVERE, "problème insertion adresse" +
-                    e.getMessage() + " " + e);
+                e.getMessage() + " " + e);
+            throw new DaoException(2, "Problème communication avec la base de données, le logiciel va fermer");
+
         }
         return idAdresse;
     }

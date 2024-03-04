@@ -1,11 +1,14 @@
 package com.michel.vues;
 
 import com.michel.controllers.ControllerAffichage;
+import com.michel.exceptions.DaoException;
+import com.michel.exceptions.MetierException;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 public class VueAfficher extends JFrame{
 
@@ -39,7 +42,7 @@ public class VueAfficher extends JFrame{
     private JLabel interetProspect;
 
 
-    public VueAfficher(){
+    public VueAfficher() throws MetierException, SQLException, DaoException, RuntimeException{
 
         setTitle("Vue Affichage");
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -98,7 +101,11 @@ public class VueAfficher extends JFrame{
         accueil.setLocation(screenWidth - 200, 120);
         accueil.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                onAccueil();
+                try {
+                    onAccueil();
+                } catch (SQLException | MetierException | DaoException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
         accueil.setVisible(true);
@@ -219,7 +226,7 @@ public class VueAfficher extends JFrame{
         // add your code here if necessary
         dispose();
     }
-    private void onAccueil(){
+    private void onAccueil() throws SQLException, MetierException, DaoException {
         dispose();
         ControllerAffichage.accueil();
     }

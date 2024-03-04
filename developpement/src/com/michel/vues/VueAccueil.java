@@ -1,6 +1,8 @@
 package com.michel.vues;
 
 import com.michel.controllers.ControllerAccueil;
+import com.michel.exceptions.DaoException;
+import com.michel.exceptions.MetierException;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,7 +11,7 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class VueAccueil extends JFrame{
+public class VueAccueil extends JFrame {
 
     private Container accueil;
     private Dimension screenSize;
@@ -152,8 +154,11 @@ public class VueAccueil extends JFrame{
                 option = "modifier";
                 try {
                     choixSociete(choix);
-                } catch (SQLException ex) {
-                    throw new RuntimeException(ex);
+                } catch (DaoException daoException){
+                    JOptionPane.showMessageDialog(null, "erreur BDD" + daoException.getMessage());
+                } catch (Exception exception){
+                    JOptionPane.showMessageDialog(null, "Erreur, le logiciel va fermer");
+                    System.exit(1);
                 }
             }
         });
@@ -189,8 +194,11 @@ public class VueAccueil extends JFrame{
                 option = "supprimer";
                 try {
                     choixSociete(choix);
-                } catch (SQLException ex) {
-                    throw new RuntimeException(ex);
+                } catch (DaoException daoException){
+                    JOptionPane.showMessageDialog(null, "erreur BDD" + daoException.getMessage());
+                } catch (Exception exception){
+                    JOptionPane.showMessageDialog(null, "Erreur, le logiciel va fermer");
+                    System.exit(1);
                 }
             }
         });
@@ -228,24 +236,33 @@ public class VueAccueil extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(null, choix + option + societe);
                 dispose();
-                switch (option){
-                    case "creer":
-                        ControllerAccueil.creer(choix);
-                        break;
-                    case "modifier":
-                        ControllerAccueil.modifier(choix);
-                        break;
-                    case "supprimer":
-                        ControllerAccueil.supprimer(choix);
-                        break;
-                    case "afficher":
-                        ControllerAccueil.afficher(choix);
-                        break;
-                    default:
-                        JOptionPane.showMessageDialog(null,"Choix non reconnu");
-                        break;
+                try {
+                    switch (option) {
+                        case "creer":
+                            ControllerAccueil.creer(choix);
+                            break;
+                        case "modifier":
+                            ControllerAccueil.modifier(choix, societe);
+                            break;
+                        case "supprimer":
+                            ControllerAccueil.supprimer(choix, societe);
+                            break;
+                        case "afficher":
+                            ControllerAccueil.afficher(choix);
+                            break;
+                        default:
+                            JOptionPane.showMessageDialog(null, "Pb Logiciel, le logiciel va fermer");
+                            System.exit(1);
+                            break;
+                    }
+                } catch (MetierException metierException) {
+                    JOptionPane.showMessageDialog(null, "erreur de saisie : " + metierException.getMessage());
+                } catch (DaoException daoException){
+                    JOptionPane.showMessageDialog(null, "erreur BDD" + daoException.getMessage());
+                } catch (Exception exception){
+                    JOptionPane.showMessageDialog(null, "Erreur, le logiciel va fermer");
+                    System.exit(1);
                 }
-
             }
         });
         valider.setVisible(false);
@@ -259,7 +276,7 @@ public class VueAccueil extends JFrame{
         dispose();
     }
 
-    private void choixSociete (String choix) throws SQLException {
+    private void choixSociete (String choix) throws DaoException {
         ArrayList arrayList = ControllerAccueil.listeSociete(choix);
         societes = (String[]) arrayList.toArray(new String[arrayList.size()]);
 

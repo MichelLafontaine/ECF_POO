@@ -15,7 +15,7 @@ import java.util.logging.Level;
 
 public class DaoClient {
 
-    public static ArrayList findAllClient() throws SQLException, MetierException {
+    public static ArrayList findAllClient() throws MetierException, DaoException {
 
         String query = "SELECT societe.ID_SOCIETE AS 'identifiant', " +
                 "NOM_SOCIETE AS 'raisonSociale', " +
@@ -58,11 +58,12 @@ public class DaoClient {
         }catch (SQLException e) {
             LoggerReverso.LOGGER.log(Level.SEVERE, "problème lecture BDD" +
                     e.getMessage() + " " + e);
+            throw new DaoException(2, "problème connection base de donnée, le logiciel va fermer");
         }
         return clients;
     }
 
-    public static Client findByNameClient(String raisonSociale) throws SQLException, MetierException {
+    public static Client findByNameClient(String raisonSociale) throws MetierException, DaoException {
 
         Client client = new Client();
 
@@ -103,6 +104,7 @@ public class DaoClient {
         } catch (SQLException e) {
             LoggerReverso.LOGGER.log(Level.SEVERE, "problème lecture BDD" +
                     e.getMessage() + " " + e);
+            throw new DaoException(2, "problème de connection avec la base de données, le logiciel va fermer");
         }
         return client;
     }
@@ -155,15 +157,16 @@ public class DaoClient {
                         "'" + client.getNbreEmploye() + "');");
             // si dèjà existante retour message utilisateur
             } else {
-                throw new DaoException("Cette entreprise est cliente");
+                throw new DaoException(1, "Cette entreprise est cliente");
             }
         } catch (SQLException e) {
             LoggerReverso.LOGGER.log(Level.SEVERE, "problème lecture BDD" +
                 e.getMessage() + " " + e);
+            throw new DaoException(2, "problème de connection avec la base de données, le logiciel va fermer");
         }
     }
 
-    public static void updateCLient (Client client, int idSociete) throws SQLException, DaoException {
+    public static void updateCLient (Client client, int idSociete) throws DaoException {
 
         //recherche idAdresse et insertion Adresse si inexistante
         int idAdresse = DaoAdresse.creerAdresse(client.getAdresse());
@@ -173,7 +176,7 @@ public class DaoClient {
         try (Statement stmt = DaoConnection.getInstance().createStatement()) {
             ResultSet rsRaisonSociale = stmt.executeQuery(queryRS);
             if(rsRaisonSociale.next()){
-                throw new DaoException("Raison sociale déjà existante");
+                throw new DaoException(1, "Raison sociale déjà existante");
             }
             stmt.execute("UPDATE societe SET NOM_SOCIETE ='" + client.getRaisonSociale() + "'," +
                     "ID_ADRESSE='" + idAdresse + "'," +
@@ -186,10 +189,11 @@ public class DaoClient {
         } catch (SQLException e) {
             LoggerReverso.LOGGER.log(Level.SEVERE, "problème lecture BDD" +
                     e.getMessage() + " " + e);
+            throw new DaoException(2, "problème de connection avec la base de données, le logiciel va fermer");
         }
     }
 
-    public static void deleteClient (int idSociete) throws SQLException {
+    public static void deleteClient (int idSociete) throws DaoException {
 
         try(Statement stmt = DaoConnection.getInstance().createStatement()){
             //supprimer dans la table client
@@ -203,6 +207,8 @@ public class DaoClient {
         } catch (SQLException e) {
             LoggerReverso.LOGGER.log(Level.SEVERE, "problème lecture BDD" +
                     e.getMessage() + " " + e);
+            throw new DaoException(2, "problème de connection avec la base de données, le logiciel va fermer");
+
         }
     }
 }
