@@ -14,7 +14,7 @@ import java.util.logging.Level;
 
 public class DaoProspect {
 
-    public static ArrayList findAllProspect() throws MetierException, DaoException {
+    public static ArrayList findAll() throws MetierException, DaoException {
 
         String query = "SELECT societe.ID_SOCIETE AS 'identifiant', " +
                 "NOM_SOCIETE AS 'raisonSociale', " +
@@ -63,7 +63,7 @@ public class DaoProspect {
         return prospects;
     }
 
-    public static Prospect findByNameClient(String raisonSociale) throws MetierException, DaoException {
+    public static Prospect findByName(String raisonSociale) throws MetierException, DaoException {
 
         Prospect prospect = new Prospect();
 
@@ -109,9 +109,9 @@ public class DaoProspect {
         return prospect;
     }
 
-    public static void createProspect (Prospect prospect) throws DaoException {
+    public static void create(Prospect prospect) throws DaoException {
 
-        String queryIdProspect = "SELECT ID_CLIENT FROM prospect " +
+        String queryIdProspect = "SELECT ID_PROSPECT FROM prospect " +
                 "INNER JOIN societe on prospect.ID_SOCIETE = societe.ID_SOCIETE " +
                 "WHERE NOM_SOCIETE LIKE '" + prospect.getRaisonSociale() + "';";
         // Vérifier si la id_prospect n'est pas existant dans la table client
@@ -150,8 +150,8 @@ public class DaoProspect {
                         idSociete = rsIdSociete.getInt(1);
                     }
                 }
-                //insertion dans la table client
-                stmt.execute("INSERT INTO `prospect` (`ID_CLIENT`, `ID_SOCIETE`, `DATE_PROSPECT`, `INTERET_PROSPECT`) " +
+                //insertion dans la table prospect
+                stmt.execute("INSERT INTO `prospect` (`ID_PROSPECT`, `ID_SOCIETE`, `DATE_PROSPECT`, `INTERET_PROSPECT`) " +
                         "VALUES (NULL, '" + idSociete + "', " +
                         "'" + prospect.getDateProspect() + "', " +
                         "'" + prospect.getInteretProspect() + "');");
@@ -166,7 +166,7 @@ public class DaoProspect {
         }
     }
 
-    public static void updatePropspect (Prospect prospect, int idSociete) throws DaoException {
+    public static void update(Prospect prospect, int idSociete) throws DaoException {
 
         //recherche idAdresse et insertion Adresse si inexistante
         int idAdresse = DaoAdresse.creerAdresse(prospect.getAdresse());
@@ -183,7 +183,7 @@ public class DaoProspect {
                     "TEL_SOCIETE='" + prospect.getTelephone() + "'," +
                     "MAIL_SOCIETE='" + prospect.getEmail() + "'," +
                     "COM_SOCIETE='" + prospect.getCommentaire() + "' WHERE ID_SOCIETE = " + idSociete + ";");
-            stmt.execute("UPDATE client SET DATE_PROSPECT = '" + prospect.getDateProspect() + "', " +
+            stmt.execute("UPDATE prospect SET DATE_PROSPECT = '" + prospect.getDateProspect() + "', " +
                     "INTERET_PROSPECT = '" + prospect.getInteretProspect() + "' " +
                     "WHERE ID_SOCIETE = " + idSociete + ";");
         } catch (SQLException e) {
@@ -193,13 +193,13 @@ public class DaoProspect {
         }
     }
 
-    public static void deleteProspect (int idSociete) throws DaoException {
+    public static void delete(int idSociete) throws DaoException {
 
         try(Statement stmt = DaoConnection.getInstance().createStatement()){
-            //supprimer dans la table client
+            //supprimer dans la table prospect
             stmt.execute("DELETE FROM prospect WHERE ID_SOCIETE = " + idSociete + ";");
-            String queryProspect = "SELECT ID_SOCIETE FROM societe WHERE ID_SOCIETE = " + idSociete + ";";
-            ResultSet rsProspect = stmt.executeQuery(queryProspect);
+            String queryClient = "SELECT ID_SOCIETE FROM client WHERE ID_SOCIETE = " + idSociete + ";";
+            ResultSet rsProspect = stmt.executeQuery(queryClient);
             // si la societe n'est pas rattaché à la table client on supprime la socièté
             if (!rsProspect.next()){
                 stmt.execute("DELETE FROM societe WHERE ID_SOCIETE = " + idSociete + ";");

@@ -704,3 +704,475 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 04/03/2024 16:59:34 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
 04/03/2024 16:59:36 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
 04/03/2024 16:59:48 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 08:36:29 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 08:36:34 Level : SEVERE / Message : problème ouverture BDD SQLExceptionCommunications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server. com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server. / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 08:36:48 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 08:36:50 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 08:37:04 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 08:41:38 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 08:41:40 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 08:44:28 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 08:44:30 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 08:46:03 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 08:46:06 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 08:46:21 Level : SEVERE / Message : problème lecture BDDData truncation: Out of range value for column 'CA_CLIENT' at row 1 com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Out of range value for column 'CA_CLIENT' at row 1 / Méthode : updateCLient / Classe : com.michel.dao.DaoClient
+05/03/2024 08:47:07 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 08:47:11 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 08:47:15 Level : SEVERE / Message : problème lecture BDDData truncation: Out of range value for column 'CA_CLIENT' at row 1 com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Out of range value for column 'CA_CLIENT' at row 1 / Méthode : updateCLient / Classe : com.michel.dao.DaoClient
+05/03/2024 08:47:58 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 08:48:02 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 08:48:12 Level : SEVERE / Message : problème lecture BDDData truncation: Out of range value for column 'CA_CLIENT' at row 1 com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Out of range value for column 'CA_CLIENT' at row 1 / Méthode : updateCLient / Classe : com.michel.dao.DaoClient
+05/03/2024 09:08:57 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 09:08:59 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 09:09:11 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 09:09:16 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 09:09:21 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 09:09:31 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 09:10:53 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 09:10:57 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 09:11:06 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 09:11:38 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 09:11:41 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 09:14:20 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 09:14:22 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 09:14:28 Level : SEVERE / Message : problème lecture BDDData truncation: Out of range value for column 'CA_CLIENT' at row 1 com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Out of range value for column 'CA_CLIENT' at row 1 / Méthode : updateCLient / Classe : com.michel.dao.DaoClient
+05/03/2024 09:14:36 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 09:15:25 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 09:15:26 Level : SEVERE / Message : problème insertion adresseUnknown column 'GFHFGH' in 'where clause' java.sql.SQLSyntaxErrorException: Unknown column 'GFHFGH' in 'where clause' / Méthode : creerAdresse / Classe : com.michel.dao.DaoAdresse
+05/03/2024 09:17:44 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 09:17:47 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 09:17:57 Level : SEVERE / Message : problème lecture BDDData truncation: Out of range value for column 'CA_CLIENT' at row 1 com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Out of range value for column 'CA_CLIENT' at row 1 / Méthode : updateCLient / Classe : com.michel.dao.DaoClient
+05/03/2024 09:18:30 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 09:18:32 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 09:20:01 Level : SEVERE / Message : problème lecture BDDData truncation: Out of range value for column 'CA_CLIENT' at row 1 com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Out of range value for column 'CA_CLIENT' at row 1 / Méthode : updateCLient / Classe : com.michel.dao.DaoClient
+05/03/2024 09:20:01 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 09:20:32 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 09:20:34 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 09:22:50 Level : SEVERE / Message : problème lecture BDDData truncation: Out of range value for column 'CA_CLIENT' at row 1 com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Out of range value for column 'CA_CLIENT' at row 1 / Méthode : updateCLient / Classe : com.michel.dao.DaoClient
+05/03/2024 09:23:51 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 09:23:53 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 09:27:34 Level : SEVERE / Message : problème lecture BDDData truncation: Out of range value for column 'CA_CLIENT' at row 1 com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Out of range value for column 'CA_CLIENT' at row 1 / Méthode : updateCLient / Classe : com.michel.dao.DaoClient
+05/03/2024 09:27:34 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 09:29:03 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 09:29:06 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 09:29:32 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 09:31:16 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 09:31:18 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 09:32:25 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 09:32:27 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 09:33:24 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 09:33:26 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 09:33:59 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 09:34:31 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 09:34:34 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 09:34:41 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 09:35:38 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 09:35:40 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 09:37:12 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 09:37:14 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 09:37:16 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 09:38:38 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 09:42:55 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 09:42:57 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 09:43:06 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 09:43:09 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 09:43:12 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 09:44:16 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 09:44:18 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 09:45:28 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 09:47:48 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 09:49:21 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 09:49:48 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 09:50:12 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 09:51:43 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 09:51:59 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 09:52:02 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 09:52:13 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 09:52:16 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 09:54:41 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 10:00:18 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 10:00:45 Level : SEVERE / Message : problème choix oui/non / Méthode : creer / Classe : com.michel.controllers.ControllerFormulaire
+05/03/2024 10:13:34 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 10:13:57 Level : SEVERE / Message : problème lecture mois / Méthode : mois / Classe : com.michel.utilitaires.Utilitaires
+05/03/2024 10:14:07 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 10:14:52 Level : SEVERE / Message : problème lecture mois / Méthode : mois / Classe : com.michel.utilitaires.Utilitaires
+05/03/2024 10:16:24 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 10:16:51 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 10:17:46 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 10:18:26 Level : SEVERE / Message : problème choix oui/non / Méthode : creer / Classe : com.michel.controllers.ControllerFormulaire
+05/03/2024 10:19:20 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 10:19:22 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 10:19:29 Level : SEVERE / Message : problème lecture BDDUnknown column 'DATE_PROSPECT' in 'field list' java.sql.SQLSyntaxErrorException: Unknown column 'DATE_PROSPECT' in 'field list' / Méthode : updatePropspect / Classe : com.michel.dao.DaoProspect
+05/03/2024 10:21:19 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 10:21:21 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 10:21:32 Level : SEVERE / Message : problème lecture BDDUnknown column 'DATE_PROSPECT' in 'field list' java.sql.SQLSyntaxErrorException: Unknown column 'DATE_PROSPECT' in 'field list' / Méthode : updatePropspect / Classe : com.michel.dao.DaoProspect
+05/03/2024 10:21:32 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 10:22:50 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 10:22:53 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 10:22:59 Level : SEVERE / Message : problème lecture BDDUnknown column 'DATE_PROSPECT' in 'field list' java.sql.SQLSyntaxErrorException: Unknown column 'DATE_PROSPECT' in 'field list' / Méthode : updatePropspect / Classe : com.michel.dao.DaoProspect
+05/03/2024 10:22:59 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 10:23:08 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 10:23:10 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 10:25:57 Level : SEVERE / Message : problème lecture BDDUnknown column 'DATE_PROSPECT' in 'field list' java.sql.SQLSyntaxErrorException: Unknown column 'DATE_PROSPECT' in 'field list' / Méthode : updatePropspect / Classe : com.michel.dao.DaoProspect
+05/03/2024 10:25:57 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 10:26:45 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 10:26:48 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 10:26:54 Level : SEVERE / Message : problème lecture BDDData truncation: Incorrect date value: '1994' for column `ecf_poo`.`prospect`.`DATE_PROSPECT` at row 1 com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Incorrect date value: '1994' for column `ecf_poo`.`prospect`.`DATE_PROSPECT` at row 1 / Méthode : updatePropspect / Classe : com.michel.dao.DaoProspect
+05/03/2024 10:27:14 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 10:27:16 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 10:29:47 Level : SEVERE / Message : problème lecture BDDData truncation: Incorrect date value: '1994' for column `ecf_poo`.`prospect`.`DATE_PROSPECT` at row 1 com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Incorrect date value: '1994' for column `ecf_poo`.`prospect`.`DATE_PROSPECT` at row 1 / Méthode : updatePropspect / Classe : com.michel.dao.DaoProspect
+05/03/2024 10:29:55 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 10:31:25 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 10:32:20 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 10:32:20 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 10:32:20 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 10:32:35 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 10:32:35 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 10:32:35 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 10:33:00 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 10:33:32 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 10:37:48 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 10:38:12 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 10:38:12 Level : SEVERE / Message : problème insertion adresseUnknown column 'TYEJB' in 'where clause' java.sql.SQLSyntaxErrorException: Unknown column 'TYEJB' in 'where clause' / Méthode : creerAdresse / Classe : com.michel.dao.DaoAdresse
+05/03/2024 10:38:19 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 10:40:02 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 10:45:12 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 10:45:44 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 10:46:55 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 10:50:40 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 10:51:41 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 10:51:41 Level : SEVERE / Message : problème insertion adresseYou have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'AND RUE_ADRESSE = ' CJ HGF FG'' at line 1 java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'AND RUE_ADRESSE = ' CJ HGF FG'' at line 1 / Méthode : creerAdresse / Classe : com.michel.dao.DaoAdresse
+05/03/2024 10:51:53 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 10:52:31 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 10:52:31 Level : SEVERE / Message : problème insertion adresseUnknown column 'RY' in 'where clause' java.sql.SQLSyntaxErrorException: Unknown column 'RY' in 'where clause' / Méthode : creerAdresse / Classe : com.michel.dao.DaoAdresse
+05/03/2024 10:53:17 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 10:54:06 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 10:55:00 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 10:55:00 Level : SEVERE / Message : problème insertion adresseUnknown column 'TRYU' in 'where clause' java.sql.SQLSyntaxErrorException: Unknown column 'TRYU' in 'where clause' / Méthode : creerAdresse / Classe : com.michel.dao.DaoAdresse
+05/03/2024 10:55:43 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 10:56:44 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 10:56:48 Level : SEVERE / Message : problème insertion adresseUnknown column 'TYU' in 'where clause' java.sql.SQLSyntaxErrorException: Unknown column 'TYU' in 'where clause' / Méthode : creerAdresse / Classe : com.michel.dao.DaoAdresse
+05/03/2024 10:56:48 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 10:58:22 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 11:00:49 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 11:01:12 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:01:12 Level : SEVERE / Message : problème insertion adresseUnknown column 'ERT' in 'where clause' java.sql.SQLSyntaxErrorException: Unknown column 'ERT' in 'where clause' / Méthode : creerAdresse / Classe : com.michel.dao.DaoAdresse
+05/03/2024 11:01:16 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 11:02:02 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:05:07 Level : SEVERE / Message : problème insertion adresseUnknown column 'ZTYV' in 'where clause' java.sql.SQLSyntaxErrorException: Unknown column 'ZTYV' in 'where clause' / Méthode : creerAdresse / Classe : com.michel.dao.DaoAdresse
+05/03/2024 11:05:07 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:05:10 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 11:06:05 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:13:02 Level : SEVERE / Message : problème insertion adresseUnknown column 'TUT' in 'where clause' java.sql.SQLSyntaxErrorException: Unknown column 'TUT' in 'where clause' / Méthode : creerAdresse / Classe : com.michel.dao.DaoAdresse
+05/03/2024 11:13:05 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 11:13:06 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:13:06 Level : SEVERE / Message : problème insertion adresseYou have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'DE LA REP' at line 1 java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'DE LA REP' at line 1 / Méthode : creerAdresse / Classe : com.michel.dao.DaoAdresse
+05/03/2024 11:13:06 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:13:56 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 11:14:05 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:15:32 Level : SEVERE / Message : problème insertion adresseYou have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'DE LA REP' at line 1 java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'DE LA REP' at line 1 / Méthode : creerAdresse / Classe : com.michel.dao.DaoAdresse
+05/03/2024 11:15:32 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:15:36 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 11:15:36 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:15:36 Level : SEVERE / Message : problème insertion adresseYou have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'DE LA REP' at line 1 java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'DE LA REP' at line 1 / Méthode : creerAdresse / Classe : com.michel.dao.DaoAdresse
+05/03/2024 11:15:36 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:15:43 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 11:15:52 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:16:39 Level : SEVERE / Message : problème insertion adresseYou have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'DE LA REP' at line 1 java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'DE LA REP' at line 1 / Méthode : creerAdresse / Classe : com.michel.dao.DaoAdresse
+05/03/2024 11:16:42 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 11:16:42 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:16:42 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:17:19 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 11:17:20 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:17:20 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:17:55 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 11:17:55 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:17:55 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:18:31 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 11:18:55 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:21:25 Level : SEVERE / Message : problème choix oui/non / Méthode : creer / Classe : com.michel.controllers.ControllerFormulaire
+05/03/2024 11:21:26 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:21:50 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 11:23:12 Level : SEVERE / Message : problème choix oui/non / Méthode : creer / Classe : com.michel.controllers.ControllerFormulaire
+05/03/2024 11:23:46 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 11:24:14 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:24:14 Level : SEVERE / Message : problème lecture BDDYou have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'È"HÈ(-'' at line 1 java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'È"HÈ(-'' at line 1 / Méthode : createProspect / Classe : com.michel.dao.DaoProspect
+05/03/2024 11:24:21 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 11:25:25 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:25:25 Level : SEVERE / Message : problème lecture BDDUnknown column 'ID_CLIENT' in 'field list' java.sql.SQLSyntaxErrorException: Unknown column 'ID_CLIENT' in 'field list' / Méthode : createProspect / Classe : com.michel.dao.DaoProspect
+05/03/2024 11:29:54 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 11:30:23 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:30:23 Level : SEVERE / Message : problème lecture BDDUnknown column 'ID_CLIENT' in 'field list' java.sql.SQLSyntaxErrorException: Unknown column 'ID_CLIENT' in 'field list' / Méthode : createProspect / Classe : com.michel.dao.DaoProspect
+05/03/2024 11:30:27 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 11:31:47 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 11:32:30 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:34:06 Level : SEVERE / Message : problème lecture BDDUnknown column 'ID_CLIENT' in 'field list' java.sql.SQLSyntaxErrorException: Unknown column 'ID_CLIENT' in 'field list' / Méthode : createProspect / Classe : com.michel.dao.DaoProspect
+05/03/2024 11:34:06 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:34:08 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 11:34:35 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:34:51 Level : SEVERE / Message : problème lecture BDDData truncation: Incorrect date value: '2017' for column `ecf_poo`.`prospect`.`DATE_PROSPECT` at row 1 com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Incorrect date value: '2017' for column `ecf_poo`.`prospect`.`DATE_PROSPECT` at row 1 / Méthode : updatePropspect / Classe : com.michel.dao.DaoProspect
+05/03/2024 11:35:46 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 11:35:48 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:37:22 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:37:38 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 11:37:41 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:40:34 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 11:40:37 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:44:38 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 11:44:40 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:46:40 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 11:46:42 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:46:56 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:50:37 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 11:50:39 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:50:47 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:50:53 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 11:50:55 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:50:59 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:51:13 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 11:51:15 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:51:24 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:51:30 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 11:51:31 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:51:45 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 11:51:47 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:51:55 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:52:04 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 11:52:05 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:52:25 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:52:33 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 11:52:36 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:52:48 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:52:54 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 11:52:56 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:53:00 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:53:02 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 11:53:04 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:53:39 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 11:53:42 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 11:56:12 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 11:56:14 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 12:02:58 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 12:03:01 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 12:03:41 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 13:16:20 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 13:16:23 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 13:16:37 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 13:17:06 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 13:17:07 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 13:17:17 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 13:18:05 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 13:18:07 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 13:18:17 Level : SEVERE / Message : problème lecture BDDData truncation: Out of range value for column 'CA_CLIENT' at row 1 com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Out of range value for column 'CA_CLIENT' at row 1 / Méthode : updateCLient / Classe : com.michel.dao.DaoClient
+05/03/2024 13:18:30 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 13:18:32 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 13:18:41 Level : SEVERE / Message : problème lecture BDDData truncation: Out of range value for column 'CA_CLIENT' at row 1 com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Out of range value for column 'CA_CLIENT' at row 1 / Méthode : updateCLient / Classe : com.michel.dao.DaoClient
+05/03/2024 13:20:17 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 13:20:19 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 13:20:49 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 13:20:51 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 13:20:58 Level : SEVERE / Message : problème lecture BDDData truncation: Out of range value for column 'CA_CLIENT' at row 1 com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Out of range value for column 'CA_CLIENT' at row 1 / Méthode : updateCLient / Classe : com.michel.dao.DaoClient
+05/03/2024 13:21:04 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 13:21:05 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 13:22:10 Level : SEVERE / Message : problème lecture BDDData truncation: Out of range value for column 'CA_CLIENT' at row 1 com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Out of range value for column 'CA_CLIENT' at row 1 / Méthode : updateCLient / Classe : com.michel.dao.DaoClient
+05/03/2024 13:22:13 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 13:22:15 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 13:22:21 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 13:22:25 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 13:22:27 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 13:23:01 Level : SEVERE / Message : problème lecture BDDData truncation: Out of range value for column 'CA_CLIENT' at row 1 com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Out of range value for column 'CA_CLIENT' at row 1 / Méthode : updateCLient / Classe : com.michel.dao.DaoClient
+05/03/2024 13:28:09 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 13:28:11 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 13:31:02 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 13:32:04 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 13:32:06 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 13:34:15 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 13:34:18 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 13:38:24 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 13:39:28 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 13:41:40 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 13:42:40 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 13:43:19 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 13:44:09 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 13:44:38 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 14:41:49 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 14:42:33 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 14:42:33 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 14:42:33 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 14:44:46 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 14:44:46 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 14:44:46 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 14:47:58 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 14:47:58 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 14:47:58 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 14:48:24 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 14:48:25 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 14:48:25 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:09:21 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 15:09:21 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:09:21 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:10:01 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 15:10:10 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:14:20 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:14:25 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 15:14:28 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:15:15 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 15:15:19 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:17:08 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:17:09 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 15:17:12 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:18:33 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:18:35 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 15:18:38 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:20:38 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:20:39 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 15:20:41 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:21:30 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:22:20 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 15:22:22 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:23:22 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:23:27 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 15:23:30 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:23:49 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:23:50 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 15:23:55 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:24:32 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:25:08 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 15:25:08 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:28:33 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 15:28:33 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:29:03 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 15:29:04 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:32:49 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 15:32:49 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:32:52 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:36:08 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 15:36:08 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:36:13 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:41:40 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 15:41:41 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:41:50 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:46:37 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 15:46:38 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:46:56 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:46:59 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 15:47:00 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:48:00 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 15:48:01 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:48:10 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:48:21 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 15:48:22 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:48:31 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:48:34 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 15:48:34 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:48:50 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:49:01 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 15:49:02 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:49:09 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:49:24 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 15:49:25 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:49:32 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:49:48 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 15:49:48 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:49:57 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:50:08 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 15:50:08 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:50:19 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:51:35 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 15:51:36 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:51:56 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:52:13 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 15:52:13 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:52:20 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:52:38 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 15:52:39 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:52:54 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:53:08 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 15:53:08 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:53:14 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:53:42 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 15:53:42 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:53:51 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:54:14 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 15:54:15 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:54:49 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:54:52 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 15:54:52 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:57:28 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 15:57:29 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:57:49 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:57:52 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 15:57:53 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:58:19 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 15:58:19 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 15:58:26 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:00:34 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 16:00:35 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:01:01 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 16:01:02 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:02:06 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 16:02:07 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:02:11 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:08:42 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 16:08:42 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:08:58 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 16:08:58 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:09:15 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 16:09:15 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:09:18 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:09:28 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 16:09:28 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:09:32 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:09:50 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 16:09:51 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:10:24 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 16:10:25 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:10:32 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:11:36 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 16:11:36 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:11:41 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:19:12 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 16:19:13 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:19:22 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:19:57 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 16:19:57 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:20:00 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:20:41 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 16:20:41 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:20:51 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:21:11 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 16:21:11 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:21:19 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 16:21:20 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:24:15 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 16:24:15 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:25:14 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 16:25:15 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:25:18 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:30:14 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 16:30:15 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:30:17 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:30:21 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 16:30:22 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:30:24 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:31:13 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 16:31:14 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:31:20 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:31:25 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 16:31:25 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:31:29 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:39:42 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 16:39:43 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:40:09 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:40:17 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 16:40:18 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:51:35 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 16:51:36 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:52:33 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:52:52 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+05/03/2024 16:52:53 Level : INFO / Message : ouverture BDD / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+05/03/2024 16:52:57 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection

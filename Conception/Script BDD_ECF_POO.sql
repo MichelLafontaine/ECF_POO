@@ -23,7 +23,7 @@ create table ADRESSE
 (
    ID_ADRESSE           int not null auto_increment,
    ID_CP                int not null,
-   NUM_ADRESSE          int not null,
+   NUM_ADRESSE          varchar(10) not null,
    RUE_ADRESSE          varchar(150) not null,
    primary key (ID_ADRESSE)
 );
@@ -56,11 +56,11 @@ create table CODE_POSTAL
 /*==============================================================*/
 create table PROSPECT
 (
-   ID_PROSPECRT         int not null auto_increment,
+   ID_PROSPECT         int not null auto_increment,
    ID_SOCIETE           int not null,
    DATE_PROSPECT        date not null,
    INTERET_PROSPECT     int not null CHECK (INTERET_PROSPECT IN (0,1)),
-   primary key (ID_PROSPECRT)
+   primary key (ID_PROSPECT)
 );
 
 /*==============================================================*/
@@ -123,5 +123,5 @@ VALUES (NULL, 'MAIRIE DE METZ', '1', '0800891891', 'contact@metz.fr', 'Mairie pl
 
 INSERT INTO `client` (`ID_CLIENT`, `ID_SOCIETE`, `CA_CLIENT`, `NBRE_EMPLOYE`) VALUES (NULL, '1', '1000000.00', '20');
 
-INSERT INTO `prospect` (`ID_PROSPECRT`, `ID_SOCIETE`, `DATE_PROSPECT`, `INTERET_PROSPECT`) VALUES (NULL, '2', '2024-02-13', '1');
-INSERT INTO `prospect` (`ID_PROSPECRT`, `ID_SOCIETE`, `DATE_PROSPECT`, `INTERET_PROSPECT`) VALUES (NULL, '3', '2024-02-28', '0');
+INSERT INTO `prospect` (`ID_PROSPECT`, `ID_SOCIETE`, `DATE_PROSPECT`, `INTERET_PROSPECT`) VALUES (NULL, '2', '2024-02-13', '1');
+INSERT INTO `prospect` (`ID_PROSPECT`, `ID_SOCIETE`, `DATE_PROSPECT`, `INTERET_PROSPECT`) VALUES (NULL, '3', '2024-02-28', '0');

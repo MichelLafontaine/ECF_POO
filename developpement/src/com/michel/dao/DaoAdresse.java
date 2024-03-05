@@ -50,16 +50,16 @@ public class DaoAdresse {
             }
 
             // Insetion nouvelle adresse si inexistante
-            String queryAdresseExiste = "SELECT * FROM `adresse` WHERE ID_CP = " + idCP +
-                    " AND NUM_ADRESSE = " + adresse.getNumero() + " AND RUE_ADRESSE = '" + adresse.getNomRue() + "';";
+            String queryAdresseExiste = "SELECT * FROM adresse WHERE ID_CP = " + idCP +
+                    " AND NUM_ADRESSE = '" + adresse.getNumero() + "' AND RUE_ADRESSE = '" + adresse.getNomRue() + "';";
             ResultSet rsAdresse = stmt.executeQuery(queryAdresseExiste);
             //si vide inserer nouvelle adresse + retour clé primaire créer
             while (rsAdresse.next()){
                 idAdresse = rsAdresse.getInt(1);
             }
             if (idAdresse == 0) {
-                stmt.execute("INSERT INTO `adresse` (`ID_ADRESSE`, `ID_CP`, `NUM_ADRESSE`, `RUE_ADRESSE`) " +
-                        "VALUES (NULL, '" + idCP + "', '" + adresse.getNumero() + "', '" + adresse.getNomRue() + "');",
+                stmt.execute("INSERT INTO adresse (ID_ADRESSE, ID_CP, NUM_ADRESSE, RUE_ADRESSE) " +
+                        "VALUES (NULL, " + idCP + ", '" + adresse.getNumero() + "', '" + adresse.getNomRue() + "');",
                         Statement.RETURN_GENERATED_KEYS);
                 ResultSet rsIdAdresse = stmt.getGeneratedKeys();
                 while (rsIdAdresse.next()) {

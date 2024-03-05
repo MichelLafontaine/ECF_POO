@@ -15,7 +15,7 @@ import java.util.logging.Level;
 
 public class DaoClient {
 
-    public static ArrayList findAllClient() throws MetierException, DaoException {
+    public static ArrayList findAll() throws MetierException, DaoException {
 
         String query = "SELECT societe.ID_SOCIETE AS 'identifiant', " +
                 "NOM_SOCIETE AS 'raisonSociale', " +
@@ -63,7 +63,7 @@ public class DaoClient {
         return clients;
     }
 
-    public static Client findByNameClient(String raisonSociale) throws MetierException, DaoException {
+    public static Client findByName(String raisonSociale) throws MetierException, DaoException {
 
         Client client = new Client();
 
@@ -109,7 +109,7 @@ public class DaoClient {
         return client;
     }
 
-    public static void createClient (Client client) throws SQLException, DaoException {
+    public static void create (Client client) throws SQLException, DaoException {
 
         String queryIdClient = "SELECT ID_CLIENT FROM client " +
                 "INNER JOIN societe on client.ID_SOCIETE = societe.ID_SOCIETE " +
@@ -166,7 +166,7 @@ public class DaoClient {
         }
     }
 
-    public static void updateCLient (Client client, int idSociete) throws DaoException {
+    public static void update(Client client, int idSociete) throws DaoException {
 
         //recherche idAdresse et insertion Adresse si inexistante
         int idAdresse = DaoAdresse.creerAdresse(client.getAdresse());
@@ -183,7 +183,7 @@ public class DaoClient {
                     "TEL_SOCIETE='" + client.getTelephone() + "'," +
                     "MAIL_SOCIETE='" + client.getEmail() + "'," +
                     "COM_SOCIETE='" + client.getCommentaire() + "' WHERE ID_SOCIETE = " + idSociete + ";");
-            stmt.execute("UPDATE client SET CA_CLIENT = '" + client.getChiffreAffaire() + "', " +
+            stmt.execute("UPDATE client SET CA_CLIENT = " + client.getChiffreAffaire() + ", " +
                     "NBRE_EMPLOYE = '" + client.getNbreEmploye() + "' " +
                     "WHERE ID_SOCIETE = " + idSociete + ";");
         } catch (SQLException e) {

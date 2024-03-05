@@ -1,6 +1,7 @@
 package com.michel.vues;
 
 import com.michel.controllers.ControllerAccueil;
+import com.michel.exceptions.ControllerException;
 import com.michel.exceptions.DaoException;
 import com.michel.exceptions.MetierException;
 
@@ -61,7 +62,6 @@ public class VueAccueil extends JFrame {
         reverso.setSize(300, 50);
         reverso.setLocation(50, 50);
         reverso.setHorizontalAlignment(SwingConstants.CENTER);
-        reverso.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         accueil.add(reverso);
 
         exit = new JButton("Quitter");
@@ -234,7 +234,6 @@ public class VueAccueil extends JFrame {
         valider.setLocation(50, screenHeight - 170);
         valider.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, choix + option + societe);
                 dispose();
                 try {
                     switch (option) {
