@@ -60,9 +60,9 @@ public class VueFormulaire extends JFrame {
             "26", "27", "28", "29", "30",
             "31" };
     private final String[] mois
-            = { "", "Janvier", "Février", "Mars", "Avril",
-            "Mai", "Juin", "Juillet", "Août",
-            "Septembre", "Octobre", "Novembre", "Décembre" };
+            = { "", "1", "2", "3", "4", "5",
+            "6", "7", "8", "9", "10",
+            "11", "12" };
     private ArrayList<String> annees;
     private JComboBox jComboBoxJours;
     private JComboBox jComboBoxMois;
@@ -75,110 +75,219 @@ public class VueFormulaire extends JFrame {
     private String interet;
     private String choix; // client ou prospect
 
+    /**
+     *
+     * @param raisonSociale
+     */
     public void setRaisonSociale(String raisonSociale) {
         this.tRaisonSociale.setText(raisonSociale);
     }
 
+    /**
+     *
+     * @param email
+     */
     public void setEmail(String email) {
         this.tEmail.setText(email);
     }
 
+    /**
+     *
+     * @param telephone
+     */
     public void setTelephone(String telephone) {
         this.tTelephone.setText(telephone);
     }
 
+    /**
+     *
+     * @param commentaire
+     */
     public void setCommentaire(String commentaire) {
         this.tCommentaire.setText(commentaire);
     }
 
+    /**
+     *
+     * @param numero
+     */
     public void setNumero(String numero) {
         this.tNumero.setText(numero);
     }
 
+    /**
+     *
+     * @param nomRue
+     */
     public void setNomRue(String nomRue) {
         this.tNomRue.setText(nomRue);
     }
 
+    /**
+     *
+     * @param ville
+     */
     public void setVille(String ville) {
         this.tVille.setText(ville);
     }
 
-    public void setCodePostal(int codePostal) {
-        this.tCodePostal.setText(String.valueOf(codePostal));
+    /**
+     *
+     * @param codePostal
+     */
+    public void setCodePostal(String codePostal) {
+        this.tCodePostal.setText(codePostal);
     }
 
+    /**
+     *
+     * @param tCA
+     */
     public void setCA(double tCA) {
         this.tCA.setText(String.valueOf(tCA));
     }
 
-    public void settNbreEmploye(int nbreEmploye) {
-        this.tNbreEmploye.setText(String.valueOf(nbreEmploye));
+    /**
+     *
+     * @param nbreEmploye
+     */
+    public void settNbreEmploye(String nbreEmploye) {
+        this.tNbreEmploye.setText(nbreEmploye);
     }
 
+    /**
+     *
+     * @param jour
+     */
     public void setjComboBoxJours(int jour) {
         this.jComboBoxJours.setSelectedIndex(jour);
     }
 
+    /**
+     *
+     * @param mois
+     */
     public void setjComboBoxMois(String mois) {
         this.jComboBoxMois.setSelectedItem(mois);
     }
 
-    public void setjComboBoxAnnee(int annee) {
-        this.jComboBoxAnnee.setSelectedIndex(annees.indexOf(String.valueOf(annee)));
+    /**
+     *
+     * @param annee
+     */
+    public void setjComboBoxAnnee(String annee) {
+        this.jComboBoxAnnee.setSelectedIndex(annees.indexOf(annee));
     }
 
+    /**
+     *
+     * @param interet
+     */
     public void setInteret(String interet) {
         this.jComboBoxInterets.setSelectedItem(interet);
     }
 
+    /**
+     *
+     * @param date
+     */
     public void setDate(LocalDate date) {
         this.date = date;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getRaisonSociale() {
         return tRaisonSociale.getText();
     }
 
+    /**
+     *
+     * @return
+     */
     public String getEmail() {
         return tEmail.getText();
     }
 
+    /**
+     *
+     * @return
+     */
     public String getTelephone() {
         return tTelephone.getText();
     }
 
+    /**
+     *
+     * @return
+     */
     public String getCommentaire() {
         return tCommentaire.getText();
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNumero() {
         return tNumero.getText();
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNomRue() {
         return tNomRue.getText();
     }
 
+    /**
+     *
+     * @return
+     */
     public String getVille() {
         return tVille.getText();
     }
 
-    public int getCodePostal() {
-        return Integer.parseInt(tCodePostal.getText());
+    /**
+     *
+     * @return
+     */
+    public String getCodePostal() {
+        return tCodePostal.getText();
     }
 
+    /**
+     *
+     * @return
+     */
     public double getCA() {
         return Double.parseDouble(tCA.getText());
     }
 
+    /**
+     *
+     * @return
+     */
     public int gettNbreEmploye() {
         return Integer.parseInt(tNbreEmploye.getText());
     }
 
+    /**
+     *
+     * @return
+     */
     public String getInteret() {
         return interet;
     }
 
+    /**
+     * initalisation Vue
+     * @param choixClientProspect
+     * @param option
+     */
     public VueFormulaire (String choixClientProspect, String option) {
 
         this.choix = choixClientProspect;
@@ -235,6 +344,9 @@ public class VueFormulaire extends JFrame {
                     JOptionPane.showMessageDialog(null, "erreur de saisie : " + metierException.getMessage());
                 } catch (DaoException daoException){
                     JOptionPane.showMessageDialog(null, "erreur BDD" + daoException.getMessage());
+                    if (daoException.getCritere() == 2){
+                        System.exit(1);
+                    }
                 } catch (Exception exception){
                     JOptionPane.showMessageDialog(null, "Erreur, le logiciel va fermer");
                     System.exit(1);
@@ -451,6 +563,9 @@ public class VueFormulaire extends JFrame {
                     JOptionPane.showMessageDialog(null, "erreur de saisie : " + metierException.getMessage());
                 } catch (DaoException daoException){
                     JOptionPane.showMessageDialog(null, "erreur BDD" + daoException.getMessage());
+                    if (daoException.getCritere() == 2){
+                        System.exit(1);
+                    }
                 } catch (ControllerException controllerException) {
                     JOptionPane.showMessageDialog(null, "erreur logiciel" + controllerException.getMessage());
                     System.exit(1);
@@ -465,16 +580,26 @@ public class VueFormulaire extends JFrame {
         setVisible(true);
     }
 
-    private void onAccueil() throws SQLException, MetierException, DaoException {
+    /**
+     * retour accueil
+     * @throws MetierException
+     * @throws DaoException
+     */
+    private void onAccueil() throws MetierException, DaoException {
         dispose();
         ControllerAccueil.initAcceuil();
     }
 
+    /**
+     * fermeture logiciel
+     */
     private void onClose() {
-        // add your code here if necessary
         dispose();
     }
 
+    /**
+     * initilisation vue si client
+     */
     private void client(){
         option1.setText("CA");
         option2.setText("nbre Employés");
@@ -494,6 +619,9 @@ public class VueFormulaire extends JFrame {
         formulaire.add(tNbreEmploye);
     }
 
+    /**
+     * initialisation vue si prospect
+     */
     private void prospect(){
         option1.setText("Date Prospection");
         option1.setSize(250,50);
@@ -556,45 +684,31 @@ public class VueFormulaire extends JFrame {
         });
     }
 
+    /**
+     * Valider le formulaire
+     * @param choix
+     * @param option
+     * @throws MetierException
+     * @throws DaoException
+     * @throws ControllerException
+     */
     public void actionValider(String choix,String option)
-            throws MetierException, SQLException, DaoException, ControllerException {
-
+            throws MetierException, DaoException, ControllerException {
         int choixValidation = JOptionPane.showConfirmDialog(null,
                 "Voulez vous " + option + " le " + choix + " " + tRaisonSociale.getText());
         if (choixValidation == JOptionPane.YES_OPTION) {
-            switch (option) {
-                case "creer" :
-                    int mois = 0;
-                    if (choix.equals("client")){
-                        mois = 1;
-                        dateAnnee ="1900";
-                        dateJour = "1";
-                        interet = "oui";
-                    }
-                    if (choix.equals("prospect")) {
-                        mois = Utilitaires.mois(dateMois);
-                    }
-                    date = LocalDate.of(Integer.parseInt(dateAnnee), mois, Integer.parseInt(dateJour));
-                    ControllerFormulaire.creer(getRaisonSociale(), getNumero(), getNomRue(), getCodePostal(),
-                            getVille(), getTelephone(), getEmail(), getCommentaire(), getCA(), gettNbreEmploye(),
-                            date, interet, choix);
-                    break;
-                case "modifier":
-                    ControllerFormulaire.modifier(getRaisonSociale(), getNumero(), getNomRue(), getCodePostal(),
-                            getVille(), getTelephone(), getEmail(), getCommentaire(), getCA(), gettNbreEmploye(),
-                            date, getInteret(), choix);
-                    break;
-                case "supprimer":
-                    ControllerFormulaire.supprimer(choix);
-                    break;
-                default:
-                    JOptionPane.showMessageDialog(null, "Erreur lecture, le programme va fermer");
-                    LoggerReverso.LOGGER.log(Level.SEVERE, "erreur option dans Vue Formulaire");
-                    System.exit(1);
+            if (dateJour != null || dateMois != null || dateAnnee != null){
+                date = LocalDate.of(Integer.parseInt(dateAnnee), Integer.parseInt(dateMois), Integer.parseInt(dateJour));
             }
+            ControllerFormulaire.valider(getRaisonSociale(), getNumero(), getNomRue(), getCodePostal(), getVille(),
+                    getEmail(), getTelephone(), getCA(), gettNbreEmploye(),
+                    date,
+                    getInteret(), getCommentaire(),
+                    choix, option);
             JOptionPane.showMessageDialog(null, "Vous avez " + option + " le " +
                     choix + " " + getRaisonSociale() + "\nVous allez retourner à l'accueil");
             onAccueil();
         }
+
     }
 }

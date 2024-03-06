@@ -1,6 +1,7 @@
 package com.michel.vues;
 
 import com.michel.controllers.ControllerAffichage;
+import com.michel.exceptions.ControllerException;
 import com.michel.exceptions.DaoException;
 import com.michel.exceptions.MetierException;
 
@@ -31,7 +32,14 @@ public class VueAfficher extends JFrame{
     private String[][] listeSociete;
     DefaultTableModel tableModel;
 
-    public VueAfficher(String choix) throws MetierException, SQLException, DaoException {
+    /**
+     * contructeur Vue affichage
+     * @param choix
+     * @throws MetierException
+     * @throws DaoException
+     * @throws ControllerException
+     */
+    public VueAfficher(String choix) throws MetierException, DaoException, ControllerException {
 
         setTitle("Vue Affichage");
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -94,6 +102,9 @@ public class VueAfficher extends JFrame{
                     JOptionPane.showMessageDialog(null, "erreur de saisie : " + metierException.getMessage());
                 } catch (DaoException daoException){
                     JOptionPane.showMessageDialog(null, "erreur BDD" + daoException.getMessage());
+                    if (daoException.getCritere() == 2){
+                        System.exit(1);
+                    }
                 } catch (Exception exception){
                     JOptionPane.showMessageDialog(null, "Erreur, le logiciel va fermer");
                     System.exit(1);
@@ -103,18 +114,9 @@ public class VueAfficher extends JFrame{
         accueil.setVisible(true);
         affichage.add(accueil);
 
-        if (choix.equals("client")){
-            colonne = new String[]{"Raison Sociale", "N°", "Nom de rue", "CP", "Ville", "Email", "Téléphone", "CA",
-                    "Nbre d'employé", "commentaire"};
-            listeSociete = ControllerAffichage.findAll("client");
-            tableModel = new DefaultTableModel(listeSociete, colonne);
-        }
-        if (choix.equals("prospect")){
-            colonne = new String[]{"Raison Sociale", "N°", "Nom de rue", "CP", "Ville", "Email", "Téléphone",
-                    "Date Prospection", "intérêt", "commentaire"};
-            listeSociete = ControllerAffichage.findAll("prospect");
-            tableModel = new DefaultTableModel(listeSociete, colonne);
-        }
+        colonne =ControllerAffichage.nomColonne(choix);
+        listeSociete = ControllerAffichage.findAll(choix);
+        tableModel = new DefaultTableModel(listeSociete, colonne);
         tableAffichage = new JTable(tableModel);
         JScrollPane scrollPane = new JScrollPane(tableAffichage);
         scrollPane.setSize(screenWidth - 500, 300);
@@ -126,10 +128,19 @@ public class VueAfficher extends JFrame{
         setVisible(true);
     }
 
+    /**
+     * fermeture logiciel
+     */
     private void onClose() {
         // add your code here if necessary
         dispose();
     }
+
+    /**
+     * retour Accueil
+     * @throws MetierException
+     * @throws DaoException
+     */
     private void onAccueil() throws MetierException, DaoException {
         dispose();
         ControllerAffichage.accueil();

@@ -15,6 +15,12 @@ import java.util.logging.Level;
 
 public class DaoClient {
 
+    /**
+     * finAll
+     * @return
+     * @throws MetierException
+     * @throws DaoException
+     */
     public static ArrayList findAll() throws MetierException, DaoException {
 
         String query = "SELECT societe.ID_SOCIETE AS 'identifiant', " +
@@ -42,7 +48,7 @@ public class DaoClient {
                 Adresse adresse = new Adresse(rs.getString("numero"),
                     rs.getString("nomRue"),
                     rs.getString("ville"),
-                    rs.getInt("codePostal"));
+                    rs.getString("codePostal"));
                 //Creation Objet client
                 Client client = new Client(rs.getInt("identifiant"),
                     rs.getString("raisonSociale"),
@@ -63,6 +69,13 @@ public class DaoClient {
         return clients;
     }
 
+    /**
+     * findByName
+     * @param raisonSociale
+     * @return
+     * @throws MetierException
+     * @throws DaoException
+     */
     public static Client findByName(String raisonSociale) throws MetierException, DaoException {
 
         Client client = new Client();
@@ -90,7 +103,7 @@ public class DaoClient {
                 Adresse adresse = new Adresse(rs.getString("numero"),
                         rs.getString("nomRue"),
                         rs.getString("ville"),
-                        rs.getInt("codePostal"));
+                        rs.getString("codePostal"));
                 //Creation Objet client
                 client = new Client(rs.getInt("identifiant"),
                         raisonSociale,
@@ -109,7 +122,12 @@ public class DaoClient {
         return client;
     }
 
-    public static void create (Client client) throws SQLException, DaoException {
+    /**
+     * create
+     * @param client
+     * @throws DaoException
+     */
+    public static void create (Client client) throws DaoException {
 
         String queryIdClient = "SELECT ID_CLIENT FROM client " +
                 "INNER JOIN societe on client.ID_SOCIETE = societe.ID_SOCIETE " +
@@ -166,6 +184,12 @@ public class DaoClient {
         }
     }
 
+    /**
+     * update
+     * @param client
+     * @param idSociete
+     * @throws DaoException
+     */
     public static void update(Client client, int idSociete) throws DaoException {
 
         //recherche idAdresse et insertion Adresse si inexistante
@@ -183,7 +207,7 @@ public class DaoClient {
                     "TEL_SOCIETE='" + client.getTelephone() + "'," +
                     "MAIL_SOCIETE='" + client.getEmail() + "'," +
                     "COM_SOCIETE='" + client.getCommentaire() + "' WHERE ID_SOCIETE = " + idSociete + ";");
-            stmt.execute("UPDATE client SET CA_CLIENT = " + client.getChiffreAffaire() + ", " +
+            stmt.execute("UPDATE client SET CA_CLIENT = '" + client.getChiffreAffaire() + "', " +
                     "NBRE_EMPLOYE = '" + client.getNbreEmploye() + "' " +
                     "WHERE ID_SOCIETE = " + idSociete + ";");
         } catch (SQLException e) {
@@ -193,6 +217,11 @@ public class DaoClient {
         }
     }
 
+    /**
+     * deleteClient
+     * @param idSociete
+     * @throws DaoException
+     */
     public static void deleteClient (int idSociete) throws DaoException {
 
         try(Statement stmt = DaoConnection.getInstance().createStatement()){

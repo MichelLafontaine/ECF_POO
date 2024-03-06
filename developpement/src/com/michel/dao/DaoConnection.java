@@ -17,6 +17,10 @@ public class DaoConnection {
 
     private static Connection connection = null;
     final Properties dataProperties = new Properties();
+
+    /**
+     * Connection BDD
+     */
     public DaoConnection() {
 
         try {
@@ -63,6 +67,12 @@ public class DaoConnection {
         }));
     }
 
+    /**
+     * getInstance
+     * Singleton Connection
+     * @return
+     * @throws DaoException
+     */
     public static Connection getInstance() throws DaoException {
         if (connection == null) {
             try{

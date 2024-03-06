@@ -14,6 +14,12 @@ import java.util.logging.Level;
 
 public class DaoProspect {
 
+    /**
+     * findAll
+     * @return
+     * @throws MetierException
+     * @throws DaoException
+     */
     public static ArrayList findAll() throws MetierException, DaoException {
 
         String query = "SELECT societe.ID_SOCIETE AS 'identifiant', " +
@@ -41,7 +47,7 @@ public class DaoProspect {
                 Adresse adresse = new Adresse(rs.getString("numero"),
                         rs.getString("nomRue"),
                         rs.getString("ville"),
-                        rs.getInt("codePostal"));
+                        rs.getString("codePostal"));
                 //Creation Objet Prospect
                 Prospect prospect = new Prospect(rs.getInt("identifiant"),
                         rs.getString("raisonSociale"),
@@ -63,6 +69,13 @@ public class DaoProspect {
         return prospects;
     }
 
+    /**
+     * findByName
+     * @param raisonSociale
+     * @return
+     * @throws MetierException
+     * @throws DaoException
+     */
     public static Prospect findByName(String raisonSociale) throws MetierException, DaoException {
 
         Prospect prospect = new Prospect();
@@ -90,7 +103,7 @@ public class DaoProspect {
                 Adresse adresse = new Adresse(rs.getString("numero"),
                         rs.getString("nomRue"),
                         rs.getString("ville"),
-                        rs.getInt("codePostal"));
+                        rs.getString("codePostal"));
                 //Creation Objet prospect
                 prospect = new Prospect(rs.getInt("identifiant"),
                         raisonSociale,
@@ -109,6 +122,11 @@ public class DaoProspect {
         return prospect;
     }
 
+    /**
+     * create
+     * @param prospect
+     * @throws DaoException
+     */
     public static void create(Prospect prospect) throws DaoException {
 
         String queryIdProspect = "SELECT ID_PROSPECT FROM prospect " +
@@ -166,6 +184,12 @@ public class DaoProspect {
         }
     }
 
+    /**
+     * update
+     * @param prospect
+     * @param idSociete
+     * @throws DaoException
+     */
     public static void update(Prospect prospect, int idSociete) throws DaoException {
 
         //recherche idAdresse et insertion Adresse si inexistante
@@ -193,6 +217,11 @@ public class DaoProspect {
         }
     }
 
+    /**
+     * delete
+     * @param idSociete
+     * @throws DaoException
+     */
     public static void delete(int idSociete) throws DaoException {
 
         try(Statement stmt = DaoConnection.getInstance().createStatement()){

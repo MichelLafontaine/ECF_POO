@@ -36,6 +36,9 @@ public class VueAccueil extends JFrame {
     private String option;
     private String societe;
 
+    /**
+     * contructeur Vue Accueil
+     */
     public VueAccueil () {
 
         setTitle("Page d'accueil");
@@ -236,29 +239,20 @@ public class VueAccueil extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 dispose();
                 try {
-                    switch (option) {
-                        case "creer":
-                            ControllerAccueil.creer(choix);
-                            break;
-                        case "modifier":
-                            ControllerAccueil.modifier(choix, societe);
-                            break;
-                        case "supprimer":
-                            ControllerAccueil.supprimer(choix, societe);
-                            break;
-                        case "afficher":
-                            ControllerAccueil.afficher(choix);
-                            break;
-                        default:
-                            JOptionPane.showMessageDialog(null, "Pb Logiciel, le logiciel va fermer");
-                            System.exit(1);
-                            break;
-                    }
+                    ControllerAccueil.valider(option, choix, societe);
                 } catch (MetierException metierException) {
-                    JOptionPane.showMessageDialog(null, "erreur de saisie : " + metierException.getMessage());
+                    JOptionPane.showMessageDialog(null, "erreur de saisie : "
+                            + metierException.getMessage());
                 } catch (DaoException daoException){
-                    JOptionPane.showMessageDialog(null, "erreur BDD" + daoException.getMessage());
-                } catch (Exception exception){
+                    JOptionPane.showMessageDialog(null, "erreur BDD"
+                            + daoException.getMessage());
+                    if (daoException.getCritere() == 2){
+                        System.exit(1);
+                    }
+                } catch (ControllerException controllerException) {
+                    JOptionPane.showMessageDialog(null, "Le logiciel va fermer, "
+                            + controllerException.getMessage());
+                }catch (Exception exception){
                     JOptionPane.showMessageDialog(null, "Erreur, le logiciel va fermer");
                     System.exit(1);
                 }
@@ -270,14 +264,21 @@ public class VueAccueil extends JFrame {
         setVisible(true);
     }
 
+    /**
+     * fermeture logiciel
+     */
     private void onClose() {
         // add your code here if necessary
         dispose();
     }
 
+    /**
+     * liste déroulante raison sociale
+     * @param choix
+     * @throws DaoException
+     */
     private void choixSociete (String choix) throws DaoException {
-        ArrayList arrayList = ControllerAccueil.listeSociete(choix);
-        societes = (String[]) arrayList.toArray(new String[arrayList.size()]);
+        societes = ControllerAccueil.listeSociete(choix);
 
         jComboBoxSociete = new JComboBox(societes);
         jComboBoxSociete.setFont(new Font("Arial", Font.PLAIN, 15));

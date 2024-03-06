@@ -62,16 +62,18 @@ class AdresseTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1,12,123,1234,123456,123456789})
-    void codePostalInvalide(int invalide){
+    @NullSource
+    @EmptySource
+    @ValueSource(strings = {"1","12","123","1234","123456","123456789"})
+    void codePostalInvalide(String invalide){
         assertThrows(MetierException.class, ()-> {
             new Adresse().setCodePostal(invalide);
         });
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {12345,54000,88470})
-    void codePostalValide(int valide){
+    @ValueSource(strings = {"12345","54000","88470"})
+    void codePostalValide(String valide){
         assertDoesNotThrow(() -> new Adresse().setCodePostal(valide));
     }
 }

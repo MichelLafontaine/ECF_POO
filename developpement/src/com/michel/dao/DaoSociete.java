@@ -11,6 +11,14 @@ import java.util.logging.Level;
 
 public class DaoSociete {
 
+    /**
+     * raisonSociale
+     * @param choixClientProspect
+     * @return
+     * @throws DaoException
+     */
+
+    //liste des raisons sociales
     public static ArrayList raisonSociales (String choixClientProspect) throws DaoException {
 
         ArrayList<String> societes = new ArrayList<>();

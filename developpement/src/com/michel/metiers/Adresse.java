@@ -7,14 +7,14 @@ public class Adresse {
     private String numero;
     private String nomRue;
     private String ville;
-    private int codePostal;
+    private String codePostal;
 
     public String getNumero() {
         return numero;
     }
 
     /**
-     * setNumero
+     * vérification format téléphone
      * @param numero
      * @throws MetierException
      */
@@ -30,7 +30,7 @@ public class Adresse {
     }
 
     /**
-     * setNomRue
+     * non null
      * @param nomRue
      * @throws MetierException
      */
@@ -46,7 +46,7 @@ public class Adresse {
     }
 
     /**
-     * setVille
+     * non null
      * @param ville
      * @throws MetierException
      */
@@ -57,17 +57,17 @@ public class Adresse {
         this.ville = ville.toUpperCase();
     }
 
-    public int getCodePostal() {
+    public String getCodePostal() {
         return codePostal;
     }
 
     /**
-     * setCodePostal
+     * vérification du format
      * @param codePostal
      * @throws MetierException
      */
-    public void setCodePostal(int codePostal) throws MetierException {
-        if (codePostal < 0 || !Utilitaires.PATTERN_CODEPOSTAL.matcher(String.valueOf(codePostal)).matches()){
+    public void setCodePostal(String codePostal) throws MetierException {
+        if (codePostal == null|| codePostal.trim().isEmpty() || !Utilitaires.PATTERN_CODEPOSTAL.matcher((codePostal)).matches()){
             throw new MetierException("le Code Postal n'est pas correct");
         }
         this.codePostal = codePostal;
@@ -77,14 +77,14 @@ public class Adresse {
     }
 
     /**
-     * Constructeur
+     * Constructeur avec tous les attributs
      * @param numero
      * @param nomRue
      * @param ville
      * @param codePostal
      * @throws MetierException
      */
-    public Adresse(String numero, String nomRue, String ville, int codePostal) throws MetierException {
+    public Adresse(String numero, String nomRue, String ville, String codePostal) throws MetierException {
         setNumero(numero);
         setNomRue(nomRue);
         setVille(ville);

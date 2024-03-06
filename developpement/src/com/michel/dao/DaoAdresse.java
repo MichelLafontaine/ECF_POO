@@ -10,6 +10,12 @@ import java.sql.Statement;
 import java.util.logging.Level;
 
 public class DaoAdresse {
+    /**
+     * creerAdresse
+     * @param adresse
+     * @return
+     * @throws DaoException
+     */
     public static int creerAdresse (Adresse adresse) throws DaoException {
 
         int idAdresse = 0;

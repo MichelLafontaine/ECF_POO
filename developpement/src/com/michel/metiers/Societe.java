@@ -23,12 +23,16 @@ public class Societe {
         this.identifiant = identifiant;
     }
 
+    /**
+     * getRaisonSociale
+     * @return
+     */
     public String getRaisonSociale() {
         return raisonSociale;
     }
 
     /**
-     * setRaisonSociale
+     * doit être non null
      * @param raisonSociale
      * @throws MetierException
      */
@@ -39,12 +43,16 @@ public class Societe {
         this.raisonSociale = raisonSociale.toUpperCase();
     }
 
+    /**
+     * getEmail
+     * @return
+     */
     public String getEmail() {
         return email;
     }
 
     /**
-     * setEmail
+     * verification format email
      * @param email
      * @throws MetierException
      */
@@ -55,10 +63,19 @@ public class Societe {
         this.email = email.toLowerCase();
     }
 
+    /**
+     * getTelephone
+     * @return
+     */
     public String getTelephone() {
         return telephone;
     }
 
+    /**
+     * Vérification format téléphone
+     * @param telephone
+     * @throws MetierException
+     */
     public void setTelephone(String telephone) throws MetierException {
         if (telephone == null || telephone.trim().isEmpty() || !Utilitaires.PATTERN_TEL.matcher(telephone).matches()){
             throw new MetierException("Le numéro de téléphone n'est pas correct");
@@ -66,6 +83,10 @@ public class Societe {
         this.telephone = telephone.toLowerCase();
     }
 
+    /**
+     *
+     * @return
+     */
     public String getCommentaire() {
         return commentaire;
     }
@@ -78,6 +99,10 @@ public class Societe {
         this.commentaire = commentaire;
     }
 
+    /**
+     * getAdresse
+     * @return
+     */
     public Adresse getAdresse() {
         return adresse;
     }
@@ -93,6 +118,15 @@ public class Societe {
     public Societe() {
     }
 
+    /**
+     * Constructeur sans indentifiant
+     * @param raisonSociale
+     * @param email
+     * @param telephone
+     * @param commentaire
+     * @param adresse
+     * @throws MetierException
+     */
     public Societe(String raisonSociale, String email, String telephone,
                    String commentaire, Adresse adresse) throws MetierException {
         setRaisonSociale(raisonSociale);
@@ -103,7 +137,7 @@ public class Societe {
     }
 
     /**
-     * Constructeur
+     * Constructeur tous composants
      * @param identifiant
      * @param raisonSociale
      * @param email

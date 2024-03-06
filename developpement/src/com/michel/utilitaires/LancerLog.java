@@ -5,6 +5,9 @@ import java.util.logging.FileHandler;
 import java.util.logging.Level;
 
 public class LancerLog {
+    /**
+     * lancerLog
+     */
     public static void lancerLog (){
         FileHandler fh = null;
         try {

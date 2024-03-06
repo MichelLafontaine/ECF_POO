@@ -11,7 +11,7 @@ public class Client extends Societe{
     }
 
     /**
-     * setChiffreAffaire
+     * > 200
      * @param chiffreAffaire
      * @throws MetierException
      */
@@ -27,7 +27,7 @@ public class Client extends Societe{
     }
 
     /**
-     * setNbreEmploye
+     * > 0
      * @param nbreEmploye
      * @throws MetierException
      */

@@ -21,8 +21,21 @@ public class ControllerFormulaire {
 
     private static int identifiant;
 
-    public static void formulaireInit(String choixClientProspect, String option, String raisonSociale) throws MetierException, DaoException, ControllerException {
+    /**
+     * formualireInit
+     * @param choixClientProspect
+     * @param option
+     * @param raisonSociale
+     * @throws MetierException
+     * @throws DaoException
+     * @throws ControllerException
+     */
+    public static void formulaireInit(String choixClientProspect, String option, String raisonSociale)
+            throws MetierException, DaoException, ControllerException {
         VueFormulaire vueFormulaire = new VueFormulaire(choixClientProspect, option);
+        // Initialisation date dans la vue du formulaire;
+        vueFormulaire.setDate(LocalDate.of(1900,1,1));
+        // Initilisation de la vue Formulaire en cas de modification ou suppression
         if (option.equals("modifier") || option.equals("supprimer")){
             if (choixClientProspect.equals("client")){
                 Client client = DaoClient.findByName(raisonSociale);
@@ -33,7 +46,7 @@ public class ControllerFormulaire {
                 vueFormulaire.setEmail(client.getEmail());
                 vueFormulaire.setTelephone(client.getTelephone());
                 vueFormulaire.setCA(client.getChiffreAffaire());
-                vueFormulaire.settNbreEmploye(client.getNbreEmploye());
+                vueFormulaire.settNbreEmploye(String.valueOf(client.getNbreEmploye()));
                 vueFormulaire.setCommentaire(client.getCommentaire());
                 identifiant = client.getIdentifiant();
             } else if (choixClientProspect.equals("prospect")){
@@ -45,6 +58,7 @@ public class ControllerFormulaire {
                 vueFormulaire.setEmail(prospect.getEmail());
                 vueFormulaire.setTelephone(prospect.getTelephone());
                 vueFormulaire.setCommentaire(prospect.getCommentaire());
+                // Transformation 1 ou 0 en oui ou non
                 if (prospect.getInteretProspect() == 1){
                     vueFormulaire.setInteret("oui");
                 } else if(prospect.getInteretProspect() == 0){
@@ -55,50 +69,8 @@ public class ControllerFormulaire {
                 }
                 vueFormulaire.setDate(prospect.getDateProspect());
                 vueFormulaire.setjComboBoxJours(prospect.getDateProspect().getDayOfMonth());
-                vueFormulaire.setjComboBoxAnnee(prospect.getDateProspect().getYear());
-                System.out.println(prospect.getDateProspect().getDayOfMonth());
-                switch (prospect.getDateProspect().getMonthValue()){
-                    case 1 :
-                        vueFormulaire.setjComboBoxMois("Janvier");
-                        break;
-                    case 2 :
-                        vueFormulaire.setjComboBoxMois("Février");
-                        break;
-                    case 3 :
-                        vueFormulaire.setjComboBoxMois("Mars");
-                        break;
-                    case 4 :
-                        vueFormulaire.setjComboBoxMois("Avril");
-                        break;
-                    case 5 :
-                        vueFormulaire.setjComboBoxMois("Mai");
-                        break;
-                    case 6 :
-                        vueFormulaire.setjComboBoxMois("Juin");
-                        break;
-                    case 7 :
-                        vueFormulaire.setjComboBoxMois("Juillet");
-                        break;
-                    case 8 :
-                        vueFormulaire.setjComboBoxMois("Août");
-                        break;
-                    case 9 :
-                        vueFormulaire.setjComboBoxMois("Septembre");
-                        break;
-                    case 10 :
-                        vueFormulaire.setjComboBoxMois("Octobre");
-                        break;
-                    case 11 :
-                        vueFormulaire.setjComboBoxMois("Novembre");
-                        break;
-                    case 12 :
-                        vueFormulaire.setjComboBoxMois("Décembre");
-                        break;
-                    default:
-                        LoggerReverso.LOGGER.log(Level.SEVERE, "problème choix mois");
-                        throw new ControllerException("Erreur, le logiciel va fermer");
-                }
-
+                vueFormulaire.setjComboBoxAnnee(String.valueOf(prospect.getDateProspect().getYear()));
+                vueFormulaire.setjComboBoxMois(String.valueOf(prospect.getDateProspect().getMonthValue()));
                 identifiant = prospect.getIdentifiant();
             } else {
                 LoggerReverso.LOGGER.log(Level.SEVERE, "problème choix client/prospect");
@@ -109,14 +81,37 @@ public class ControllerFormulaire {
         }
     }
 
+    /**
+     * listeYear
+     * @return
+     */
     public static ArrayList<String> listeYears(){
         return Utilitaires.years();
     }
 
-    public static void creer(String raisonSociale, String numero, String nomRue, int codePostal, String ville,
+    /**
+     * creer
+     * @param raisonSociale
+     * @param numero
+     * @param nomRue
+     * @param codePostal
+     * @param ville
+     * @param telephone
+     * @param email
+     * @param commentaire
+     * @param ca
+     * @param nbreEmploye
+     * @param dateProspect
+     * @param interet
+     * @param choix
+     * @throws MetierException
+     * @throws DaoException
+     * @throws ControllerException
+     */
+    public static void creer(String raisonSociale, String numero, String nomRue, String codePostal, String ville,
                              String telephone, String email, String commentaire, double ca,
                              int nbreEmploye, LocalDate dateProspect, String interet, String choix)
-            throws MetierException, SQLException, DaoException, ControllerException {
+            throws MetierException, DaoException, ControllerException {
         Adresse adresse = new Adresse(numero, nomRue, ville, codePostal);
         int interetInt = -1;
         if (choix.equals("client")){
@@ -141,7 +136,26 @@ public class ControllerFormulaire {
 
     }
 
-    public static void modifier(String raisonSociale, String numero, String nomRue, int codePostal, String ville,
+    /**
+     * modifier
+     * @param raisonSociale
+     * @param numero
+     * @param nomRue
+     * @param codePostal
+     * @param ville
+     * @param telephone
+     * @param email
+     * @param commentaire
+     * @param ca
+     * @param nbreEmploye
+     * @param dateProspect
+     * @param interet
+     * @param choix
+     * @throws MetierException
+     * @throws DaoException
+     * @throws ControllerException
+     */
+    public static void modifier(String raisonSociale, String numero, String nomRue, String codePostal, String ville,
                                 String telephone, String email, String commentaire, double ca,
                                 int nbreEmploye, LocalDate dateProspect, String interet, String choix)
             throws MetierException, DaoException, ControllerException {
@@ -168,6 +182,12 @@ public class ControllerFormulaire {
 
     }
 
+    /**
+     * supprimer
+     * @param choix
+     * @throws DaoException
+     * @throws ControllerException
+     */
     public static void supprimer(String choix) throws DaoException, ControllerException {
         if (choix.equals("client")){
             DaoClient.deleteClient(identifiant);
@@ -176,6 +196,48 @@ public class ControllerFormulaire {
         } else {
             LoggerReverso.LOGGER.log(Level.SEVERE, "problème choix client/prospect");
             throw new ControllerException("Erreur, le logiciel va fermer");
+        }
+    }
+
+    /**
+     * valider
+     * @param raisonSocial
+     * @param numero
+     * @param nomRue
+     * @param codePostal
+     * @param ville
+     * @param email
+     * @param telephone
+     * @param ca
+     * @param nbreEmploye
+     * @param date
+     * @param interet
+     * @param commentaire
+     * @param choix
+     * @param option
+     * @throws ControllerException
+     * @throws MetierException
+     * @throws DaoException
+     */
+    public static void valider (String raisonSocial, String numero, String nomRue, String codePostal, String ville,
+                                String email, String telephone, double ca, int nbreEmploye, LocalDate date,
+                                String interet, String commentaire, String choix, String option)
+            throws ControllerException, MetierException, DaoException {
+        switch (option){
+            case "creer" :
+                creer(raisonSocial, numero, nomRue, codePostal, ville, telephone, email, commentaire,
+                        ca, nbreEmploye, date, interet, choix);
+                break;
+            case "modifier" :
+                modifier(raisonSocial, numero, nomRue, codePostal, ville, telephone, email, commentaire,
+                        ca, nbreEmploye, date, interet, choix);
+                break;
+            case "supprimer" :
+                supprimer(choix);
+                break;
+            default:
+                LoggerReverso.LOGGER.log(Level.SEVERE, "problème option");
+                throw new ControllerException("Erreur, le logiciel va fermer");
         }
     }
 }

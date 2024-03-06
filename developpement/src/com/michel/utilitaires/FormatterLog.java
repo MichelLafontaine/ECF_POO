@@ -7,6 +7,11 @@ import java.util.logging.Formatter;
 import java.util.logging.LogRecord;
 
 public class FormatterLog extends Formatter {
+    /**
+     * format du log
+     * @param record the log record to be formatted.
+     * @return
+     */
     public String format(LogRecord record) {
         // TODO Auto-generated method stub
         DateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
