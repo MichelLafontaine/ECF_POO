@@ -29,6 +29,7 @@ public class VueAfficher extends JFrame{
     private JTable tableAffichage;
     private String[] colonne;
     private String[][] listeSociete;
+    DefaultTableModel tableModel;
 
     public VueAfficher(String choix) throws MetierException, SQLException, DaoException {
 
@@ -69,7 +70,7 @@ public class VueAfficher extends JFrame{
             }
         });
         exit.setVisible(true);
-        affichage.add(exit, BorderLayout.NORTH);
+        affichage.add(exit);
 
         trait = new JLabel();
         trait.setSize(screenWidth - 250, 2);
@@ -100,23 +101,25 @@ public class VueAfficher extends JFrame{
             }
         });
         accueil.setVisible(true);
-        affichage.add(accueil, BorderLayout.NORTH);
+        affichage.add(accueil);
 
         if (choix.equals("client")){
             colonne = new String[]{"Raison Sociale", "N°", "Nom de rue", "CP", "Ville", "Email", "Téléphone", "CA",
                     "Nbre d'employé", "commentaire"};
             listeSociete = ControllerAffichage.findAll("client");
-            DefaultTableModel tableModel = new DefaultTableModel(listeSociete, colonne);
-
-            tableAffichage = new JTable(tableModel);
-            JScrollPane scrollPane = new JScrollPane(tableAffichage);
-            scrollPane.setSize(screenWidth - 500, 300);
-            scrollPane.setVisible(true);
-//            tableAffichage.setFillsViewportHeight(true);
-            affichage.add(scrollPane,BorderLayout.CENTER);
-
+            tableModel = new DefaultTableModel(listeSociete, colonne);
         }
-
+        if (choix.equals("prospect")){
+            colonne = new String[]{"Raison Sociale", "N°", "Nom de rue", "CP", "Ville", "Email", "Téléphone",
+                    "Date Prospection", "intérêt", "commentaire"};
+            listeSociete = ControllerAffichage.findAll("prospect");
+            tableModel = new DefaultTableModel(listeSociete, colonne);
+        }
+        tableAffichage = new JTable(tableModel);
+        JScrollPane scrollPane = new JScrollPane(tableAffichage);
+        scrollPane.setSize(screenWidth - 500, 300);
+        scrollPane.setVisible(true);
+        affichage.add(scrollPane);
 
 
 
