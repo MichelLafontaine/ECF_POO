@@ -7,23 +7,25 @@ import com.michel.exceptions.MetierException;
 import com.michel.utilitaires.LoggerReverso;
 import com.michel.vues.VueAccueil;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 
+/**
+ * Controlleur de la vue Accueil
+ */
 public class ControllerAccueil {
     /**
-     * initAccueil
+     * lancer vue Accueil
      */
     public static void initAcceuil() {
         VueAccueil vueAccueil = new VueAccueil();
     }
 
     /**
-     * listeSociete
-     * @param choix
-     * @return
-     * @throws DaoException
+     * retourne liste raison sociale
+     * @param choix String client ou prospect
+     * @return String[] raison sociale
+     * @throws DaoException propagation à la vue
      */
     public static String[] listeSociete(String choix) throws DaoException {
         ArrayList listeSociete = DaoSociete.raisonSociales(choix);
@@ -32,13 +34,12 @@ public class ControllerAccueil {
 
     /**
      * valider
-     * @param option
-     * @param choix
-     * @param raisonSociale
-     * @throws ControllerException
-     * @throws SQLException
-     * @throws MetierException
-     * @throws DaoException
+     * @param option String creer modifier supprimer
+     * @param choix String client ou prospect
+     * @param raisonSociale String
+     * @throws ControllerException si choix incorrect
+     * @throws MetierException propagation à la vue
+     * @throws DaoException propagation à la vue
      */
     public static void valider(String option, String choix, String raisonSociale)
             throws ControllerException,  MetierException, DaoException {
@@ -63,10 +64,10 @@ public class ControllerAccueil {
 
     /**
      * creer
-     * @param choix
-     * @throws MetierException
-     * @throws DaoException
-     * @throws ControllerException
+     * @param choix String client ou prospect
+     * @throws MetierException propagation à la vue
+     * @throws DaoException propagation à la vue
+     * @throws ControllerException propagation à la vue
      */
     public static void creer(String choix)
             throws MetierException, DaoException, ControllerException {
@@ -75,11 +76,11 @@ public class ControllerAccueil {
 
     /**
      * modifier
-     * @param choix
-     * @param raisonSociale
-     * @throws MetierException
-     * @throws DaoException
-     * @throws ControllerException
+     * @param choix String client ou prospect
+     * @param raisonSociale String
+     * @throws MetierException propagation à la vue
+     * @throws DaoException propagation à la vue
+     * @throws ControllerException propagation à la vue
      */
     public static void modifier(String choix, String raisonSociale)
             throws MetierException, DaoException, ControllerException {
@@ -88,11 +89,11 @@ public class ControllerAccueil {
 
     /**
      * supprimer
-     * @param choix
-     * @param raisonSociale
-     * @throws MetierException
-     * @throws DaoException
-     * @throws ControllerException
+     * @param choix String client ou prospect
+     * @param raisonSociale String
+     * @throws MetierException propagation à la vue
+     * @throws DaoException propagation à la vue
+     * @throws ControllerException propagation à la vue
      */
     public static void supprimer(String choix, String raisonSociale)
             throws MetierException, DaoException, ControllerException {
@@ -101,11 +102,10 @@ public class ControllerAccueil {
 
     /**
      * afficher
-     * @param choix
-     * @throws SQLException
-     * @throws MetierException
-     * @throws DaoException
-     * @throws ControllerException
+     * @param choix client ou prospect
+     * @throws MetierException propagation à la vue
+     * @throws DaoException propagation à la vue
+     * @throws ControllerException propagation à la vue
      */
     public static void afficher(String choix)
             throws MetierException, DaoException, ControllerException {

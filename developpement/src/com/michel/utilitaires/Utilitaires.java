@@ -9,6 +9,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
+/**
+ * classe utilitaires
+ */
 public class Utilitaires {
     /**
      * pattern mail
@@ -34,25 +37,10 @@ public class Utilitaires {
 
     /**
      * format Date dd/MM/yyyy
-     * @return
+     * @return DateTimeFormatter dd/MM/yyyy
      */
     //format date Local
     public static DateTimeFormatter formatDate (){
         return DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    }
-
-    /**
-     * liste des années depuis 2000
-     * @return
-     */
-    public static ArrayList<String> years (){
-        ArrayList<String> listAnnee = new ArrayList<>();
-        listAnnee.add("années");
-        int anneeActuelle = LocalDate.now().getYear();
-
-        for (int annee = 2000; annee <= anneeActuelle ; annee++){
-            listAnnee.add(String.valueOf(annee));
-        }
-        return listAnnee;
     }
 }

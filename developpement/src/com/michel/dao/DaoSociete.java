@@ -9,13 +9,16 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 
+/**
+ * recherche lié à la table societe de la BDD
+ */
 public class DaoSociete {
 
     /**
-     * raisonSociale
-     * @param choixClientProspect
-     * @return
-     * @throws DaoException
+     * retourne une liste de NOM_SOCIETE de la table societe present dans la table client ou prospect
+     * @param choixClientProspect String client ou prospect
+     * @return ArrayList de raison Sociale
+     * @throws DaoException si pb avec la BDD
      */
 
     //liste des raisons sociales

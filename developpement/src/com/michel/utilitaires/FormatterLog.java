@@ -6,11 +6,14 @@ import java.util.Date;
 import java.util.logging.Formatter;
 import java.util.logging.LogRecord;
 
+/**
+ * classe format du log
+ */
 public class FormatterLog extends Formatter {
     /**
      * format du log
      * @param record the log record to be formatted.
-     * @return
+     * @return String message log
      */
     public String format(LogRecord record) {
         // TODO Auto-generated method stub

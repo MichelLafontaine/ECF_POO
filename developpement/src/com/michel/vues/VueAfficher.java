@@ -6,13 +6,14 @@ import com.michel.exceptions.DaoException;
 import com.michel.exceptions.MetierException;
 
 import javax.swing.*;
-import javax.swing.event.TableModelListener;
 import javax.swing.table.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 
+/**
+ * Claase de la vue affichage données client/prospeect
+ */
 public class VueAfficher extends JFrame{
 
     private Container affichage;
@@ -31,12 +32,9 @@ public class VueAfficher extends JFrame{
 
     /**
      * contructeur Vue affichage
-     * @param choix
-     * @throws MetierException
-     * @throws DaoException
-     * @throws ControllerException
+     * @param choix String client ou prospect
      */
-    public VueAfficher(String choix) throws MetierException, DaoException, ControllerException {
+    public VueAfficher(String choix) {
 
         setTitle("Vue Affichage");
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -92,8 +90,21 @@ public class VueAfficher extends JFrame{
             }
         });
 
-        colonne =ControllerAffichage.nomColonne(choix);
-        listeSociete = ControllerAffichage.findAll(choix);
+        colonne = nomColonne(choix);
+        try {
+            listeSociete = ControllerAffichage.findAll(choix);
+        } catch (MetierException metierException) {
+            JOptionPane.showMessageDialog(null, "erreur de saisie : " + metierException.getMessage());
+        } catch (DaoException daoException){
+            JOptionPane.showMessageDialog(null, "erreur BDD" + daoException.getMessage());
+            if (daoException.getCritere() == 2){
+                System.exit(1);
+            }
+        } catch (Exception exception){
+            JOptionPane.showMessageDialog(null, "Erreur, le logiciel va fermer");
+            System.exit(1);
+        }
+
         tableModel = new DefaultTableModel(listeSociete, colonne);
         tableAffichage = new JTable(tableModel);
         TableColumnModel columnModel = tableAffichage.getColumnModel();
@@ -242,11 +253,29 @@ public class VueAfficher extends JFrame{
 
     /**
      * retour Accueil
-     * @throws MetierException
-     * @throws DaoException
+     * @throws MetierException propagation
+     * @throws DaoException propagation
      */
     private void onAccueil() throws MetierException, DaoException {
         dispose();
         ControllerAffichage.accueil();
+    }
+    /**
+     * nomColonne
+     * @param choix client ou prospect
+     * @return String[] entetes de colonne
+     */
+
+    public static String[] nomColonne(String choix) {
+        if (choix.equals("client")) {
+            return new String[]{"Raison Sociale", "N°", "Nom de rue", "CP", "Ville", "Email", "Téléphone", "CA",
+                    "Nbre d'employé", "commentaire"};
+        }
+        if (choix.equals("prospect")) {
+            return new String[]{"Raison Sociale", "N°", "Nom de rue", "CP", "Ville", "Email", "Téléphone",
+                    "Date Prospection", "Intérêt", "commentaire"};
+        } else {
+            return null;
+        }
     }
 }

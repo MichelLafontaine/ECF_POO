@@ -5,23 +5,26 @@ import com.michel.utilitaires.Utilitaires;
 
 import java.time.LocalDate;
 
+/**
+ * classe fille de la classe societe
+ */
 public class Prospect extends Societe{
 
     private LocalDate dateProspect;
     private int interetProspect = -1;
 
     /**
-     * getDateProspect
-     * @return
+     * retourne date prospection
+     * @return LocalDate date prospection
      */
     public LocalDate getDateProspect() {
         return dateProspect;
     }
 
     /**
-     * doit etre inferieur à now()
-     * @param dateProspect
-     * @throws MetierException
+     * vérification/initialisation de la date
+     * @param dateProspect LocalDate date de prospection
+     * @throws MetierException > aujourd'hui ou = 1900,1,1
      */
     public void setDateProspect(LocalDate dateProspect) throws MetierException {
         if (dateProspect.isAfter(LocalDate.now())){
@@ -34,17 +37,17 @@ public class Prospect extends Societe{
     }
 
     /**
-     * getInteretProspect
-     * @return
+     * reourne interet prospect
+     * @return int interet 0 ou 1
      */
     public int getInteretProspect() {
         return interetProspect;
     }
 
     /**
-     * setInteretProspect
-     * @param interetProspect
-     * @throws MetierException
+     * vérification/initialisation de l'interet prospect
+     * @param interetProspect int 0 ou 1
+     * @throws MetierException di != 0 ou 1
      */
     public void setInteretProspect(int interetProspect) throws MetierException {
         if (interetProspect < 0 || interetProspect > 1){
@@ -53,19 +56,22 @@ public class Prospect extends Societe{
         this.interetProspect = interetProspect;
     }
 
+    /**
+     * constructeur sans attribut
+     */
     public Prospect() {
     }
 
     /**
-     * constructeur sans identifiant
-     * @param raisonSociale
-     * @param email
-     * @param telephone
-     * @param commentaire
-     * @param adresse
-     * @param dateProspect
-     * @param interetProspect
-     * @throws MetierException
+     * constructeur sans attribut identifiant
+     * @param raisonSociale String non null
+     * @param email String non null
+     * @param telephone String non null
+     * @param commentaire String non null
+     * @param adresse Object adresse
+     * @param dateProspect LocalDate
+     * @param interetProspect 0 ou 1
+     * @throws MetierException propagation
      */
     public Prospect(String raisonSociale, String email, String telephone, String commentaire, Adresse adresse,
                     LocalDate dateProspect, int interetProspect) throws MetierException {
@@ -76,15 +82,15 @@ public class Prospect extends Societe{
 
     /**
      * Prospect tous attributs
-     * @param identifiant
-     * @param raisonSociale
-     * @param email
-     * @param telephone
-     * @param commentaire
-     * @param adresse
-     * @param dateProspect
-     * @param interetProspect
-     * @throws MetierException
+     * @param identifiant int
+     * @param raisonSociale String non null
+     * @param email String non null
+     * @param telephone String non null
+     * @param commentaire String non null
+     * @param adresse Object adresse
+     * @param dateProspect LocalDate
+     * @param interetProspect int 0 ou 1
+     * @throws MetierException propagation
      */
     public Prospect(int identifiant, String raisonSociale, String email, String telephone, String commentaire,
                     Adresse adresse, LocalDate dateProspect, int interetProspect) throws MetierException {
@@ -94,8 +100,8 @@ public class Prospect extends Societe{
     }
 
     /**
-     * toString
-     * @return
+     *surcharge toString
+     * @return String
      */
     @Override
     public String toString() {

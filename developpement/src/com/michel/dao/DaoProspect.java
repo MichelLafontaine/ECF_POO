@@ -12,13 +12,16 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 
+/**
+ * création modification suppression et recherche dans la table prospect de la BDD
+ */
 public class DaoProspect {
 
     /**
      * findAll
-     * @return
-     * @throws MetierException
-     * @throws DaoException
+     * @return ArrayList Object Prospect
+     * @throws MetierException propagation
+     * @throws DaoException si pb avec la BDD
      */
     public static ArrayList findAll() throws MetierException, DaoException {
 
@@ -71,10 +74,10 @@ public class DaoProspect {
 
     /**
      * findByName
-     * @param raisonSociale
-     * @return
-     * @throws MetierException
-     * @throws DaoException
+     * @param raisonSociale String ne doit pas etre null
+     * @return Object Propsect
+     * @throws MetierException propagation
+     * @throws DaoException si pb avec la BDD
      */
     public static Prospect findByName(String raisonSociale) throws MetierException, DaoException {
 
@@ -124,8 +127,8 @@ public class DaoProspect {
 
     /**
      * create
-     * @param prospect
-     * @throws DaoException
+     * @param prospect Object Prospect
+     * @throws DaoException si pb avec la BDD
      */
     public static void create(Prospect prospect) throws DaoException {
 
@@ -186,9 +189,9 @@ public class DaoProspect {
 
     /**
      * update
-     * @param prospect
-     * @param idSociete
-     * @throws DaoException
+     * @param prospect Object Prospect
+     * @param idSociete ID_SOCIETE de la table societe de la BDD
+     * @throws DaoException si pb avec la BDD
      */
     public static void update(Prospect prospect, int idSociete) throws DaoException {
 
@@ -219,8 +222,8 @@ public class DaoProspect {
 
     /**
      * delete
-     * @param idSociete
-     * @throws DaoException
+     * @param idSociete ID_SOCIETE de la table societe de la BDD
+     * @throws DaoException si pb avec la BDD
      */
     public static void delete(int idSociete) throws DaoException {
 

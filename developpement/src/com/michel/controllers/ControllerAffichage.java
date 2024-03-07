@@ -11,25 +11,27 @@ import com.michel.utilitaires.LoggerReverso;
 import com.michel.utilitaires.Utilitaires;
 import com.michel.vues.VueAfficher;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 
+/**
+ * Controlleur de la vue Affichage
+ */
 public class ControllerAffichage {
 
     /**
-     * affichageinit
-     * @param choix
-     * @throws MetierException
-     * @throws DaoException
-     * @throws ControllerException
+     * lancer la vue de l'affichage
+     * @param choix String client ou porspect
+     * @throws MetierException propagation à la vue
+     * @throws DaoException  propagation à la vue
+     * @throws ControllerException propagation à la vue
      */
     public static void affichageInit(String choix) throws MetierException, DaoException, ControllerException {
         VueAfficher vueAfficher = new VueAfficher(choix);
     }
 
     /**
-     * accueil
+     * reour accueil
      */
     public static void accueil() {
         ControllerAccueil.initAcceuil();
@@ -37,11 +39,11 @@ public class ControllerAffichage {
 
     /**
      * finAll
-     * @param choix
-     * @return
-     * @throws MetierException
-     * @throws DaoException
-     * @throws ControllerException
+     * @param choix String client ou prospect
+     * @return String[][] de toutes les données Objects Client ou Prospect
+     * @throws MetierException propagation à la vue
+     * @throws DaoException propagation à la vue
+     * @throws ControllerException choix incorrect
      */
     public static String[][] findAll(String choix) throws MetierException, DaoException, ControllerException {
         String[][] listes = new String[0][];
@@ -92,22 +94,5 @@ public class ControllerAffichage {
         return listes;
     }
 
-    /**
-     * nomColonne
-     * @param choix
-     * @return
-     * @throws ControllerException
-     */
-    public static String[] nomColonne(String choix) throws ControllerException {
-        if (choix.equals("client")) {
-            return new String[]{"Raison Sociale", "N°", "Nom de rue", "CP", "Ville", "Email", "Téléphone", "CA",
-                    "Nbre d'employé", "commentaire"};
-        } else if (choix.equals("prospect")) {
-            return new String[]{"Raison Sociale", "N°", "Nom de rue", "CP", "Ville", "Email", "Téléphone",
-                    "Date Prospection", "Intérêt", "commentaire"};
-        } else {
-            LoggerReverso.LOGGER.log(Level.SEVERE, "erreur option");
-            throw new ControllerException("Erreur logiciel");
-        }
-    }
+
 }

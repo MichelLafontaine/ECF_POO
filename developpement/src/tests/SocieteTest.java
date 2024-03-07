@@ -9,8 +9,14 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * test métier de la classe Societe
+ */
 class SocieteTest {
-
+    /**
+     * tests erreurs de la raison sociale
+     * @param invalide String
+     */
     @ParameterizedTest
     @EmptySource
     @NullSource
@@ -22,12 +28,20 @@ class SocieteTest {
         });
     }
 
+    /**
+     * tests réussite raison sociale
+     * @param valide String
+     */
     @ParameterizedTest
     @ValueSource(strings = {"raison Sociale", "Ma Petite Entreprise"})
     void raisonSocialeValide (String valide){
         assertDoesNotThrow(()-> new Societe().setRaisonSociale(valide));
     }
 
+    /**
+     * tests erreurs email
+     * @param invalide String
+     */
     @ParameterizedTest
     @NullSource
     @EmptySource
@@ -38,12 +52,20 @@ class SocieteTest {
         });
     }
 
+    /**
+     * tests réussite email
+     * @param valide String
+     */
     @ParameterizedTest
     @ValueSource(strings = {"essai@test.com", "essai@test.fr", "essai.test@reussi.io"})
     void emailValide (String valide) {
         assertDoesNotThrow(() -> new Societe().setEmail(valide));
     }
 
+    /**
+     * tests erreurs telephone
+     * @param invalide String
+     */
     @ParameterizedTest
     @NullSource
     @EmptySource
@@ -54,6 +76,10 @@ class SocieteTest {
         });
     }
 
+    /**
+     * tests réussite telephone
+     * @param valide String
+     */
     @ParameterizedTest
     @ValueSource(strings = {"0102030405", "0033102030405", "+33102030405"})
     void telValide (String valide) {

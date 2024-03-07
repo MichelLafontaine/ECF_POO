@@ -9,26 +9,26 @@ import com.michel.metiers.Adresse;
 import com.michel.metiers.Client;
 import com.michel.metiers.Prospect;
 import com.michel.utilitaires.LoggerReverso;
-import com.michel.utilitaires.Utilitaires;
 import com.michel.vues.VueFormulaire;
 
-import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.logging.Level;
 
+/**
+ * Controlleur de la vue modification/suppression/création
+ */
 public class ControllerFormulaire {
 
     private static int identifiant;
 
     /**
      * formualireInit
-     * @param choixClientProspect
-     * @param option
-     * @param raisonSociale
-     * @throws MetierException
-     * @throws DaoException
-     * @throws ControllerException
+     * @param choixClientProspect String client ou prospect
+     * @param option String creer modifier ou supprimer
+     * @param raisonSociale String raison sociale
+     * @throws MetierException renvoi à la vue
+     * @throws DaoException renvoi à la vue
+     * @throws ControllerException  renvoi à la vue
      */
     public static void formulaireInit(String choixClientProspect, String option, String raisonSociale)
             throws MetierException, DaoException, ControllerException {
@@ -70,7 +70,7 @@ public class ControllerFormulaire {
                 vueFormulaire.setDate(prospect.getDateProspect());
                 vueFormulaire.setjComboBoxJours(prospect.getDateProspect().getDayOfMonth());
                 vueFormulaire.setjComboBoxAnnee(String.valueOf(prospect.getDateProspect().getYear()));
-                vueFormulaire.setjComboBoxMois(String.valueOf(prospect.getDateProspect().getMonthValue()));
+                vueFormulaire.setjComboBoxMois(prospect.getDateProspect().getMonthValue());
                 identifiant = prospect.getIdentifiant();
             } else {
                 LoggerReverso.LOGGER.log(Level.SEVERE, "problème choix client/prospect");
@@ -82,31 +82,23 @@ public class ControllerFormulaire {
     }
 
     /**
-     * listeYear
-     * @return
-     */
-    public static ArrayList<String> listeYears(){
-        return Utilitaires.years();
-    }
-
-    /**
      * creer
-     * @param raisonSociale
-     * @param numero
-     * @param nomRue
-     * @param codePostal
-     * @param ville
-     * @param telephone
-     * @param email
-     * @param commentaire
-     * @param ca
-     * @param nbreEmploye
-     * @param dateProspect
-     * @param interet
-     * @param choix
-     * @throws MetierException
-     * @throws DaoException
-     * @throws ControllerException
+     * @param raisonSociale String ne doit pas etre null
+     * @param numero String ne doit pas etre null
+     * @param nomRue String ne doit pas etre null
+     * @param codePostal String ne doit pas etre null 5 chiffres
+     * @param ville String ne doit pas etre null
+     * @param telephone String ne doit pas etre null
+     * @param email String ne doit pas etre null
+     * @param commentaire String
+     * @param ca Double ne doit pas être null
+     * @param nbreEmploye int ne doit pas etre null
+     * @param dateProspect LocalDate ne doit pas etre null
+     * @param interet String oui ou non
+     * @param choix String client ou prospect
+     * @throws MetierException envoi vue formulaire mauvaise rentrer
+     * @throws DaoException envoi formulaire
+     * @throws ControllerException si erreur choix ou interet
      */
     public static void creer(String raisonSociale, String numero, String nomRue, String codePostal, String ville,
                              String telephone, String email, String commentaire, double ca,
@@ -138,22 +130,22 @@ public class ControllerFormulaire {
 
     /**
      * modifier
-     * @param raisonSociale
-     * @param numero
-     * @param nomRue
-     * @param codePostal
-     * @param ville
-     * @param telephone
-     * @param email
-     * @param commentaire
-     * @param ca
-     * @param nbreEmploye
-     * @param dateProspect
-     * @param interet
-     * @param choix
-     * @throws MetierException
-     * @throws DaoException
-     * @throws ControllerException
+     * @param raisonSociale String ne doit pas etre null
+     * @param numero String ne doit pas etre null
+     * @param nomRue String ne doit pas etre null
+     * @param codePostal String ne doit pas etre null
+     * @param ville String ne doit pas etre null
+     * @param telephone String ne doit pas etre null
+     * @param email String ne doit pas etre null
+     * @param commentaire String ne doit pas etre null
+     * @param ca Double ne doit pas etre null
+     * @param nbreEmploye int ne doit pas etre null
+     * @param dateProspect LocalDate ne doit pas etre null
+     * @param interet String oui ou non
+     * @param choix String client ou porspect
+     * @throws MetierException envoi au formulaire
+     * @throws DaoException envoi au formulaire
+     * @throws ControllerException si interet ou choix non correct
      */
     public static void modifier(String raisonSociale, String numero, String nomRue, String codePostal, String ville,
                                 String telephone, String email, String commentaire, double ca,
@@ -184,9 +176,9 @@ public class ControllerFormulaire {
 
     /**
      * supprimer
-     * @param choix
-     * @throws DaoException
-     * @throws ControllerException
+     * @param choix String client ou prospect
+     * @throws DaoException propagation à la vue
+     * @throws ControllerException si choix pas bon
      */
     public static void supprimer(String choix) throws DaoException, ControllerException {
         if (choix.equals("client")){
@@ -201,23 +193,23 @@ public class ControllerFormulaire {
 
     /**
      * valider
-     * @param raisonSocial
-     * @param numero
-     * @param nomRue
-     * @param codePostal
-     * @param ville
-     * @param email
-     * @param telephone
-     * @param ca
-     * @param nbreEmploye
-     * @param date
-     * @param interet
-     * @param commentaire
-     * @param choix
-     * @param option
-     * @throws ControllerException
-     * @throws MetierException
-     * @throws DaoException
+     * @param raisonSocial String ne doit pas etre null
+     * @param numero String ne doit pas etre null
+     * @param nomRue String ne doit pas etre null
+     * @param codePostal String ne doit pas etre null
+     * @param ville String ne doit pas etre null
+     * @param email String ne doit pas etre null
+     * @param telephone String ne doit pas etre null
+     * @param ca Double ne doit pas etre null
+     * @param nbreEmploye int ne doit pas etre null
+     * @param date LocalDate ne doit pas etre null
+     * @param interet oui ou non
+     * @param commentaire String
+     * @param choix String client ou prospect
+     * @param option String creer modifier ou supprimer
+     * @throws ControllerException si option incorrect
+     * @throws MetierException propagation à la vue
+     * @throws DaoException propagation à la vue
      */
     public static void valider (String raisonSocial, String numero, String nomRue, String codePostal, String ville,
                                 String email, String telephone, double ca, int nbreEmploye, LocalDate date,

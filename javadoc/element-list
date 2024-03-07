@@ -1,0 +1,7 @@
+unnamed package
+com.michel.controllers
+com.michel.dao
+com.michel.exceptions
+com.michel.metiers
+com.michel.utilitaires
+com.michel.vues

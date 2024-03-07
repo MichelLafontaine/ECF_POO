@@ -13,13 +13,16 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 
+/**
+ * création modification suppression et recherche dans la table client de la BDD
+ */
 public class DaoClient {
 
     /**
-     * finAll
-     * @return
-     * @throws MetierException
-     * @throws DaoException
+     * finAll client
+     * @return ArraysList Objet Client
+     * @throws MetierException propagation
+     * @throws DaoException si pb avec la BDD
      */
     public static ArrayList findAll() throws MetierException, DaoException {
 
@@ -71,10 +74,10 @@ public class DaoClient {
 
     /**
      * findByName
-     * @param raisonSociale
-     * @return
-     * @throws MetierException
-     * @throws DaoException
+     * @param raisonSociale String non null
+     * @return Objet Client
+     * @throws MetierException propagation
+     * @throws DaoException si pb connetion BDD
      */
     public static Client findByName(String raisonSociale) throws MetierException, DaoException {
 
@@ -128,8 +131,8 @@ public class DaoClient {
 
     /**
      * create
-     * @param client
-     * @throws DaoException
+     * @param client Object Client
+     * @throws DaoException si pb avec la BDD
      */
     public static void create (Client client) throws DaoException {
 
@@ -190,9 +193,9 @@ public class DaoClient {
 
     /**
      * update
-     * @param client
-     * @param idSociete
-     * @throws DaoException
+     * @param client Objet client
+     * @param idSociete ID_CLIENT de la table client de la BDD
+     * @throws DaoException si pb avec la BDD
      */
     public static void update(Client client, int idSociete) throws DaoException {
 
@@ -223,8 +226,8 @@ public class DaoClient {
 
     /**
      * deleteClient
-     * @param idSociete
-     * @throws DaoException
+     * @param idSociete ID_SOCIETE de la table societe de la BDD
+     * @throws DaoException si pb avec la BDD
      */
     public static void deleteClient (int idSociete) throws DaoException {
 

@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 
+/**
+ * classe pour lancer le log
+ */
 public class LancerLog {
     /**
      * lancerLog

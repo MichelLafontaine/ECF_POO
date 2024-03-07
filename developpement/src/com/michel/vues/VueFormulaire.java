@@ -15,6 +15,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.logging.Level;
 
+/**
+ * Vue du formulaire de création/suppression/modification d'un client ou prospect
+ */
 public class VueFormulaire extends JFrame {
 
     private Container formulaire;
@@ -74,208 +77,208 @@ public class VueFormulaire extends JFrame {
     private String choix; // client ou prospect
 
     /**
-     *
-     * @param raisonSociale
+     *initialise raison Social du JtextField
+     * @param raisonSociale String raison sociale
      */
     public void setRaisonSociale(String raisonSociale) {
         this.tRaisonSociale.setText(raisonSociale);
     }
 
     /**
-     *
-     * @param email
+     *initialise email du JtextField
+     * @param email String email
      */
     public void setEmail(String email) {
         this.tEmail.setText(email);
     }
 
     /**
-     *
-     * @param telephone
+     *initialise telephone du JtextField
+     * @param telephone String telephone
      */
     public void setTelephone(String telephone) {
         this.tTelephone.setText(telephone);
     }
 
     /**
-     *
-     * @param commentaire
+     *initialise commentaire du JtextField
+     * @param commentaire String commentaire
      */
     public void setCommentaire(String commentaire) {
         this.tCommentaire.setText(commentaire);
     }
 
     /**
-     *
-     * @param numero
+     *initialise telephone du JtextField
+     * @param numero String numero de rue
      */
     public void setNumero(String numero) {
         this.tNumero.setText(numero);
     }
 
     /**
-     *
-     * @param nomRue
+     * initialise nom de rue du JtextField
+     * @param nomRue String nom de rue
      */
     public void setNomRue(String nomRue) {
         this.tNomRue.setText(nomRue);
     }
 
     /**
-     *
-     * @param ville
+     *initialise vile du JtextField
+     * @param ville String ville
      */
     public void setVille(String ville) {
         this.tVille.setText(ville);
     }
 
     /**
-     *
-     * @param codePostal
+     *initialise codepostal du JtextField
+     * @param codePostal String code postal
      */
     public void setCodePostal(String codePostal) {
         this.tCodePostal.setText(codePostal);
     }
 
     /**
-     *
-     * @param tCA
+     *initialise chiffre d'affaire du JtextField
+     * @param tCA double chiffre d'affaire
      */
     public void setCA(double tCA) {
         this.tCA.setText(String.valueOf(tCA));
     }
 
     /**
-     *
-     * @param nbreEmploye
+     *initialise nombre d'employé du JtextField
+     * @param nbreEmploye String nombre emloye
      */
     public void settNbreEmploye(String nbreEmploye) {
         this.tNbreEmploye.setText(nbreEmploye);
     }
 
     /**
-     *
-     * @param jour
+     *initialise le jour de date prospection (combobox)
+     * @param jour String jour
      */
     public void setjComboBoxJours(int jour) {
         this.jComboBoxJours.setSelectedIndex(jour);
     }
 
     /**
-     *
-     * @param mois
+     *initialise le mois de date prospection (combobox)
+     * @param mois String mois
      */
-    public void setjComboBoxMois(String mois) {
-        this.jComboBoxMois.setSelectedItem(mois);
+    public void setjComboBoxMois(int mois) {
+        this.jComboBoxMois.setSelectedIndex(mois);
     }
 
     /**
-     *
-     * @param annee
+     *initialise l'année de date prospection (combobox)
+     * @param annee String annee
      */
     public void setjComboBoxAnnee(String annee) {
         this.jComboBoxAnnee.setSelectedIndex(annees.indexOf(annee));
     }
 
     /**
-     *
-     * @param interet
+     *initialise interet du prospect (combobox)
+     * @param interet String oui ou non
      */
     public void setInteret(String interet) {
         this.jComboBoxInterets.setSelectedItem(interet);
     }
 
     /**
-     *
-     * @param date
+     *initialise date de prospection
+     * @param date LocalDate
      */
     public void setDate(LocalDate date) {
         this.date = date;
     }
 
     /**
-     *
-     * @return
+     *retourne raison sociale du JTextField
+     * @return String raison Sociale
      */
     public String getRaisonSociale() {
         return tRaisonSociale.getText();
     }
 
     /**
-     *
-     * @return
+     *retourne email du JTextField
+     * @return String email
      */
     public String getEmail() {
         return tEmail.getText();
     }
 
     /**
-     *
-     * @return
+     *retourne telephone du JTextField
+     * @return String telephone
      */
     public String getTelephone() {
         return tTelephone.getText();
     }
 
     /**
-     *
-     * @return
+     *retourne commentaire du JTextField
+     * @return String commentaire
      */
     public String getCommentaire() {
         return tCommentaire.getText();
     }
 
     /**
-     *
-     * @return
+     *retourne numero du JTextField
+     * @return String numero de rue
      */
     public String getNumero() {
         return tNumero.getText();
     }
 
     /**
-     *
-     * @return
+     *retourne nom rue du JTextField
+     * @return String nom de rue
      */
     public String getNomRue() {
         return tNomRue.getText();
     }
 
     /**
-     *
-     * @return
+     *retourne ville du JTextField
+     * @return String ville
      */
     public String getVille() {
         return tVille.getText();
     }
 
     /**
-     *
-     * @return
+     *retourne code postal du JTextField
+     * @return String code postal
      */
     public String getCodePostal() {
         return tCodePostal.getText();
     }
 
     /**
-     *
-     * @return
+     *retourne chiffre d'affaire du JTextField
+     * @return Double chiffre d'affaire
      */
     public double getCA() {
         return Double.parseDouble(tCA.getText());
     }
 
     /**
-     *
-     * @return
+     *retourne nombre d'employé du JTextField
+     * @return int nbre employé
      */
     public int gettNbreEmploye() {
         return Integer.parseInt(tNbreEmploye.getText());
     }
 
     /**
-     *
-     * @return
+     *retourne intéret du JTextField
+     * @return String oui ou non
      */
     public String getInteret() {
         return interet;
@@ -283,8 +286,8 @@ public class VueFormulaire extends JFrame {
 
     /**
      * initalisation Vue
-     * @param choixClientProspect
-     * @param option
+     * @param choixClientProspect String client ou prospect
+     * @param option String creer modifier ou supprimr
      */
     public VueFormulaire (String choixClientProspect, String option) {
 
@@ -418,7 +421,7 @@ public class VueFormulaire extends JFrame {
 
         DefaultListCellRenderer listRenderer = new DefaultListCellRenderer();
         listRenderer.setHorizontalAlignment(DefaultListCellRenderer.CENTER);
-        annees = ControllerFormulaire.listeYears();
+        annees = years();
 
         jComboBoxJours = new JComboBox(jours);
         jComboBoxJours.setFont(new Font("Arial", Font.PLAIN, 25));
@@ -448,7 +451,7 @@ public class VueFormulaire extends JFrame {
         });
         jComboBoxMois.setVisible(false);
 
-        jComboBoxAnnee = new JComboBox(annees.toArray(new String[ControllerFormulaire.listeYears().size()]));
+        jComboBoxAnnee = new JComboBox(annees.toArray(new String[annees.size()]));
         jComboBoxAnnee.setFont(new Font("Arial", Font.PLAIN, 25));
         jComboBoxAnnee.setPreferredSize(jComboBoxJours.getPreferredSize());
         jComboBoxAnnee.setRenderer(listRenderer);
@@ -840,8 +843,8 @@ public class VueFormulaire extends JFrame {
 
     /**
      * retour accueil
-     * @throws MetierException
-     * @throws DaoException
+     * @throws MetierException propagation
+     * @throws DaoException propagation
      */
     private void onAccueil() throws MetierException, DaoException {
         dispose();
@@ -868,8 +871,6 @@ public class VueFormulaire extends JFrame {
 
     /**
      * initialisation vue si prospect
-     *
-     * @return
      */
     private void prospect(){
         option2.setText("Date Prospection");
@@ -883,18 +884,18 @@ public class VueFormulaire extends JFrame {
 
     /**
      * Valider le formulaire
-     * @param choix
-     * @param option
-     * @throws MetierException
-     * @throws DaoException
-     * @throws ControllerException
+     * @param choix String client ou prospect
+     * @param option String creer modifier ou supprimer
+     * @throws MetierException propagation
+     * @throws DaoException propagation
+     * @throws ControllerException propagation
      */
     public void actionValider(String choix,String option)
             throws MetierException, DaoException, ControllerException {
         int choixValidation = JOptionPane.showConfirmDialog(null,
                 "Voulez vous " + option + " le " + choix + " " + tRaisonSociale.getText());
         if (choixValidation == JOptionPane.YES_OPTION) {
-            if (dateJour != null || dateMois != null || dateAnnee != null){
+            if (dateJour != null && dateMois != null && dateAnnee != null){
                 date = LocalDate.of(Integer.parseInt(dateAnnee), Integer.parseInt(dateMois), Integer.parseInt(dateJour));
             }
             ControllerFormulaire.valider(getRaisonSociale(), getNumero(), getNomRue(), getCodePostal(), getVille(),
@@ -906,6 +907,19 @@ public class VueFormulaire extends JFrame {
                     choix + " " + getRaisonSociale() + "\nVous allez retourner à l'accueil");
             onAccueil();
         }
+    }
+    /**
+     * liste des années depuis 2000
+     * @return ArrayList String
+     */
+    public static ArrayList<String> years (){
+        ArrayList<String> listAnnee = new ArrayList<>();
+        listAnnee.add("années");
+        int anneeActuelle = LocalDate.now().getYear();
 
+        for (int annee = anneeActuelle; annee >= 2000 ; annee--){
+            listAnnee.add(String.valueOf(annee));
+        }
+        return listAnnee;
     }
 }

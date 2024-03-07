@@ -10,6 +10,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Classe de la vue Accueil
+ */
 public class VueAccueil extends JFrame {
 
     private Container accueil;
@@ -417,8 +420,8 @@ public class VueAccueil extends JFrame {
 
     /**
      * liste déroulante raison sociale
-     * @param choix
-     * @throws DaoException
+     * @param choix String client ou prospect
+     * @throws DaoException propagation
      */
     private void choixSociete (String choix, GridBagConstraints gbc) throws DaoException {
         societes = ControllerAccueil.listeSociete(choix);

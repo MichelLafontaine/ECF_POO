@@ -13,6 +13,9 @@ import java.sql.SQLException;
 import java.util.Properties;
 import java.util.logging.Level;
 
+/**
+ * Classe de connection et fermeture avec la BDD
+ */
 public class DaoConnection {
 
     private static Connection connection = null;
@@ -68,10 +71,10 @@ public class DaoConnection {
     }
 
     /**
-     * getInstance
+     * création d'une seule et unique connection avec BDD
      * Singleton Connection
-     * @return
-     * @throws DaoException
+     * @return Connection
+     * @throws DaoException si pb connection BDD
      */
     public static Connection getInstance() throws DaoException {
         if (connection == null) {

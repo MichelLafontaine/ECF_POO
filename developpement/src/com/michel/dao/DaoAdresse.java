@@ -9,12 +9,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 
+/**
+ * Vérification/création d'adresse dans la BDD
+ */
 public class DaoAdresse {
     /**
      * creerAdresse
-     * @param adresse
-     * @return
-     * @throws DaoException
+     * @param adresse Object Adresse
+     * @return idAdresse de la table adresse
+     * @throws DaoException si probleme avec la BDD
      */
     public static int creerAdresse (Adresse adresse) throws DaoException {
 
