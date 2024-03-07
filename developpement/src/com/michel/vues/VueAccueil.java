@@ -9,8 +9,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class VueAccueil extends JFrame {
 
@@ -21,7 +19,7 @@ public class VueAccueil extends JFrame {
     private JLabel title;
     private JLabel reverso;
     private JButton exit;
-    private JLabel trait;
+    private JSeparator trait;
     private JButton client;
     private JButton prospect;
     private JButton creer;
@@ -39,8 +37,8 @@ public class VueAccueil extends JFrame {
     /**
      * contructeur Vue Accueil
      */
-    public VueAccueil () {
-
+    public VueAccueil() {
+        //Initilisation du container
         setTitle("Page d'accueil");
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         screenWidth = (int) screenSize.getWidth();
@@ -51,43 +49,33 @@ public class VueAccueil extends JFrame {
         setResizable(false);
 
         accueil = getContentPane();
-        accueil.setLayout(null);
+        setLayout(new GridBagLayout());
 
+        GridBagConstraints gbc = new GridBagConstraints();
+
+        //Creation et initialisation des éléments
         title = new JLabel("ACCUEIL");
         title.setFont(new Font("Arial", Font.PLAIN, 30));
-        title.setSize(screenWidth - 250, 50);
-        title.setLocation(50, 150);
-        title.setHorizontalAlignment(SwingConstants.CENTER);
-        accueil.add(title);
 
         reverso = new JLabel("REVERSO");
         reverso.setFont(new Font("Arial", Font.BOLD, 25));
-        reverso.setSize(300, 50);
-        reverso.setLocation(50, 50);
-        reverso.setHorizontalAlignment(SwingConstants.CENTER);
-        accueil.add(reverso);
+
 
         exit = new JButton("Quitter");
         exit.setFont(new Font("Arial", Font.PLAIN, 15));
-        exit.setSize(150,50);
-        exit.setLocation(screenWidth - 200, 50);
+        exit.setPreferredSize(new Dimension(250, 50));
         exit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onClose();
             }
         });
-        accueil.add(exit);
 
-        trait = new JLabel();
-        trait.setSize(screenWidth - 250, 2);
-        trait.setLocation(50,200);
-        trait.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-        accueil.add(trait);
+        trait = new JSeparator();
+
 
         client = new JButton("Client");
         client.setFont(new Font("Arial", Font.PLAIN, 15));
-        client.setSize(250, 50);
-        client.setLocation((screenWidth - 250)/3-75, 250);
+        client.setPreferredSize(new Dimension(250, 50));
         client.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 prospect.setVisible(false);
@@ -104,12 +92,10 @@ public class VueAccueil extends JFrame {
                 choix = "client";
             }
         });
-        accueil.add(client);
 
         prospect = new JButton("Prospect");
         prospect.setFont(new Font("Arial", Font.PLAIN, 15));
-        prospect.setSize(250,50);
-        prospect.setLocation(((screenWidth - 250)*2)/3 - 75, 250);
+        prospect.setPreferredSize(new Dimension(250, 50));
         prospect.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 prospect.setVisible(false);
@@ -126,12 +112,11 @@ public class VueAccueil extends JFrame {
                 choix = "prospect";
             }
         });
-        accueil.add(prospect);
 
         creer = new JButton("Créer");
         creer.setFont(new Font("Arial", Font.PLAIN, 15));
-        creer.setSize(250, 50);
-        creer.setLocation((screenWidth - 250) /5 - 75, 350);
+        creer.setPreferredSize(new Dimension(250, 50));
+        creer.setVisible(false);
         creer.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 valider.setVisible(true);
@@ -141,13 +126,12 @@ public class VueAccueil extends JFrame {
                 option = "creer";
             }
         });
-        creer.setVisible(false);
-        accueil.add(creer);
+
 
         modifier = new JButton("Modifier");
         modifier.setFont(new Font("Arial", Font.PLAIN, 15));
-        modifier.setSize(250, 50);
-        modifier.setLocation((screenWidth - 250)*2/5 - 75, 350);
+        modifier.setPreferredSize(new Dimension(250, 50));
+        modifier.setVisible(false);
         modifier.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 valider.setVisible(true);
@@ -156,7 +140,7 @@ public class VueAccueil extends JFrame {
                 afficher.setVisible(false);
                 option = "modifier";
                 try {
-                    choixSociete(choix);
+                    choixSociete(choix, gbc);
                 } catch (DaoException daoException){
                     JOptionPane.showMessageDialog(null, "erreur BDD" + daoException.getMessage());
                 } catch (Exception exception){
@@ -165,13 +149,11 @@ public class VueAccueil extends JFrame {
                 }
             }
         });
-        modifier.setVisible(false);
-        accueil.add(modifier);
 
         afficher = new JButton("Afficher");
         afficher.setFont(new Font("Arial", Font.PLAIN, 15));
-        afficher.setSize(250, 50);
-        afficher.setLocation((screenWidth - 250)*4/5 - 75, 350);
+        afficher.setPreferredSize(new Dimension(250, 50));
+        afficher.setVisible(false);
         afficher.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 valider.setVisible(true);
@@ -181,13 +163,11 @@ public class VueAccueil extends JFrame {
                 option = "afficher";
             }
         });
-        afficher.setVisible(false);
-        accueil.add(afficher);
 
-        supprimer = new JButton("Afficher");
+        supprimer = new JButton("Supprimer");
         supprimer.setFont(new Font("Arial", Font.PLAIN, 15));
-        supprimer.setSize(250, 50);
-        supprimer.setLocation((screenWidth - 250)*3/5 - 75, 350);
+        supprimer.setPreferredSize(new Dimension(250, 50));
+        supprimer.setVisible(false);
         supprimer.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 valider.setVisible(true);
@@ -196,7 +176,7 @@ public class VueAccueil extends JFrame {
                 afficher.setVisible(false);
                 option = "supprimer";
                 try {
-                    choixSociete(choix);
+                    choixSociete(choix, gbc);
                 } catch (DaoException daoException){
                     JOptionPane.showMessageDialog(null, "erreur BDD" + daoException.getMessage());
                 } catch (Exception exception){
@@ -205,13 +185,11 @@ public class VueAccueil extends JFrame {
                 }
             }
         });
-        supprimer.setVisible(false);
-        accueil.add(supprimer);
 
         reinitialiser = new JButton("Réinitialiser");
         reinitialiser.setFont(new Font("Arial", Font.PLAIN, 15));
-        reinitialiser.setSize(screenWidth - 250, 50);
-        reinitialiser.setLocation(50, screenHeight - 100);
+        reinitialiser.setPreferredSize(new Dimension(250, 50));
+        reinitialiser.setVisible(false);
         reinitialiser.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 prospect.setVisible(true);
@@ -228,13 +206,11 @@ public class VueAccueil extends JFrame {
                 societe = null;
             }
         });
-        reinitialiser.setVisible(false);
-        accueil.add(reinitialiser);
 
         valider = new JButton("Valider");
         valider.setFont(new Font("Arial", Font.PLAIN, 15));
-        valider.setSize(screenWidth - 250, 50);
-        valider.setLocation(50, screenHeight - 170);
+        valider.setPreferredSize(new Dimension(250, 50));
+        valider.setVisible(false);
         valider.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose();
@@ -258,9 +234,176 @@ public class VueAccueil extends JFrame {
                 }
             }
         });
-        valider.setVisible(false);
-        accueil.add(valider);
 
+
+
+
+        //Création d'un damier
+        JLabel[] labels = new JLabel[15];
+        for (int i = 0; i < 15; i++) {
+            labels[i] = new JLabel();
+        }
+
+        labels[1].setPreferredSize(new Dimension(screenWidth/6, 1));
+        labels[2].setPreferredSize(labels[1].getPreferredSize());
+        labels[3].setPreferredSize(labels[1].getPreferredSize());
+        labels[4].setPreferredSize(labels[1].getPreferredSize());
+        labels[5].setPreferredSize(labels[1].getPreferredSize());
+        labels[6].setPreferredSize(new Dimension(1, screenWidth/17));
+        labels[7].setPreferredSize(labels[6].getPreferredSize());
+        labels[8].setPreferredSize(labels[6].getPreferredSize());
+        labels[9].setPreferredSize(labels[6].getPreferredSize());
+        labels[10].setPreferredSize(labels[6].getPreferredSize());
+        labels[11].setPreferredSize(labels[6].getPreferredSize());
+        labels[12].setPreferredSize(labels[6].getPreferredSize());
+        labels[13].setPreferredSize(labels[6].getPreferredSize());
+        labels[14].setPreferredSize(labels[6].getPreferredSize());
+
+        gbc.gridx = gbc.gridy = 0;
+        accueil.add(labels[0], gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        accueil.add(labels[1], gbc);
+
+        gbc.gridx = 2;
+        gbc.gridy = 0;
+        accueil.add(labels[2], gbc);
+
+        gbc.gridx = 3;
+        gbc.gridy = 0;
+        accueil.add(labels[3], gbc);
+
+        gbc.gridx = 4;
+        gbc.gridy = 0;
+        accueil.add(labels[4], gbc);
+
+        gbc.gridx = 5;
+        gbc.gridy = 0;
+        accueil.add(labels[5], gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        accueil.add(labels[6], gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        accueil.add(labels[7], gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        accueil.add(labels[8], gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        accueil.add(labels[9], gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        accueil.add(labels[10], gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 6;
+        accueil.add(labels[11], gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 7;
+        accueil.add(labels[12], gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 8;
+        accueil.add(labels[13], gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 9;
+        accueil.add(labels[14], gbc);
+
+        //Ajout des composants en spécifiant les contraintes de types GridBagContraints
+        gbc.gridx = gbc.gridy = 1;
+        gbc.anchor = GridBagConstraints.BASELINE;
+        gbc.gridheight = gbc.gridwidth = 1;
+        gbc.insets = new Insets(0, 10, 0, 0);
+        accueil.add(reverso, gbc);
+
+        gbc.gridx = 5;
+        gbc.gridy = 1;
+        gbc.gridheight = gbc.gridwidth = 1;
+        gbc.anchor = GridBagConstraints.BASELINE;
+        gbc.insets = new Insets(5, 0, 10, 10);
+        accueil.add(exit, gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 2;
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+        gbc.anchor = GridBagConstraints.BASELINE;
+        gbc.insets = new Insets(5, 0, 10, 10);
+        accueil.add(title, gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 2;
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.insets = new Insets(3, 5, 0, 5);
+        accueil.add(trait, gbc);
+
+        gbc.gridx = 2;
+        gbc.gridy = 3;
+        gbc.gridheight = gbc.gridwidth = 1;
+        gbc.anchor = GridBagConstraints.BASELINE;
+        gbc.insets = new Insets(5, 0, 10, 10);
+        accueil.add(client, gbc);
+
+        gbc.gridx = 4;
+        gbc.gridy = 3;
+        gbc.gridheight = gbc.gridwidth = 1;
+        gbc.anchor = GridBagConstraints.BASELINE;
+        gbc.insets = new Insets(5, 0, 10, 10);
+        accueil.add(prospect, gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 4;
+        gbc.gridheight = gbc.gridwidth = 1;
+        gbc.anchor = GridBagConstraints.BASELINE;
+        gbc.insets = new Insets(5, 0, 10, 10);
+        accueil.add(creer, gbc);
+
+        gbc.gridx = 2;
+        gbc.gridy = 4;
+        gbc.gridheight = gbc.gridwidth = 1;
+        gbc.anchor = GridBagConstraints.BASELINE;
+        gbc.insets = new Insets(5, 0, 10, 10);
+        accueil.add(modifier, gbc);
+
+        gbc.gridx = 3;
+        gbc.gridy = 4;
+        gbc.gridheight = gbc.gridwidth = 1;
+        gbc.anchor = GridBagConstraints.BASELINE;
+        gbc.insets = new Insets(5, 0, 10, 10);
+        accueil.add(supprimer, gbc);
+
+        gbc.gridx = 4;
+        gbc.gridy = 4;
+        gbc.gridheight = gbc.gridwidth = 1;
+        gbc.anchor = GridBagConstraints.BASELINE;
+        gbc.insets = new Insets(5, 0, 10, 10);
+        accueil.add(afficher, gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 6;
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+        gbc.anchor = GridBagConstraints.BASELINE;
+        gbc.insets = new Insets(5, 0, 10, 10);
+        accueil.add(valider, gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 7;
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.anchor = GridBagConstraints.BASELINE;
+        gbc.insets = new Insets(5, 0, 10, 10);
+        accueil.add(reinitialiser, gbc);
+
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 
@@ -277,19 +420,22 @@ public class VueAccueil extends JFrame {
      * @param choix
      * @throws DaoException
      */
-    private void choixSociete (String choix) throws DaoException {
+    private void choixSociete (String choix, GridBagConstraints gbc) throws DaoException {
         societes = ControllerAccueil.listeSociete(choix);
-
         jComboBoxSociete = new JComboBox(societes);
-        jComboBoxSociete.setFont(new Font("Arial", Font.PLAIN, 15));
-        jComboBoxSociete.setSize(500, 50);
-        jComboBoxSociete.setLocation((screenWidth-250)/2-200, screenHeight/2);
-        accueil.add(jComboBoxSociete);
+        jComboBoxSociete.setFont(new Font("Arial", Font.PLAIN, 25));
+
         jComboBoxSociete.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 societe = (String) jComboBoxSociete.getSelectedItem();
             }
         });
+        gbc.gridx = 2;
+        gbc.gridy = 5;
+        gbc.gridwidth = 3;
+        gbc.anchor = GridBagConstraints.BASELINE;
+        gbc.insets = new Insets(5, 0, 10, 10);
+        accueil.add(jComboBoxSociete, gbc);
     }
 }

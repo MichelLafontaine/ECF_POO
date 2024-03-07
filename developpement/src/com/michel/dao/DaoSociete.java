@@ -22,7 +22,7 @@ public class DaoSociete {
     public static ArrayList raisonSociales (String choixClientProspect) throws DaoException {
 
         ArrayList<String> societes = new ArrayList<>();
-        societes.add("");
+        societes.add(" ");
         String querySociete = "SELECT NOM_SOCIETE FROM societe " +
                 "INNER JOIN " + choixClientProspect + " cp ON cp.ID_SOCIETE = societe.ID_SOCIETE;";
         try(Statement stmt = DaoConnection.getInstance().createStatement()){

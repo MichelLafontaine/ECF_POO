@@ -78,6 +78,10 @@ public class DaoClient {
      */
     public static Client findByName(String raisonSociale) throws MetierException, DaoException {
 
+
+        if (raisonSociale == null || raisonSociale.trim().isEmpty()){
+            throw new DaoException(1, "attention la raison Sociale est vide");
+        }
         Client client = new Client();
 
         String query = "SELECT societe.ID_SOCIETE AS 'identifiant', " +

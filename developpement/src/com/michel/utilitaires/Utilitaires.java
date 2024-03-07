@@ -47,7 +47,7 @@ public class Utilitaires {
      */
     public static ArrayList<String> years (){
         ArrayList<String> listAnnee = new ArrayList<>();
-        listAnnee.add("");
+        listAnnee.add("années");
         int anneeActuelle = LocalDate.now().getYear();
 
         for (int annee = 2000; annee <= anneeActuelle ; annee++){

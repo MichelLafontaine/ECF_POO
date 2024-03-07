@@ -6,13 +6,11 @@ import com.michel.exceptions.ControllerException;
 import com.michel.exceptions.DaoException;
 import com.michel.exceptions.MetierException;
 import com.michel.utilitaires.LoggerReverso;
-import com.michel.utilitaires.Utilitaires;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -26,9 +24,9 @@ public class VueFormulaire extends JFrame {
     private JLabel title;
     private JLabel reverso;
     private JButton exit;
-    private JLabel trait;
-    private JLabel traitMilieu;
-    private JLabel traitBas;
+    private JSeparator trait;
+    private JSeparator traitMilieu;
+    private JSeparator traitBas;
     private JButton accueil;
     private JLabel raisonSociale;
     private JTextField tRaisonSociale;
@@ -52,7 +50,7 @@ public class VueFormulaire extends JFrame {
     private JTextField tNbreEmploye;
     private JButton valider;
     private final String[] jours
-            = { "", "1", "2", "3", "4", "5",
+            = { "jours", "1", "2", "3", "4", "5",
             "6", "7", "8", "9", "10",
             "11", "12", "13", "14", "15",
             "16", "17", "18", "19", "20",
@@ -60,7 +58,7 @@ public class VueFormulaire extends JFrame {
             "26", "27", "28", "29", "30",
             "31" };
     private final String[] mois
-            = { "", "1", "2", "3", "4", "5",
+            = { "mois", "1", "2", "3", "4", "5",
             "6", "7", "8", "9", "10",
             "11", "12" };
     private ArrayList<String> annees;
@@ -300,42 +298,30 @@ public class VueFormulaire extends JFrame {
         setResizable(false);
 
         formulaire = getContentPane();
-        formulaire.setLayout(null);
+        setLayout(new GridBagLayout());
+
+        GridBagConstraints gbc = new GridBagConstraints();
 
         title = new JLabel("FORMULAIRE");
         title.setFont(new Font("Arial", Font.PLAIN, 30));
-        title.setSize(screenWidth - 250, 50);
-        title.setLocation(50, 150);
-        title.setHorizontalAlignment(SwingConstants.CENTER);
-        formulaire.add(title);
 
         reverso = new JLabel("REVERSO");
         reverso.setFont(new Font("Arial", Font.BOLD, 25));
-        reverso.setSize(300, 50);
-        reverso.setLocation(50, 50);
-        reverso.setHorizontalAlignment(SwingConstants.CENTER);
-        formulaire.add(reverso);
 
         exit = new JButton("Quitter");
         exit.setFont(new Font("Arial", Font.PLAIN, 15));
-        exit.setSize(150,50);
-        exit.setLocation(screenWidth - 200, 50);
+        exit.setPreferredSize(new Dimension(250, 50));
         exit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onClose();
             }
         });
-        formulaire.add(exit);
 
-        trait = new JLabel();
-        trait.setSize(screenWidth - 250, 2);
-        trait.setLocation(50,200);
-        formulaire.add(trait);
+        trait = new JSeparator();
 
         accueil = new JButton("Accueil");
         accueil.setFont(new Font("Arial", Font.PLAIN, 15));
-        accueil.setSize(150,50);
-        accueil.setLocation(screenWidth - 200, 120);
+        accueil.setPreferredSize(new Dimension(250, 50));
         accueil.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -353,143 +339,138 @@ public class VueFormulaire extends JFrame {
                 }
             }
         });
-        formulaire.add(accueil);
 
         raisonSociale = new JLabel("Raison Sociale");
         raisonSociale.setFont(new Font("Arial", Font.BOLD, 25));
-        raisonSociale.setSize(300, 50);
-        raisonSociale.setLocation(50, 250);
-        raisonSociale.setHorizontalAlignment(SwingConstants.CENTER);
-        formulaire.add(raisonSociale);
+        raisonSociale.setHorizontalAlignment(SwingConstants.RIGHT);
 
         tRaisonSociale = new JTextField();
         tRaisonSociale.setFont(new Font("Arial", Font.BOLD, 25));
-        tRaisonSociale.setSize(screenWidth - 550, 50);
-        tRaisonSociale.setLocation(350, 250);
-        tRaisonSociale.setHorizontalAlignment(SwingConstants.CENTER);
-        formulaire.add(tRaisonSociale);
 
         numero = new JLabel("N°");
         numero.setFont(new Font("Arial", Font.BOLD, 25));
-        numero.setSize(200, 50);
-        numero.setLocation(50, 350);
-        numero.setHorizontalAlignment(SwingConstants.CENTER);
-        formulaire.add(numero);
+        numero.setHorizontalAlignment(SwingConstants.RIGHT);
 
         tNumero = new JTextField();
         tNumero.setFont(new Font("Arial", Font.BOLD, 25));
-        tNumero.setSize(150, 50);
-        tNumero.setLocation(250, 350);
-        tNumero.setHorizontalAlignment(SwingConstants.LEFT);
-        formulaire.add(tNumero);
 
         nomRue = new JLabel("Nom de Rue");
         nomRue.setFont(new Font("Arial", Font.BOLD, 25));
-        nomRue.setSize(200, 50);
-        nomRue.setLocation(400, 350);
-        nomRue.setHorizontalAlignment(SwingConstants.CENTER);
-        formulaire.add(nomRue);
+        nomRue.setHorizontalAlignment(SwingConstants.RIGHT);
 
         tNomRue = new JTextField();
         tNomRue.setFont(new Font("Arial", Font.BOLD, 25));
-        tNomRue.setSize(screenWidth-800, 50);
-        tNomRue.setLocation(600, 350);
-        tNomRue.setHorizontalAlignment(SwingConstants.LEFT);
-        formulaire.add(tNomRue);
 
         codePostal = new JLabel("Code Postal");
         codePostal.setFont(new Font("Arial", Font.BOLD, 25));
-        codePostal.setSize(200, 50);
-        codePostal.setLocation(50, 450);
-        codePostal.setHorizontalAlignment(SwingConstants.CENTER);
-        formulaire.add(codePostal);
+        codePostal.setHorizontalAlignment(SwingConstants.RIGHT);
 
         tCodePostal = new JTextField("0");
         tCodePostal.setFont(new Font("Arial", Font.BOLD, 25));
-        tCodePostal.setSize(150, 50);
-        tCodePostal.setLocation(250, 450);
-        tCodePostal.setHorizontalAlignment(SwingConstants.LEFT);
-        formulaire.add(tCodePostal);
 
         ville = new JLabel("Ville");
         ville.setFont(new Font("Arial", Font.BOLD, 25));
-        ville.setSize(200, 50);
-        ville.setLocation(400,450);
-        ville.setHorizontalAlignment(SwingConstants.CENTER);
-        formulaire.add(ville);
+        ville.setHorizontalAlignment(SwingConstants.RIGHT);
 
         tVille = new JTextField();
         tVille.setFont(new Font("Arial", Font.BOLD, 25));
-        tVille.setSize(screenWidth-800, 50);
-        tVille.setLocation(600, 450);
-        tVille.setHorizontalAlignment(SwingConstants.LEFT);
-        formulaire.add(tVille);
 
         email = new JLabel("email");
         email.setFont(new Font("Arial", Font.BOLD, 25));
-        email.setSize(200, 50);
-        email.setLocation(50,550);
-        email.setHorizontalAlignment(SwingConstants.CENTER);
-        formulaire.add(email);
+        email.setHorizontalAlignment(SwingConstants.RIGHT);
 
         tEmail = new JTextField();
         tEmail.setFont(new Font("Arial", Font.BOLD, 25));
-        tEmail.setSize((screenWidth-650)/2, 50);
-        tEmail.setLocation(250, 550);
-        tEmail.setHorizontalAlignment(SwingConstants.LEFT);
-        formulaire.add(tEmail);
 
         telephone = new JLabel("Téléphone");
         telephone.setFont(new Font("Arial", Font.BOLD, 25));
-        telephone.setSize(200, 50);
-        telephone.setLocation((screenWidth-650)/2 + 250,550);
-        telephone.setHorizontalAlignment(SwingConstants.CENTER);
-        formulaire.add(telephone);
+        telephone.setHorizontalAlignment(SwingConstants.RIGHT);
 
         tTelephone = new JTextField();
         tTelephone.setFont(new Font("Arial", Font.BOLD, 25));
-        tTelephone.setSize((screenWidth-650)/2, 50);
-        tTelephone.setLocation((screenWidth-650)/2 + 450, 550);
-        tTelephone.setHorizontalAlignment(SwingConstants.LEFT);
-        formulaire.add(tTelephone);
 
-        traitMilieu = new JLabel();
-        traitMilieu.setSize(screenWidth - 250, 2);
-        traitMilieu.setLocation(50,650);
-        formulaire.add(traitMilieu);
+        traitMilieu = new JSeparator();
 
         option1 = new JLabel();
         option1.setFont(new Font("Arial", Font.BOLD, 25));
-        option1.setSize(200, 50);
-        option1.setLocation(50,700);
-        option1.setHorizontalAlignment(SwingConstants.CENTER);
-        formulaire.add(option1);
+        option1.setHorizontalAlignment(SwingConstants.RIGHT);
 
         option2 = new JLabel();
         option2.setFont(new Font("Arial", Font.BOLD, 25));
-        option2.setSize(200, 50);
-        option2.setLocation((screenWidth-650)/2 + 250,700);
-        option2.setHorizontalAlignment(SwingConstants.CENTER);
-        formulaire.add(option2);
+        option2.setHorizontalAlignment(SwingConstants.RIGHT);
 
-        traitBas = new JLabel();
-        traitBas.setSize(screenWidth - 250, 2);
-        traitBas.setLocation(50,800);
-        formulaire.add(traitBas);
+        tCA = new JTextField("0");
+        tCA.setFont(new Font("Arial", Font.BOLD, 25));
+        tCA.setVisible(false);
+
+        tNbreEmploye = new JTextField("0");
+        tNbreEmploye.setFont(new Font("Arial", Font.BOLD, 25));
+        tNbreEmploye.setVisible(false);
+
+        traitBas = new JSeparator();
 
         commentaire = new JLabel("Commentaire");
         commentaire.setFont(new Font("Arial", Font.BOLD, 25));
-        commentaire.setSize(300, 50);
-        commentaire.setLocation(50, 850);
-        commentaire.setHorizontalAlignment(SwingConstants.CENTER);
-        formulaire.add(commentaire);
+        commentaire.setHorizontalAlignment(SwingConstants.RIGHT);
 
         tCommentaire = new JTextField();
         tCommentaire.setFont(new Font("Arial", Font.BOLD, 25));
-        tCommentaire.setSize(screenWidth - 550, 50);
-        tCommentaire.setLocation(350, 850);
-        tCommentaire.setHorizontalAlignment(SwingConstants.CENTER);
-        formulaire.add(tCommentaire);
+
+        DefaultListCellRenderer listRenderer = new DefaultListCellRenderer();
+        listRenderer.setHorizontalAlignment(DefaultListCellRenderer.CENTER);
+        annees = ControllerFormulaire.listeYears();
+
+        jComboBoxJours = new JComboBox(jours);
+        jComboBoxJours.setFont(new Font("Arial", Font.PLAIN, 25));
+        jComboBoxJours.setPreferredSize(new Dimension(200,50));
+        jComboBoxJours.setRenderer(listRenderer);
+        formulaire.add(jComboBoxJours);
+        jComboBoxJours.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dateJour = (String) jComboBoxJours.getSelectedItem();
+            }
+        });
+        jComboBoxJours.setVisible(false);
+
+
+        jComboBoxMois = new JComboBox(mois);
+        jComboBoxMois.setFont(new Font("Arial", Font.PLAIN, 25));
+        jComboBoxMois.setPreferredSize(jComboBoxJours.getPreferredSize());
+        jComboBoxMois.setRenderer(listRenderer);
+        formulaire.add(jComboBoxMois);
+        jComboBoxMois.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dateMois = (String) jComboBoxMois.getSelectedItem();
+                System.out.println(dateMois);
+            }
+        });
+        jComboBoxMois.setVisible(false);
+
+        jComboBoxAnnee = new JComboBox(annees.toArray(new String[ControllerFormulaire.listeYears().size()]));
+        jComboBoxAnnee.setFont(new Font("Arial", Font.PLAIN, 25));
+        jComboBoxAnnee.setPreferredSize(jComboBoxJours.getPreferredSize());
+        jComboBoxAnnee.setRenderer(listRenderer);
+        formulaire.add(jComboBoxAnnee);
+        jComboBoxAnnee.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dateAnnee = (String) jComboBoxAnnee.getSelectedItem();
+            }
+        });
+        jComboBoxAnnee.setVisible(false);
+
+        jComboBoxInterets = new JComboBox(new String[]{"","oui", "non"});
+        jComboBoxInterets.setFont(new Font("Arial", Font.PLAIN, 25));
+        jComboBoxInterets.setRenderer(listRenderer);
+        jComboBoxInterets.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                interet = (String) jComboBoxInterets.getSelectedItem();
+            }
+        });
+        jComboBoxInterets.setVisible(false);
 
         if (choix.equals("client")){
             client();
@@ -552,8 +533,7 @@ public class VueFormulaire extends JFrame {
 
         valider = new JButton("Valider");
         valider.setFont(new Font("Arial", Font.PLAIN, 15));
-        valider.setSize(screenWidth - 250, 50);
-        valider.setLocation(50, 950);
+        valider.setPreferredSize(new Dimension(250, 50));
         valider.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -575,7 +555,285 @@ public class VueFormulaire extends JFrame {
                 }
             }
         });
-        formulaire.add(valider);
+
+        //Création d'un damier
+        JLabel[] labels = new JLabel[15];
+        for (int i = 0; i < 15; i++) {
+            labels[i] = new JLabel();
+        }
+
+        labels[1].setPreferredSize(new Dimension(screenWidth/6, 1));
+        labels[2].setPreferredSize(labels[1].getPreferredSize());
+        labels[3].setPreferredSize(labels[1].getPreferredSize());
+        labels[4].setPreferredSize(labels[1].getPreferredSize());
+        labels[5].setPreferredSize(labels[1].getPreferredSize());
+        labels[6].setPreferredSize(new Dimension(1, screenWidth/17));
+        labels[7].setPreferredSize(labels[6].getPreferredSize());
+        labels[8].setPreferredSize(labels[6].getPreferredSize());
+        labels[9].setPreferredSize(labels[6].getPreferredSize());
+        labels[10].setPreferredSize(labels[6].getPreferredSize());
+        labels[11].setPreferredSize(labels[6].getPreferredSize());
+        labels[12].setPreferredSize(labels[6].getPreferredSize());
+        labels[13].setPreferredSize(labels[6].getPreferredSize());
+        labels[14].setPreferredSize(labels[6].getPreferredSize());
+
+        gbc.gridx = gbc.gridy = 0;
+        formulaire.add(labels[0], gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        formulaire.add(labels[1], gbc);
+
+        gbc.gridx = 2;
+        gbc.gridy = 0;
+        formulaire.add(labels[2], gbc);
+
+        gbc.gridx = 3;
+        gbc.gridy = 0;
+        formulaire.add(labels[3], gbc);
+
+        gbc.gridx = 4;
+        gbc.gridy = 0;
+        formulaire.add(labels[4], gbc);
+
+        gbc.gridx = 5;
+        gbc.gridy = 0;
+        formulaire.add(labels[5], gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        formulaire.add(labels[6], gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        formulaire.add(labels[7], gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        formulaire.add(labels[8], gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        formulaire.add(labels[9], gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        formulaire.add(labels[10], gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 6;
+        formulaire.add(labels[11], gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 7;
+        formulaire.add(labels[12], gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 8;
+        formulaire.add(labels[13], gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 9;
+        formulaire.add(labels[14], gbc);
+
+        //Ajout des composants en spécifiant les contraintes de types GridBagContraints
+        gbc.gridx = gbc.gridy = 1;
+        gbc.anchor = GridBagConstraints.BASELINE;
+        gbc.gridheight = gbc.gridwidth = 1;
+        gbc.insets = new Insets(0, 10, 0, 0);
+        formulaire.add(reverso, gbc);
+
+        gbc.gridx = 5;
+        gbc.gridy = 1;
+        gbc.gridheight = gbc.gridwidth = 1;
+        gbc.anchor = GridBagConstraints.BASELINE;
+        gbc.insets = new Insets(5, 0, 10, 10);
+        formulaire.add(exit, gbc);
+
+        gbc.gridx = 5;
+        gbc.gridy = 2;
+        gbc.gridheight = gbc.gridwidth = 1;
+        gbc.anchor = GridBagConstraints.BASELINE;
+        gbc.insets = new Insets(5, 0, 10, 10);
+        formulaire.add(accueil, gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 2;
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+        gbc.anchor = GridBagConstraints.BASELINE;
+        gbc.insets = new Insets(5, 0, 10, 10);
+        formulaire.add(title, gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 2;
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.insets = new Insets(3, 5, 0, 5);
+        formulaire.add(trait, gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 3;
+        gbc.gridheight = gbc.gridwidth = 1;
+        gbc.anchor = GridBagConstraints.BASELINE_TRAILING;
+        gbc.insets = new Insets(5, 0, 10, 10);
+        formulaire.add(raisonSociale, gbc);
+
+        gbc.gridx = 2;
+        gbc.gridy = 3;
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+        gbc.anchor = GridBagConstraints.BASELINE;
+        gbc.insets = new Insets(5, 0, 10, 10);
+        formulaire.add(tRaisonSociale, gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 4;
+        gbc.gridheight = gbc.gridwidth = 1;
+        gbc.anchor = GridBagConstraints.BASELINE_TRAILING;
+        gbc.insets = new Insets(5, 0, 10, 10);
+        formulaire.add(numero, gbc);
+
+        gbc.gridx = 2;
+        gbc.gridy = 4;
+        gbc.gridwidth = 1;
+        gbc.anchor = GridBagConstraints.BASELINE;
+        gbc.insets = new Insets(5, 0, 10, 10);
+        formulaire.add(tNumero, gbc);
+
+        gbc.gridx = 3;
+        gbc.gridy = 4;
+        gbc.gridheight = gbc.gridwidth = 1;
+        gbc.anchor = GridBagConstraints.BASELINE_TRAILING;
+        gbc.insets = new Insets(5, 0, 10, 10);
+        formulaire.add(nomRue, gbc);
+
+        gbc.gridx = 4;
+        gbc.gridy = 4;
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+        gbc.anchor = GridBagConstraints.BASELINE;
+        gbc.insets = new Insets(5, 0, 10, 10);
+        formulaire.add(tNomRue, gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 5;
+        gbc.gridheight = gbc.gridwidth = 1;
+        gbc.anchor = GridBagConstraints.BASELINE_TRAILING;
+        gbc.insets = new Insets(5, 0, 10, 10);
+        formulaire.add(codePostal, gbc);
+
+        gbc.gridx = 2;
+        gbc.gridy = 5;
+        gbc.gridwidth = 1;
+        gbc.anchor = GridBagConstraints.BASELINE;
+        gbc.insets = new Insets(5, 0, 10, 10);
+        formulaire.add(tCodePostal, gbc);
+
+        gbc.gridx = 3;
+        gbc.gridy = 5;
+        gbc.gridheight = gbc.gridwidth = 1;
+        gbc.anchor = GridBagConstraints.BASELINE_TRAILING;
+        gbc.insets = new Insets(5, 0, 10, 10);
+        formulaire.add(ville, gbc);
+
+        gbc.gridx = 4;
+        gbc.gridy = 5;
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+        gbc.anchor = GridBagConstraints.BASELINE;
+        gbc.insets = new Insets(5, 0, 10, 10);
+        formulaire.add(tVille, gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 6;
+        gbc.gridheight = gbc.gridwidth = 1;
+        gbc.anchor = GridBagConstraints.BASELINE_TRAILING;
+        gbc.insets = new Insets(5, 0, 10, 10);
+        formulaire.add(telephone, gbc);
+
+        gbc.gridx = 2;
+        gbc.gridy = 6;
+        gbc.gridwidth = 1;
+        gbc.anchor = GridBagConstraints.BASELINE;
+        gbc.insets = new Insets(5, 0, 10, 10);
+        formulaire.add(tTelephone, gbc);
+
+        gbc.gridx = 3;
+        gbc.gridy = 6;
+        gbc.gridheight = gbc.gridwidth = 1;
+        gbc.anchor = GridBagConstraints.BASELINE_TRAILING;
+        gbc.insets = new Insets(5, 0, 10, 10);
+        formulaire.add(email, gbc);
+
+        gbc.gridx = 4;
+        gbc.gridy = 6;
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+        gbc.anchor = GridBagConstraints.BASELINE;
+        gbc.insets = new Insets(5, 0, 10, 10);
+        formulaire.add(tEmail, gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 7;
+        gbc.gridheight = gbc.gridwidth = 1;
+        gbc.anchor = GridBagConstraints.BASELINE_TRAILING;
+        gbc.insets = new Insets(5, 0, 10, 10);
+        formulaire.add(option1, gbc);
+
+        gbc.gridx = 2;
+        gbc.gridy = 7;
+        gbc.gridwidth = 1;
+        gbc.anchor = GridBagConstraints.BASELINE;
+        gbc.insets = new Insets(5, 0, 10, 10);
+        formulaire.add(tNbreEmploye, gbc);
+        formulaire.add(jComboBoxInterets,gbc);
+
+
+        gbc.gridx = 3;
+        gbc.gridy = 7;
+        gbc.gridheight = gbc.gridwidth = 1;
+        gbc.anchor = GridBagConstraints.BASELINE_TRAILING;
+        gbc.insets = new Insets(5, 0, 10, 10);
+        formulaire.add(option2, gbc);
+
+        JPanel date = new JPanel();
+        date.setLayout(new GridBagLayout());
+        GridBagConstraints gbcDate = new GridBagConstraints();
+
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        date.add(jComboBoxJours, gbcDate);
+        gbc.gridx = 1;
+        date.add(jComboBoxMois, gbcDate);
+        gbc.gridx = 2;
+        date.add(jComboBoxAnnee, gbcDate);
+
+        gbc.gridx = 4;
+        gbc.gridy = 7;
+        gbc.gridwidth = 1;
+        gbc.anchor = GridBagConstraints.FIRST_LINE_START;
+        gbc.insets = new Insets(5, 0, 10, 10);
+        formulaire.add(date, gbc);
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+        gbc.anchor = GridBagConstraints.BASELINE;
+        formulaire.add(tCA, gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 8;
+        gbc.gridheight = gbc.gridwidth = 1;
+        gbc.anchor = GridBagConstraints.BASELINE_TRAILING;
+        gbc.insets = new Insets(5, 0, 10, 10);
+        formulaire.add(commentaire, gbc);
+
+        gbc.gridx = 2;
+        gbc.gridy = 8;
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+        gbc.anchor = GridBagConstraints.BASELINE;
+        gbc.insets = new Insets(5, 0, 10, 10);
+        formulaire.add(tCommentaire, gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 9;
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+        gbc.anchor = GridBagConstraints.BASELINE;
+        gbc.insets = new Insets(5, 0, 10, 10);
+        formulaire.add(valider, gbc);
 
         setVisible(true);
     }
@@ -600,88 +858,27 @@ public class VueFormulaire extends JFrame {
     /**
      * initilisation vue si client
      */
-    private void client(){
-        option1.setText("CA");
-        option2.setText("nbre Employés");
+    private void client() {
+        option2.setText("CA");
+        option1.setText("nbre Employés");
 
-        tCA = new JTextField("0");
-        tCA.setFont(new Font("Arial", Font.BOLD, 25));
-        tCA.setSize((screenWidth-650)/2, 50);
-        tCA.setLocation(250, 700);
-        tCA.setHorizontalAlignment(SwingConstants.LEFT);
-        formulaire.add(tCA);
-
-        tNbreEmploye = new JTextField("0");
-        tNbreEmploye.setFont(new Font("Arial", Font.BOLD, 25));
-        tNbreEmploye.setSize((screenWidth-650)/2, 50);
-        tNbreEmploye.setLocation((screenWidth-650)/2 + 450, 700);
-        tNbreEmploye.setHorizontalAlignment(SwingConstants.LEFT);
-        formulaire.add(tNbreEmploye);
+        tCA.setVisible(true);
+        tNbreEmploye.setVisible(true);
     }
 
     /**
      * initialisation vue si prospect
+     *
+     * @return
      */
     private void prospect(){
-        option1.setText("Date Prospection");
-        option1.setSize(250,50);
-        option2.setText("Intérêt");
-        annees = ControllerFormulaire.listeYears();
-        DefaultListCellRenderer listRenderer = new DefaultListCellRenderer();
-        listRenderer.setHorizontalAlignment(DefaultListCellRenderer.CENTER);
+        option2.setText("Date Prospection");
+        option1.setText("Intérêt");
 
-        jComboBoxJours = new JComboBox(jours);
-        jComboBoxJours.setFont(new Font("Arial", Font.PLAIN, 25));
-        jComboBoxJours.setSize(100, 50);
-        jComboBoxJours.setLocation(300, 700);
-        jComboBoxJours.setRenderer(listRenderer);
-        formulaire.add(jComboBoxJours);
-        jComboBoxJours.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dateJour = (String) jComboBoxJours.getSelectedItem();
-            }
-        });
-
-        jComboBoxMois = new JComboBox(mois);
-        jComboBoxMois.setFont(new Font("Arial", Font.PLAIN, 25));
-        jComboBoxMois.setSize(200, 50);
-        jComboBoxMois.setLocation(400, 700);
-        jComboBoxMois.setRenderer(listRenderer);
-        formulaire.add(jComboBoxMois);
-        jComboBoxMois.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dateMois = (String) jComboBoxMois.getSelectedItem();
-                System.out.println(dateMois);
-            }
-        });
-
-        jComboBoxAnnee = new JComboBox(annees.toArray(new String[ControllerFormulaire.listeYears().size()]));
-        jComboBoxAnnee.setFont(new Font("Arial", Font.PLAIN, 25));
-        jComboBoxAnnee.setSize(150, 50);
-        jComboBoxAnnee.setLocation(600, 700);
-        jComboBoxAnnee.setRenderer(listRenderer);
-        formulaire.add(jComboBoxAnnee);
-        jComboBoxAnnee.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dateAnnee = (String) jComboBoxAnnee.getSelectedItem();
-            }
-        });
-
-        jComboBoxInterets = new JComboBox(new String[]{"","oui", "non"});
-        jComboBoxInterets.setFont(new Font("Arial", Font.PLAIN, 25));
-        jComboBoxInterets.setSize(150, 50);
-        jComboBoxInterets.setLocation((screenWidth-650)/2 + 450, 700);
-        jComboBoxInterets.setRenderer(listRenderer);
-        formulaire.add(jComboBoxInterets);
-        jComboBoxInterets.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                interet = (String) jComboBoxInterets.getSelectedItem();
-            }
-        });
+        jComboBoxJours.setVisible(true);
+        jComboBoxMois.setVisible(true);
+        jComboBoxAnnee.setVisible(true);
+        jComboBoxInterets.setVisible(true);
     }
 
     /**

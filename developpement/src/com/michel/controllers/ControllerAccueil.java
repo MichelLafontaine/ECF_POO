@@ -41,7 +41,7 @@ public class ControllerAccueil {
      * @throws DaoException
      */
     public static void valider(String option, String choix, String raisonSociale)
-            throws ControllerException, SQLException, MetierException, DaoException {
+            throws ControllerException,  MetierException, DaoException {
         switch (option) {
             case "creer" :
                 creer(choix);
