@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 
 /**
@@ -18,13 +19,19 @@ import java.util.logging.Level;
  */
 public class DaoClient {
 
+    private static final String ERREUR_MESSAGE ="problème lecture BDD, ";
+    private static final String MESSAGE_FERMETURE ="problème de connection avec la base de données, " +
+            "le logiciel va fermer";
+
+    private DaoClient(){}
     /**
      * finAll client
      * @return ArraysList Objet Client
      * @throws MetierException propagation
      * @throws DaoException si pb avec la BDD
      */
-    public static ArrayList findAll() throws MetierException, DaoException {
+
+    public static List<Client> findAll() throws MetierException, DaoException {
 
         String query = "SELECT societe.ID_SOCIETE AS 'identifiant', " +
                 "NOM_SOCIETE AS 'raisonSociale', " +
@@ -65,8 +72,9 @@ public class DaoClient {
                 clients.add(client);
             }
         }catch (SQLException e) {
-            LoggerReverso.LOGGER.log(Level.SEVERE, "problème lecture BDD" +
-                    e.getMessage() + " " + e);
+            StringBuilder messageLog = new StringBuilder(ERREUR_MESSAGE);
+            messageLog.append(e.getMessage()).append(" ").append(e);
+            LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
             throw new DaoException(2, "problème connection base de donnée, le logiciel va fermer");
         }
         return clients;
@@ -122,9 +130,10 @@ public class DaoClient {
                         rs.getInt("nbreEmploye"));
             }
         } catch (SQLException e) {
-            LoggerReverso.LOGGER.log(Level.SEVERE, "problème lecture BDD" +
-                    e.getMessage() + " " + e);
-            throw new DaoException(2, "problème de connection avec la base de données, le logiciel va fermer");
+            StringBuilder messageLog = new StringBuilder(ERREUR_MESSAGE);
+            messageLog.append(e.getMessage()).append(" ").append(e);
+            LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
+            throw new DaoException(2, MESSAGE_FERMETURE);
         }
         return client;
     }
@@ -185,9 +194,10 @@ public class DaoClient {
                 throw new DaoException(1, "Cette entreprise est cliente");
             }
         } catch (SQLException e) {
-            LoggerReverso.LOGGER.log(Level.SEVERE, "problème lecture BDD" +
-                e.getMessage() + " " + e);
-            throw new DaoException(2, "problème de connection avec la base de données, le logiciel va fermer");
+            StringBuilder messageLog = new StringBuilder(ERREUR_MESSAGE);
+            messageLog.append(e.getMessage()).append(" ").append(e);
+            LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
+            throw new DaoException(2, MESSAGE_FERMETURE);
         }
     }
 
@@ -204,6 +214,8 @@ public class DaoClient {
         //verification nouvelle raison sociale n'existe pas dans la base de données avant modification
         String queryRS = "SELECT NOM_SOCIETE FROM societe WHERE NOM_SOCIETE LIKE '" + client.getRaisonSociale() + "' " +
                 "AND ID_SOCIETE != " + idSociete + ";";
+        String queryUpDateCLient = "UPDATE `client` SET `CA_CLIENT`='"+client.getChiffreAffaire()+"" +
+                "',`NBRE_EMPLOYE`='"+client.getNbreEmploye()+"' WHERE ID_SOCIETE = 1;";
         try (Statement stmt = DaoConnection.getInstance().createStatement()) {
             ResultSet rsRaisonSociale = stmt.executeQuery(queryRS);
             if(rsRaisonSociale.next()){
@@ -214,13 +226,12 @@ public class DaoClient {
                     "TEL_SOCIETE='" + client.getTelephone() + "'," +
                     "MAIL_SOCIETE='" + client.getEmail() + "'," +
                     "COM_SOCIETE='" + client.getCommentaire() + "' WHERE ID_SOCIETE = " + idSociete + ";");
-            stmt.execute("UPDATE client SET CA_CLIENT = '" + client.getChiffreAffaire() + "', " +
-                    "NBRE_EMPLOYE = '" + client.getNbreEmploye() + "' " +
-                    "WHERE ID_SOCIETE = " + idSociete + ";");
+            stmt.execute(queryUpDateCLient);
         } catch (SQLException e) {
-            LoggerReverso.LOGGER.log(Level.SEVERE, "problème lecture BDD" +
-                    e.getMessage() + " " + e);
-            throw new DaoException(2, "problème de connection avec la base de données, le logiciel va fermer");
+            StringBuilder messageLog = new StringBuilder(ERREUR_MESSAGE);
+            messageLog.append(e.getMessage()).append(" ").append(e);
+            LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
+            throw new DaoException(2, MESSAGE_FERMETURE);
         }
     }
 
@@ -241,8 +252,9 @@ public class DaoClient {
                 stmt.execute("DELETE FROM societe WHERE ID_SOCIETE = " + idSociete + ";");
             }
         } catch (SQLException e) {
-            LoggerReverso.LOGGER.log(Level.SEVERE, "problème lecture BDD" +
-                    e.getMessage() + " " + e);
+            StringBuilder messageLog = new StringBuilder(ERREUR_MESSAGE);
+            messageLog.append(e.getMessage()).append(" ").append(e);
+            LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
             throw new DaoException(2, "problème de connection avec la base de données, le logiciel va fermer");
 
         }

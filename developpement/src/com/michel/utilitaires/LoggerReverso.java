@@ -4,6 +4,8 @@ package com.michel.utilitaires;
  * classe avec pour connaitre nom class log
  */
 public class LoggerReverso {
+
+    private LoggerReverso(){}
     /**
      * logger
      */

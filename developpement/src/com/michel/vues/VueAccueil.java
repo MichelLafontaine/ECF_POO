@@ -4,6 +4,8 @@ import com.michel.controllers.ControllerAccueil;
 import com.michel.exceptions.ControllerException;
 import com.michel.exceptions.DaoException;
 import com.michel.exceptions.MetierException;
+import com.michel.utilitaires.ChoixClientProspect;
+import com.michel.utilitaires.EnumOption;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,7 +21,7 @@ public class VueAccueil extends JFrame {
     private Dimension screenSize;
     private int screenWidth;
     private int screenHeight;
-    private JLabel title;
+    private JLabel titleAccueil;
     private JLabel reverso;
     private JButton exit;
     private JSeparator trait;
@@ -33,9 +35,10 @@ public class VueAccueil extends JFrame {
     private JButton valider;
     private JComboBox<String> jComboBoxSociete;
     private String societes[];
-    private String choix;
-    private String option;
+    private ChoixClientProspect choix;
+    private EnumOption option;
     private String societe;
+    private ControllerAccueil controllerAccueil;
 
     /**
      * contructeur Vue Accueil
@@ -57,8 +60,8 @@ public class VueAccueil extends JFrame {
         GridBagConstraints gbc = new GridBagConstraints();
 
         //Creation et initialisation des éléments
-        title = new JLabel("ACCUEIL");
-        title.setFont(new Font("Arial", Font.PLAIN, 30));
+        titleAccueil = new JLabel("ACCUEIL");
+        titleAccueil.setFont(new Font("Arial", Font.PLAIN, 30));
 
         reverso = new JLabel("REVERSO");
         reverso.setFont(new Font("Arial", Font.BOLD, 25));
@@ -92,7 +95,7 @@ public class VueAccueil extends JFrame {
                 supprimer.setText("Supprimer un Client");
                 supprimer.setVisible(true);
                 reinitialiser.setVisible(true);
-                choix = "client";
+                choix = ChoixClientProspect.CLIENT;
             }
         });
 
@@ -112,7 +115,7 @@ public class VueAccueil extends JFrame {
                 supprimer.setText("Supprimer un Prospect");
                 supprimer.setVisible(true);
                 reinitialiser.setVisible(true);
-                choix = "prospect";
+                choix = ChoixClientProspect.PROSPECT;
             }
         });
 
@@ -126,7 +129,7 @@ public class VueAccueil extends JFrame {
                 modifier.setVisible(false);
                 supprimer.setVisible(false);
                 afficher.setVisible(false);
-                option = "creer";
+                option = EnumOption.CREER;
             }
         });
 
@@ -141,9 +144,9 @@ public class VueAccueil extends JFrame {
                 creer.setVisible(false);
                 supprimer.setVisible(false);
                 afficher.setVisible(false);
-                option = "modifier";
+                option = EnumOption.MODIFIER;
                 try {
-                    choixSociete(choix, gbc);
+                    choixSociete(gbc);
                 } catch (DaoException daoException){
                     JOptionPane.showMessageDialog(null, "erreur BDD" + daoException.getMessage());
                 } catch (Exception exception){
@@ -163,7 +166,7 @@ public class VueAccueil extends JFrame {
                 modifier.setVisible(false);
                 supprimer.setVisible(false);
                 creer.setVisible(false);
-                option = "afficher";
+                option = EnumOption.AFFICHER;
             }
         });
 
@@ -177,9 +180,9 @@ public class VueAccueil extends JFrame {
                 modifier.setVisible(false);
                 creer.setVisible(false);
                 afficher.setVisible(false);
-                option = "supprimer";
+                option = EnumOption.SUPPRIMER;
                 try {
-                    choixSociete(choix, gbc);
+                    choixSociete(gbc);
                 } catch (DaoException daoException){
                     JOptionPane.showMessageDialog(null, "erreur BDD" + daoException.getMessage());
                 } catch (Exception exception){
@@ -218,7 +221,8 @@ public class VueAccueil extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 dispose();
                 try {
-                    ControllerAccueil.valider(option, choix, societe);
+                    controllerAccueil = new ControllerAccueil(choix, option, societe);
+                    controllerAccueil.validerChoix();
                 } catch (MetierException metierException) {
                     JOptionPane.showMessageDialog(null, "erreur de saisie : "
                             + metierException.getMessage());
@@ -340,7 +344,7 @@ public class VueAccueil extends JFrame {
         gbc.gridwidth = GridBagConstraints.REMAINDER;
         gbc.anchor = GridBagConstraints.BASELINE;
         gbc.insets = new Insets(5, 0, 10, 10);
-        accueil.add(title, gbc);
+        accueil.add(titleAccueil, gbc);
 
         gbc.gridx = 1;
         gbc.gridy = 2;
@@ -420,10 +424,9 @@ public class VueAccueil extends JFrame {
 
     /**
      * liste déroulante raison sociale
-     * @param choix String client ou prospect
      * @throws DaoException propagation
      */
-    private void choixSociete (String choix, GridBagConstraints gbc) throws DaoException {
+    private void choixSociete (GridBagConstraints gbc) throws DaoException {
         societes = ControllerAccueil.listeSociete(choix);
         jComboBoxSociete = new JComboBox(societes);
         jComboBoxSociete.setFont(new Font("Arial", Font.PLAIN, 25));

@@ -8,11 +8,13 @@ import java.util.logging.Level;
  * classe pour lancer le log
  */
 public class LancerLog {
+
+    private LancerLog(){}
     /**
      * lancerLog
      */
     public static void lancerLog (){
-        FileHandler fh = null;
+        FileHandler fh;
         try {
 
             // nom du fichier : logReverso
@@ -29,13 +31,16 @@ public class LancerLog {
         }
         //Pas de fichier log, le programme se ferme
         catch (IOException | SecurityException fe) {
-            System.out.println("message d'erreur fichier  "+ fe.getMessage() + " " + fe);
+            StringBuilder messageLog = new StringBuilder("message d'erreur fichier  ");
+            messageLog.append(fe.getMessage()).append(" ").append(fe);
+            LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
             System.exit(1);
         }
 
         catch (Exception e ) {
-            System.out.println("message de l'exception  "+ e.getMessage() + " " + e);
-            LoggerReverso.LOGGER.log(Level.SEVERE, "message de la classe Exception  "+ e.getMessage() + " " + e);
+            StringBuilder messageLog = new StringBuilder("message de la classe Exception  ");
+            messageLog.append(e.getMessage()).append(" ").append(e);
+            LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
         }
     }
 }

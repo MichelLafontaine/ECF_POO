@@ -1,18 +1,14 @@
 package com.michel.utilitaires;
 
-import com.michel.exceptions.MetierException;
-
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
 /**
  * classe utilitaires
  */
 public class Utilitaires {
+
+    private Utilitaires(){}
     /**
      * pattern mail
      */
@@ -26,7 +22,7 @@ public class Utilitaires {
      */
     // Numéro de téléphone français
     public static final Pattern PATTERN_TEL =
-            Pattern.compile("(0|\\+33|0033)[1-9][0-9]{8}");
+            Pattern.compile("(0|\\+33|0033)[1-9]\\d{8}");
 
     /**
      * pattern code postal

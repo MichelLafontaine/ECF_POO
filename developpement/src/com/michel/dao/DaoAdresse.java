@@ -13,12 +13,15 @@ import java.util.logging.Level;
  * Vérification/création d'adresse dans la BDD
  */
 public class DaoAdresse {
+
+    private DaoAdresse(){}
     /**
      * creerAdresse
      * @param adresse Object Adresse
      * @return idAdresse de la table adresse
      * @throws DaoException si probleme avec la BDD
      */
+
     public static int creerAdresse (Adresse adresse) throws DaoException {
 
         int idAdresse = 0;
@@ -77,8 +80,9 @@ public class DaoAdresse {
             // si existante retour de la clé primaire existante
             }
         } catch (SQLException e) {
-            LoggerReverso.LOGGER.log(Level.SEVERE, "problème insertion adresse" +
-                e.getMessage() + " " + e);
+            StringBuilder messageLog = new StringBuilder("problème insertion adresse : ");
+            messageLog.append(e.getMessage()).append(" ").append(e);
+            LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
             throw new DaoException(2, "Problème communication avec la base de données, le logiciel va fermer");
 
         }

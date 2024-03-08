@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 
 /**
@@ -17,13 +18,18 @@ import java.util.logging.Level;
  */
 public class DaoProspect {
 
+    private static final String MESSAGE_ERREUR ="problème lecture BDD";
+    private static final String MESSAGE_FERMETURE = "problème connection base de donnée, le logiciel va fermer" ;
+
+    private DaoProspect(){}
+
     /**
      * findAll
      * @return ArrayList Object Prospect
      * @throws MetierException propagation
      * @throws DaoException si pb avec la BDD
      */
-    public static ArrayList findAll() throws MetierException, DaoException {
+    public static List findAll() throws MetierException, DaoException {
 
         String query = "SELECT societe.ID_SOCIETE AS 'identifiant', " +
                 "NOM_SOCIETE AS 'raisonSociale', " +
@@ -65,9 +71,10 @@ public class DaoProspect {
                 prospects.add(prospect);
             }
         }catch (SQLException e) {
-            LoggerReverso.LOGGER.log(Level.SEVERE, "problème lecture BDD" +
-                    e.getMessage() + " " + e);
-            throw new DaoException(2, "problème connection base de donnée, le logiciel va fermer");
+            StringBuilder messageLog = new StringBuilder(MESSAGE_ERREUR);
+            messageLog.append(e.getMessage()).append(" ").append(e);
+            LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
+            throw new DaoException(2, MESSAGE_FERMETURE);
         }
         return prospects;
     }
@@ -118,9 +125,10 @@ public class DaoProspect {
                         rs.getInt("interetProspect"));
             }
         } catch (SQLException | DaoException e) {
-            LoggerReverso.LOGGER.log(Level.SEVERE, "problème lecture BDD" +
-                    e.getMessage() + " " + e);
-            throw new DaoException(2, "problème connection base de donnée, le logiciel va fermer");
+            StringBuilder messageLog = new StringBuilder(MESSAGE_ERREUR);
+            messageLog.append(e.getMessage()).append(" ").append(e);
+            LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
+            throw new DaoException(2, MESSAGE_FERMETURE);
         }
         return prospect;
     }
@@ -181,9 +189,10 @@ public class DaoProspect {
                 throw new DaoException(1, "Cette entreprise est prospecte");
             }
         } catch (SQLException e) {
-            LoggerReverso.LOGGER.log(Level.SEVERE, "problème lecture BDD" +
-                    e.getMessage() + " " + e);
-            throw new DaoException(2, "problème connection base de donnée, le logiciel va fermer");
+            StringBuilder messageLog = new StringBuilder(MESSAGE_ERREUR);
+            messageLog.append(e.getMessage()).append(" ").append(e);
+            LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
+            throw new DaoException(2, MESSAGE_FERMETURE);
         }
     }
 
@@ -214,9 +223,10 @@ public class DaoProspect {
                     "INTERET_PROSPECT = '" + prospect.getInteretProspect() + "' " +
                     "WHERE ID_SOCIETE = " + idSociete + ";");
         } catch (SQLException e) {
-            LoggerReverso.LOGGER.log(Level.SEVERE, "problème lecture BDD" +
-                    e.getMessage() + " " + e);
-            throw new DaoException(2, "problème connection base de donnée, le logiciel va fermer");
+            StringBuilder messageLog = new StringBuilder(MESSAGE_ERREUR);
+            messageLog.append(e.getMessage()).append(" ").append(e);
+            LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
+            throw new DaoException(2, MESSAGE_FERMETURE);
         }
     }
 
@@ -237,9 +247,10 @@ public class DaoProspect {
                 stmt.execute("DELETE FROM societe WHERE ID_SOCIETE = " + idSociete + ";");
             }
         } catch (SQLException e) {
-            LoggerReverso.LOGGER.log(Level.SEVERE, "problème lecture BDD" +
-                    e.getMessage() + " " + e);
-            throw new DaoException(2, "problème connection base de donnée, le logiciel va fermer");
+            StringBuilder messageLog = new StringBuilder(MESSAGE_ERREUR);
+            messageLog.append(e.getMessage()).append(" ").append(e);
+            LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
+            throw new DaoException(2, MESSAGE_FERMETURE);
         }
     }
 }

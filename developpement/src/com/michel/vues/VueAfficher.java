@@ -4,6 +4,7 @@ import com.michel.controllers.ControllerAffichage;
 import com.michel.exceptions.ControllerException;
 import com.michel.exceptions.DaoException;
 import com.michel.exceptions.MetierException;
+import com.michel.utilitaires.ChoixClientProspect;
 
 import javax.swing.*;
 import javax.swing.table.*;
@@ -16,6 +17,7 @@ import java.awt.event.ActionListener;
  */
 public class VueAfficher extends JFrame{
 
+    private ChoixClientProspect choix;
     private Container affichage;
     private Dimension screenSize;
     private int screenWidth;
@@ -34,8 +36,9 @@ public class VueAfficher extends JFrame{
      * contructeur Vue affichage
      * @param choix String client ou prospect
      */
-    public VueAfficher(String choix) {
+    public VueAfficher(ChoixClientProspect choix) {
 
+        this.choix = choix;
         setTitle("Vue Affichage");
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         screenWidth = (int) screenSize.getWidth();
@@ -49,7 +52,7 @@ public class VueAfficher extends JFrame{
         GridBagConstraints gbc = new GridBagConstraints();
         affichage = getContentPane();
 
-        title = new JLabel("AFFICHAGE DES " + choix.toUpperCase() + "S");
+        title = new JLabel("AFFICHAGE DES " + choix + "S");
         title.setFont(new Font("Arial", Font.PLAIN, 30));
 
         reverso = new JLabel("REVERSO");
@@ -90,9 +93,10 @@ public class VueAfficher extends JFrame{
             }
         });
 
-        colonne = nomColonne(choix);
+        colonne = nomColonne();
         try {
-            listeSociete = ControllerAffichage.findAll(choix);
+            ControllerAffichage controllerAffichage = new ControllerAffichage(choix);
+            listeSociete = controllerAffichage.findAll();
         } catch (MetierException metierException) {
             JOptionPane.showMessageDialog(null, "erreur de saisie : " + metierException.getMessage());
         } catch (DaoException daoException){
@@ -262,16 +266,15 @@ public class VueAfficher extends JFrame{
     }
     /**
      * nomColonne
-     * @param choix client ou prospect
      * @return String[] entetes de colonne
      */
 
-    public static String[] nomColonne(String choix) {
-        if (choix.equals("client")) {
+    public String[] nomColonne() {
+        if (choix.equals(ChoixClientProspect.CLIENT)) {
             return new String[]{"Raison Sociale", "N°", "Nom de rue", "CP", "Ville", "Email", "Téléphone", "CA",
                     "Nbre d'employé", "commentaire"};
         }
-        if (choix.equals("prospect")) {
+        if (choix.equals(ChoixClientProspect.PROSPECT)) {
             return new String[]{"Raison Sociale", "N°", "Nom de rue", "CP", "Ville", "Email", "Téléphone",
                     "Date Prospection", "Intérêt", "commentaire"};
         } else {

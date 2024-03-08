@@ -16,7 +16,6 @@ public class FormatterLog extends Formatter {
      * @return String message log
      */
     public String format(LogRecord record) {
-        // TODO Auto-generated method stub
         DateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         StringBuilder result = new StringBuilder();
 

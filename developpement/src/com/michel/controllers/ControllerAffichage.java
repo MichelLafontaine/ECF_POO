@@ -7,11 +7,12 @@ import com.michel.exceptions.DaoException;
 import com.michel.exceptions.MetierException;
 import com.michel.metiers.Client;
 import com.michel.metiers.Prospect;
+import com.michel.utilitaires.ChoixClientProspect;
 import com.michel.utilitaires.LoggerReverso;
 import com.michel.utilitaires.Utilitaires;
 import com.michel.vues.VueAfficher;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 
 /**
@@ -19,15 +20,23 @@ import java.util.logging.Level;
  */
 public class ControllerAffichage {
 
+    private ChoixClientProspect choix;
+
+    public ControllerAffichage() {
+    }
+
+    public ControllerAffichage(ChoixClientProspect choix) {
+        this.choix = choix;
+    }
+
     /**
      * lancer la vue de l'affichage
-     * @param choix String client ou porspect
      * @throws MetierException propagation à la vue
      * @throws DaoException  propagation à la vue
      * @throws ControllerException propagation à la vue
      */
-    public static void affichageInit(String choix) throws MetierException, DaoException, ControllerException {
-        VueAfficher vueAfficher = new VueAfficher(choix);
+    public void affichageInit() {
+        new VueAfficher(choix);
     }
 
     /**
@@ -39,16 +48,15 @@ public class ControllerAffichage {
 
     /**
      * finAll
-     * @param choix String client ou prospect
      * @return String[][] de toutes les données Objects Client ou Prospect
      * @throws MetierException propagation à la vue
      * @throws DaoException propagation à la vue
      * @throws ControllerException choix incorrect
      */
-    public static String[][] findAll(String choix) throws MetierException, DaoException, ControllerException {
-        String[][] listes = new String[0][];
-        ArrayList listesObject = null;
-        if (choix.equals("client")){
+    public String[][] findAll() throws MetierException, DaoException, ControllerException {
+        String[][] listes;
+        List listesObject;
+        if (choix.equals(ChoixClientProspect.CLIENT)){
             listesObject = DaoClient.findAll();
             listes = new String[listesObject.size()][10];
             for (int i = 0; i < listesObject.size(); i++){
@@ -64,7 +72,7 @@ public class ControllerAffichage {
                 listes[i][8] = String.valueOf(client.getNbreEmploye());
                 listes[i][9] = client.getCommentaire();
             }
-        } else if (choix.equals("prospect")){
+        } else if (choix.equals(ChoixClientProspect.PROSPECT)){
             listesObject = DaoProspect.findAll();
             listes = new String[listesObject.size()][10];
             for (int i = 0; i < listesObject.size(); i++){

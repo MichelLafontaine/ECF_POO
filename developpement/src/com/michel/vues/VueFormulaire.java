@@ -5,6 +5,8 @@ import com.michel.controllers.ControllerFormulaire;
 import com.michel.exceptions.ControllerException;
 import com.michel.exceptions.DaoException;
 import com.michel.exceptions.MetierException;
+import com.michel.utilitaires.ChoixClientProspect;
+import com.michel.utilitaires.EnumOption;
 import com.michel.utilitaires.LoggerReverso;
 
 import javax.swing.*;
@@ -20,6 +22,8 @@ import java.util.logging.Level;
  */
 public class VueFormulaire extends JFrame {
 
+    private EnumOption option;
+    private int identifiant;
     private Container formulaire;
     private Dimension screenSize;
     private int screenWidth;
@@ -74,7 +78,11 @@ public class VueFormulaire extends JFrame {
     private LocalDate date;
     private JComboBox jComboBoxInterets;
     private String interet;
-    private String choix; // client ou prospect
+    private ChoixClientProspect choix; // client ou prospect
+
+    public void setIdentifiant(int identifiant) {
+        this.identifiant = identifiant;
+    }
 
     /**
      *initialise raison Social du JtextField
@@ -286,12 +294,13 @@ public class VueFormulaire extends JFrame {
 
     /**
      * initalisation Vue
-     * @param choixClientProspect String client ou prospect
+     * @param choix Enum ChoixClientProspect client ou prospect
      * @param option String creer modifier ou supprimr
      */
-    public VueFormulaire (String choixClientProspect, String option) {
+    public VueFormulaire (ChoixClientProspect choix, EnumOption option) {
 
-        this.choix = choixClientProspect;
+        this.choix = choix;
+        this.option = option;
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         screenWidth = (int) screenSize.getWidth();
         screenHeight = (int) screenSize.getHeight();
@@ -450,8 +459,7 @@ public class VueFormulaire extends JFrame {
             }
         });
         jComboBoxMois.setVisible(false);
-
-        jComboBoxAnnee = new JComboBox(annees.toArray(new String[annees.size()]));
+        jComboBoxAnnee = new JComboBox(annees.toArray(new String[0]));
         jComboBoxAnnee.setFont(new Font("Arial", Font.PLAIN, 25));
         jComboBoxAnnee.setPreferredSize(jComboBoxJours.getPreferredSize());
         jComboBoxAnnee.setRenderer(listRenderer);
@@ -475,64 +483,14 @@ public class VueFormulaire extends JFrame {
         });
         jComboBoxInterets.setVisible(false);
 
-        if (choix.equals("client")){
+        if (choix.equals(ChoixClientProspect.CLIENT)){
             client();
         }
-        if (choix.equals("prospect")){
+        if (choix.equals(ChoixClientProspect.PROSPECT)){
             prospect();
         }
 
-        switch (option) {
-            case "creer" :
-                setTitle("Créer un " + choixClientProspect);
-                title.setText("CREER UN NOUVEAU " + choixClientProspect.toUpperCase());
-                break;
-            case "modifier" :
-                setTitle("Modifier un " + choixClientProspect);
-                title.setText("MODIFIER UN " + choixClientProspect.toUpperCase());
-                break;
-            case "supprimer" :
-                setTitle(("Supprimer un " + choixClientProspect));
-                title.setText("SUPPRIMER UN " + choixClientProspect.toUpperCase());
-                //On bloque toute possibilité de modification
-                tRaisonSociale.setEnabled(false);
-                tRaisonSociale.setDisabledTextColor(Color.BLACK);
-                tNumero.setEnabled(false);
-                tNumero.setDisabledTextColor(Color.BLACK);
-                tNomRue.setEnabled(false);
-                tNomRue.setDisabledTextColor(Color.BLACK);
-                tCodePostal.setEnabled(false);
-                tCodePostal.setDisabledTextColor(Color.BLACK);
-                tVille.setEnabled(false);
-                tVille.setDisabledTextColor(Color.BLACK);
-                tTelephone.setEnabled(false);
-                tTelephone.setDisabledTextColor(Color.BLACK);
-                tEmail.setEnabled(false);
-                tEmail.setDisabledTextColor(Color.BLACK);
-                tCommentaire.setEnabled(false);
-                tCommentaire.setDisabledTextColor(Color.BLACK);
-                if (choix.equals("client")) {
-                    tCA.setEnabled(false);
-                    tCA.setDisabledTextColor(Color.BLACK);
-                    tNbreEmploye.setEnabled(false);
-                    tNbreEmploye.setDisabledTextColor(Color.BLACK);
-                } else if (choix.equals("prospect")) {
-                    jComboBoxAnnee.setEnabled(false);
-                    jComboBoxAnnee.setBackground(Color.BLACK);
-                    jComboBoxJours.setEnabled(false);
-                    jComboBoxMois.setEnabled(false);
-                    jComboBoxInterets.setEnabled(false);
-                } else {
-                    JOptionPane.showMessageDialog(null,"Erreur lecture, le programme va fermer");
-                    LoggerReverso.LOGGER.log(Level.SEVERE, "erreur option dans Vue Formulaire / cas supprimer ");
-                    System.exit(1);
-                }
-                break;
-            default:
-                JOptionPane.showMessageDialog(null,"Erreur lecture, le programme va fermer");
-                LoggerReverso.LOGGER.log(Level.SEVERE, "erreur option dans Vue Formulaire");
-                System.exit(1);
-        }
+        initOption();
 
         valider = new JButton("Valider");
         valider.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -540,7 +498,7 @@ public class VueFormulaire extends JFrame {
         valider.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
-                    actionValider(choix, option);
+                    actionValider();
 
                 } catch (MetierException metierException) {
                     JOptionPane.showMessageDialog(null, "erreur de saisie : " + metierException.getMessage());
@@ -679,7 +637,7 @@ public class VueFormulaire extends JFrame {
         gbc.gridheight = gbc.gridwidth = 1;
         gbc.anchor = GridBagConstraints.BASELINE_TRAILING;
         gbc.insets = new Insets(5, 0, 10, 10);
-        formulaire.add(raisonSociale, gbc);
+        formulaire.add(this.raisonSociale, gbc);
 
         gbc.gridx = 2;
         gbc.gridy = 3;
@@ -848,7 +806,7 @@ public class VueFormulaire extends JFrame {
      */
     private void onAccueil() throws MetierException, DaoException {
         dispose();
-        ControllerAccueil.initAcceuil();
+        ControllerFormulaire.accueil();
     }
 
     /**
@@ -884,13 +842,11 @@ public class VueFormulaire extends JFrame {
 
     /**
      * Valider le formulaire
-     * @param choix String client ou prospect
-     * @param option String creer modifier ou supprimer
      * @throws MetierException propagation
      * @throws DaoException propagation
      * @throws ControllerException propagation
      */
-    public void actionValider(String choix,String option)
+    public void actionValider()
             throws MetierException, DaoException, ControllerException {
         int choixValidation = JOptionPane.showConfirmDialog(null,
                 "Voulez vous " + option + " le " + choix + " " + tRaisonSociale.getText());
@@ -898,11 +854,9 @@ public class VueFormulaire extends JFrame {
             if (dateJour != null && dateMois != null && dateAnnee != null){
                 date = LocalDate.of(Integer.parseInt(dateAnnee), Integer.parseInt(dateMois), Integer.parseInt(dateJour));
             }
-            ControllerFormulaire.valider(getRaisonSociale(), getNumero(), getNomRue(), getCodePostal(), getVille(),
-                    getEmail(), getTelephone(), getCA(), gettNbreEmploye(),
-                    date,
-                    getInteret(), getCommentaire(),
-                    choix, option);
+            ControllerFormulaire controllerFormulaire = new ControllerFormulaire(choix, option, getRaisonSociale(), identifiant);
+            controllerFormulaire.valider(getNumero(), getNomRue(), getCodePostal(), getVille(),
+                    getEmail(), getTelephone(), getCA(), gettNbreEmploye(), date, getInteret(), getCommentaire());
             JOptionPane.showMessageDialog(null, "Vous avez " + option + " le " +
                     choix + " " + getRaisonSociale() + "\nVous allez retourner à l'accueil");
             onAccueil();
@@ -912,7 +866,7 @@ public class VueFormulaire extends JFrame {
      * liste des années depuis 2000
      * @return ArrayList String
      */
-    public static ArrayList<String> years (){
+    public ArrayList<String> years (){
         ArrayList<String> listAnnee = new ArrayList<>();
         listAnnee.add("années");
         int anneeActuelle = LocalDate.now().getYear();
@@ -921,5 +875,59 @@ public class VueFormulaire extends JFrame {
             listAnnee.add(String.valueOf(annee));
         }
         return listAnnee;
+    }
+
+    public void initOption(){
+        switch (option) {
+            case EnumOption.CREER:
+                setTitle("Créer un " + choix);
+                title.setText("CREER UN NOUVEAU " + choix);
+                break;
+            case EnumOption.MODIFIER :
+                setTitle("Modifier un " + choix);
+                title.setText("MODIFIER UN " + choix);
+                break;
+            case EnumOption.SUPPRIMER:
+                setTitle(("Supprimer un " + choix));
+                title.setText("SUPPRIMER UN " + choix);
+                //On bloque toute possibilité de modification
+                tRaisonSociale.setEnabled(false);
+                tRaisonSociale.setDisabledTextColor(Color.BLACK);
+                tNumero.setEnabled(false);
+                tNumero.setDisabledTextColor(Color.BLACK);
+                tNomRue.setEnabled(false);
+                tNomRue.setDisabledTextColor(Color.BLACK);
+                tCodePostal.setEnabled(false);
+                tCodePostal.setDisabledTextColor(Color.BLACK);
+                tVille.setEnabled(false);
+                tVille.setDisabledTextColor(Color.BLACK);
+                tTelephone.setEnabled(false);
+                tTelephone.setDisabledTextColor(Color.BLACK);
+                tEmail.setEnabled(false);
+                tEmail.setDisabledTextColor(Color.BLACK);
+                tCommentaire.setEnabled(false);
+                tCommentaire.setDisabledTextColor(Color.BLACK);
+                if (choix.equals(ChoixClientProspect.CLIENT)) {
+                    tCA.setEnabled(false);
+                    tCA.setDisabledTextColor(Color.BLACK);
+                    tNbreEmploye.setEnabled(false);
+                    tNbreEmploye.setDisabledTextColor(Color.BLACK);
+                } else if (choix.equals(ChoixClientProspect.PROSPECT)) {
+                    jComboBoxAnnee.setEnabled(false);
+                    jComboBoxAnnee.setBackground(Color.BLACK);
+                    jComboBoxJours.setEnabled(false);
+                    jComboBoxMois.setEnabled(false);
+                    jComboBoxInterets.setEnabled(false);
+                } else {
+                    JOptionPane.showMessageDialog(null,"Erreur lecture, le programme va fermer");
+                    LoggerReverso.LOGGER.log(Level.SEVERE, "erreur option dans Vue Formulaire / cas supprimer ");
+                    System.exit(1);
+                }
+                break;
+            default:
+                JOptionPane.showMessageDialog(null,"Erreur lecture, le programme va fermer");
+                LoggerReverso.LOGGER.log(Level.SEVERE, "erreur option dans Vue Formulaire");
+                System.exit(1);
+        }
     }
 }

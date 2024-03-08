@@ -17,18 +17,15 @@ import java.util.logging.Level;
  * Classe de connection et fermeture avec la BDD
  */
 public class DaoConnection {
-
     private static Connection connection = null;
     final Properties dataProperties = new Properties();
-
+//(InputStream input = Files.newInputStream(path))
     /**
      * Connection BDD
      */
     public DaoConnection() {
-
-        try {
-            File fichier = new File("database.properties");
-            FileInputStream input = new FileInputStream(fichier);
+        File fichier = new File("database.properties");
+        try (FileInputStream input = new FileInputStream(fichier);){
             dataProperties.load(input);
             connection = DriverManager.getConnection(
                     dataProperties.getProperty("url"),
@@ -36,23 +33,22 @@ public class DaoConnection {
                     dataProperties.getProperty("password")
             );
             LoggerReverso.LOGGER.log(Level.INFO, "ouverture BDD");
-            System.out.println("connecter à la BDD");
         } catch (SQLException e) {
-            LoggerReverso.LOGGER.log(Level.SEVERE, "problème ouverture BDD SQLException"+
-                    e.getMessage() + " " + e);
-            System.out.println("erreur connection");
-        } catch (FileNotFoundException fe) {
-            LoggerReverso.LOGGER.log(Level.SEVERE, "problème ouverture BDD FileNotFoundException"+
-                    fe.getMessage() + " " + fe);
-            System.out.println("problème fichier");
-        } catch (IOException ie) {
-            LoggerReverso.LOGGER.log(Level.SEVERE, "problème ouverture BDD IOException"+
-                    ie.getMessage() + " " + ie);
-            System.out.println("problème ioexception");
-        } catch (Exception exception) {
-            LoggerReverso.LOGGER.log(Level.SEVERE, "problème Ouverture BDD"+
-                    exception.getMessage() + " " + exception);
-            System.out.println("autre exception");
+            StringBuilder messageLog = new StringBuilder("problème ouverture BDD SQLException, ");
+            messageLog.append(e.getMessage()).append(" ").append(e);
+            LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
+        } catch (FileNotFoundException e) {
+            StringBuilder messageLog = new StringBuilder("problème ouverture BDD FileNotFoundException, ");
+            messageLog.append(e.getMessage()).append(" ").append(e);
+            LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
+        } catch (IOException e) {
+            StringBuilder messageLog = new StringBuilder("problème ouverture BDD IOException, ");
+            messageLog.append(e.getMessage()).append(" ").append(e);
+            LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
+        } catch (Exception e) {
+            StringBuilder messageLog = new StringBuilder("problème Ouverture BDD, ");
+            messageLog.append(e.getMessage()).append(" ").append(e);
+            LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
         }
     }
 
@@ -62,9 +58,10 @@ public class DaoConnection {
                 try {
                     LoggerReverso.LOGGER.log(Level.INFO, "fermeture BDD");
                     connection.close();
-                    System.out.println("Fermeture de la BDD");
-                } catch (SQLException ex) {
-                    LoggerReverso.LOGGER.log(Level.SEVERE, "problème fermeture BDD"+ ex.getMessage() + " " + ex);
+                } catch (SQLException e) {
+                    StringBuilder messageLog = new StringBuilder("problème fermeture BDD, ");
+                    messageLog.append(e.getMessage()).append(" ").append(e);
+                    LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
                 }
             }
         }));
@@ -81,8 +78,9 @@ public class DaoConnection {
             try{
                 new DaoConnection();
             }catch (Exception e){
-                LoggerReverso.LOGGER.log(Level.SEVERE, "problème ouverture BDD SQLException"+
-                        e.getMessage() + " " + e);
+                StringBuilder messageLog = new StringBuilder("problème ouverture BDD SQLException, ");
+                messageLog.append(e.getMessage()).append(" ").append(e);
+                LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
                 throw new DaoException(2, "problème de connection avec la base de données, le logiciel va fermer");
             }
         }

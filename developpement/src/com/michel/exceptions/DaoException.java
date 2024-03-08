@@ -4,7 +4,7 @@ package com.michel.exceptions;
  * erreur lié à la BDD
  */
 public class DaoException extends Exception{
-    private int critere;
+    private final int critere;
 
     /**
      * retourne le niveau de critere
@@ -12,12 +12,6 @@ public class DaoException extends Exception{
      */
     public int getCritere() {
         return critere;
-    }
-
-    /**
-     * constructeur sans attribut
-     */
-    public DaoException() {
     }
 
     /**
