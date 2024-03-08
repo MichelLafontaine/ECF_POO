@@ -1,0 +1,54 @@
+
+r
+java:S3740H"/Provide the parametrized type for this generic.(€‘ê8õ¶—èá1J$333fe8aa-4ad6-4ec7-a1f5-8dd7e7158bb2
+w
+java:S3740I"/Provide the parametrized type for this generic.(ÑöÅ†ÿÿÿÿÿ8ö¶—èá1J$01cc4553-39c5-4296-8f3f-3046953fd442
+q
+java:S3740J"/Provide the parametrized type for this generic.(µâç8ö¶—èá1J$3e5dbdf0-ea0c-44e3-a6be-4ac5a1752f75
+w
+java:S3740O"/Provide the parametrized type for this generic.(Ë‘Úåüÿÿÿÿ8ö¶—èá1J$d6f1aa35-1f48-4a73-883c-93d0882ebea1
+s
+java:S3740³"/Provide the parametrized type for this generic.(ç¼ÁÁ8ü¹éá1J$7a1ee814-8cfe-4e10-a66c-da28b1288fac
+s
+java:S3740Á"/Provide the parametrized type for this generic.(Ğî€8ü¹éá1J$a5ce1d46-b0b0-4949-9e95-1e7ec3f9ac16
+x
+java:S3740Î"/Provide the parametrized type for this generic.(‡¾û˜ÿÿÿÿÿ8ü¹éá1J$d8b9e49d-a983-469c-9266-fa2c31acc902
+x
+java:S3740Û"/Provide the parametrized type for this generic.(«‚²ùÿÿÿÿ8ü¹éá1J$c2e237cd-a52b-454b-8f61-5186f0fd209d
+‹
+java:S1192¾"GDefine a constant instead of duplicating this literal "Arial" 29 times.(”¯„‚8³óÃèá1J$606e7d13-9c93-43ee-820c-d40c8c13e1b7
+´
+java:S1319å"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".( ôÚ8ºéá1J$cef3f823-7877-421f-b189-0990cfaebe72
+l
+java:S1604Æ"(Make this anonymous inner class a lambda(¯ı©8¶óÃèá1J$969bf615-02e9-4744-80cb-e3f1c567847d
+q
+java:S1604Ñ"(Make this anonymous inner class a lambda(è±áËúÿÿÿÿ8·óÃèá1J$f7f2ef1d-3bb1-4fe3-91b8-7ae6134ee747
+q
+java:S1604¸"(Make this anonymous inner class a lambda(´ûôáùÿÿÿÿ8ƒºéá1J$29472fad-08d6-4606-9787-2803d35b4375
+l
+java:S1604Æ"(Make this anonymous inner class a lambda(®´õÜ8ƒºéá1J$6a54be40-b086-43a1-8033-bfcbd16dd77f
+q
+java:S1604Ó"(Make this anonymous inner class a lambda(ÀÑ¬êøÿÿÿÿ8ƒºéá1J$5dba49f8-8248-4717-a97a-63153061f89e
+q
+java:S1604Ş"(Make this anonymous inner class a lambda(×ù¼‘şÿÿÿÿ8ƒºéá1J$2ae1e9b9-5609-4010-9c30-94dc87e15e40
+q
+java:S1604ò"(Make this anonymous inner class a lambda(Ü§Áºúÿÿÿÿ8ƒºéá1J$58bdb7be-044c-440f-a6ee-007249c0c51b
+l
+java:S2387"*"title" is the name of a field in "Frame".(Éº~8˜·—èá1J$22d7f85b-96fe-45de-af0e-f54ff50c71f4
+–
+java:S3776¬"RRefactor this method to reduce its Cognitive Complexity from 23 to the 15 allowed.(œóÌ8ª·—èá1J$5456256d-86e2-4a8d-acee-649859b09a61
+Š
+java:S3252°"AUse static access with "javax.swing.SwingConstants" for "CENTER".(âÇèÁşÿÿÿÿ8ƒÍ§êá1J$b3b8785b-98f3-4b24-8eae-547a0850c011
+n	java:S106Ê"+Replace this use of System.out by a logger.(ü¬Áè8†Í§êá1J$4a51fd06-b2fa-46e0-98e9-af4f79758d01
+
+java:S1117ô"8Rename "date" which hides the field declared at line 78.(Ã¾õèÿÿÿÿÿ8Í§êá1J$b3e127bf-b177-4aa5-9221-83f3eff91acf
+Â
+java:S1130§"~Remove the declaration of thrown exception 'com.michel.exceptions.MetierException', as it cannot be thrown from method's body.(Ùî§ä8’Í§êá1J$8ffd4b04-90eb-4a79-b129-b604fa55d10f
+¿
+java:S1130§"{Remove the declaration of thrown exception 'com.michel.exceptions.DaoException', as it cannot be thrown from method's body.(Ùî§ä8’Í§êá1J$3efcde3c-3c79-407c-8f87-93082a0bc37b
+ˆ
+java:S1128"ERemove this unused import 'com.michel.controllers.ControllerAccueil'.(”Å¤Ã8´êá1J$25257069-9272-4344-b79f-bb223e24457f
+r
+java:S1068#"/Remove this unused "traitMilieu" private field.(”†¬ø8é·—èá1J$3f2f686d-24e8-4e66-b2dc-5c549ad03ad7
+t
+java:S1068$",Remove this unused "traitBas" private field.(Áàƒ÷ûÿÿÿÿ8é·—èá1J$63742c80-8c75-4a6d-8630-88ec1f704747

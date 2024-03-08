@@ -1,0 +1,19 @@
+
+Ç
+java:S11928"FDefine a constant instead of duplicating this literal "Arial" 4 times.(îØÑÇJ$17ef4c3d-3010-45e7-9f3c-c1097609a14e
+d
+java:S1604A"(Make this anonymous inner class a lambda(Ø˝è©J$024db26a-f648-4ef1-9818-c3e6b47b4aa0
+i
+java:S1604N"(Make this anonymous inner class a lambda(Ë±·À˙ˇˇˇˇJ$49236618-012c-4a0b-86e0-5dca5bee4e43
+e
+java:S2387"*"title" is the name of a field in "Frame".(é…∫~J$ad92586c-8684-4665-a37d-6a7357cf062e
+ì
+java:S3776'"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(ó€ÕéˇˇˇˇˇJ$dfd515f1-bd5c-47e4-a62b-31363eadcb7f
+ª
+java:S1130á"~Remove the declaration of thrown exception 'com.michel.exceptions.MetierException', as it cannot be thrown from method's body.(ŸÓß‰J$0d01141b-0f78-4c70-a4f5-f09c7af936ba
+∏
+java:S1130á"{Remove the declaration of thrown exception 'com.michel.exceptions.DaoException', as it cannot be thrown from method's body.(ŸÓß‰J$7768f13d-67f1-44ff-bfe9-e686c2a7d972
+c
+java:S1168ô"&Return an empty array instead of null.(•πÔçJ$a4884883-6d5e-4e23-bc43-f713dfb60f91
+â
+java:S1128"FRemove this unused import 'com.michel.exceptions.ControllerException'.(‡≠Á‹8ªò¿Î·1J$ec9e462c-e964-4d68-9584-9a6efb8d2624
