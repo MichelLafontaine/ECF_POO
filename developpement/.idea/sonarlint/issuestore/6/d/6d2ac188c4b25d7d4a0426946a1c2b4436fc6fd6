@@ -1,0 +1,36 @@
+
+	java:S112Á"FDefine and throw a dedicated exception instead of using a generic one.( É–ãıÿÿÿÿ8ê×äáå1J$bdab06c7-02e6-4b21-9f1b-7c12a87c65e5
+s
+java:S3740Ã"/Provide the parametrized type for this generic.(ä¡Â8í×äáå1J$0135cac1-063b-41ba-a718-478680144463
+k
+java:S1604N"(Make this anonymous inner class a lambda(¯ı©8ñ×äáå1J$3f9fa57b-788e-465c-aac7-cf33657723f9
+k
+java:S1604Z"(Make this anonymous inner class a lambda(í±ìİ8ñ×äáå1J$4fe79f6e-955e-40c2-970b-76b6a53ff41f
+p
+java:S1604n"(Make this anonymous inner class a lambda(÷ñÄ ıÿÿÿÿ8ò×äáå1J$8ca56155-b37c-4263-9cfc-7b9fb37b9e26
+q
+java:S1604ƒ"(Make this anonymous inner class a lambda(ºá¸úûÿÿÿÿ8ò×äáå1J$ffd596d0-69de-4254-8d18-7e3a8ffec0bb
+l
+java:S1604’"(Make this anonymous inner class a lambda(Í¤»ú8ò×äáå1J$77c1ee95-64fd-40a6-bc61-caffc4e64e57
+l
+java:S1604®"(Make this anonymous inner class a lambda(û³Åÿ8ò×äáå1J$f9c65d64-a699-423f-a768-3032eea2c450
+q
+java:S1604¼"(Make this anonymous inner class a lambda(©½“ûıÿÿÿÿ8ò×äáå1J$4cbf8edf-a067-4d1f-ae98-b44adfdfa3d5
+l
+java:S1604Ø"(Make this anonymous inner class a lambda(ŒÄñü8ò×äáå1J$d1015e1f-01ad-4513-9661-9074561bb2e0
+q
+java:S1604í"(Make this anonymous inner class a lambda(Ü§Áºúÿÿÿÿ8ò×äáå1J$06a0ced8-80d2-4f1f-bcca-893894995353
+q
+java:S1604Æ"(Make this anonymous inner class a lambda(Åö–Ïıÿÿÿÿ8ò×äáå1J$968e6e16-9796-467d-ba0c-c27dbb578ba8
+š
+java:S1450("WRemove the "societes" field and declare it as a local variable in the relevant methods.(»œ÷8³Øäáå1J$0a3cfb03-e9bc-4926-90ec-0e210fe81b6f
+v
+java:S1948,"3Make "controllerAccueil" transient or serializable.(¥Î¾ğ8´Øäáå1J$69cfd2f5-4023-4fa5-ab17-99c57163f64f
+m
+java:S1197("*Move the array designators [] to the type.(»œ÷8·Øäáå1J$e98edd54-b16a-4fc5-bffc-05aae57f51a6
+ˆ
+java:S1124-"EReorder the modifiers to comply with the Java Language Specification.(¢¥«µ8¼Éëáå1J$88b9388e-aaa3-4482-a0d3-cf84ce7e8199
+š
+java:S37763"RRefactor this method to reduce its Cognitive Complexity from 26 to the 15 allowed.(úİì­ÿÿÿÿÿ8¸Øäáå1J$5745c010-8c38-4b44-ae3d-24867d9fceda
+ˆ
+java:S1128"ERemove this unused import 'javax.print.attribute.standard.MediaSize'.(«ı¥˜8†‹øáå1J$6d49b4fe-22b7-4f07-9a29-6cb4cc195b32

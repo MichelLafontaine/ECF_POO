@@ -12,25 +12,25 @@ import java.util.logging.LogRecord;
 public class FormatterLog extends Formatter {
     /**
      * format du log
-     * @param record the log record to be formatted.
+     * @param logRecord the log record to be formatted.
      * @return String message log
      */
-    public String format(LogRecord record) {
+    public String format(LogRecord logRecord) {
         DateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         StringBuilder result = new StringBuilder();
 
         result.append(format.format(new Date()));
         result.append(" Level : " );
-        result.append(record.getLevel());
+        result.append(logRecord.getLevel());
 
         result.append(" / Message : ");
-        result.append(record.getMessage());
+        result.append(logRecord.getMessage());
 
         result.append(" / Méthode : ");
-        result.append(record.getSourceMethodName());
+        result.append(logRecord.getSourceMethodName());
 
         result.append(" / Classe : ");
-        result.append(record.getSourceClassName());
+        result.append(logRecord.getSourceClassName());
 
 
         result.append("\n");

@@ -26,7 +26,7 @@ public class VueAfficher extends JFrame{
     private Dimension screenSize;
     private int screenWidth;
     private int screenHeight;
-    private JLabel title;
+    private JLabel titleLabel;
     private JLabel reverso;
     private JButton exit;
     private JSeparator trait;
@@ -35,7 +35,8 @@ public class VueAfficher extends JFrame{
     private String[] colonne;
     private List listeSocietes;
     private String[][] tableauSocietes;
-    DefaultTableModel tableModel;
+    private DefaultTableModel tableModel;
+    private static final String NAME_FONT = "Arial";
 
     /**
      * contructeur Vue affichage
@@ -57,15 +58,15 @@ public class VueAfficher extends JFrame{
         GridBagConstraints gbc = new GridBagConstraints();
         affichage = getContentPane();
 
-        title = new JLabel("AFFICHAGE DES " + choix + "S");
-        title.setFont(new Font("Arial", Font.PLAIN, 30));
+        titleLabel = new JLabel("AFFICHAGE DES " + choix + "S");
+        titleLabel.setFont(new Font(NAME_FONT, Font.PLAIN, 30));
 
         reverso = new JLabel("REVERSO");
-        reverso.setFont(new Font("Arial", Font.BOLD, 25));
+        reverso.setFont(new Font(NAME_FONT, Font.BOLD, 25));
         reverso.setVisible(true);
 
         exit = new JButton("Quitter");
-        exit.setFont(new Font("Arial", Font.PLAIN, 15));
+        exit.setFont(new Font(NAME_FONT, Font.PLAIN, 15));
         exit.setPreferredSize(new Dimension(250, 50));
         exit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -78,7 +79,7 @@ public class VueAfficher extends JFrame{
 
         accueil = new JButton();
         accueil = new JButton("Accueil");
-        accueil.setFont(new Font("Arial", Font.PLAIN, 15));
+        accueil.setFont(new Font(NAME_FONT, Font.PLAIN, 15));
         accueil.setPreferredSize(new Dimension(250, 50));
         accueil.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -102,44 +103,7 @@ public class VueAfficher extends JFrame{
         try {
             ControllerAffichage controllerAffichage = new ControllerAffichage(choix);
             listeSocietes = controllerAffichage.findAll();
-            if (choix.equals(ChoixClientProspect.CLIENT)) {
-                tableauSocietes = new String[listeSocietes.size()][10];
-                for (int i = 0; i < listeSocietes.size(); i++) {
-                    Client client = (Client) listeSocietes.get(i);
-                    tableauSocietes[i][0] = client.getRaisonSociale();
-                    tableauSocietes[i][1] = client.getAdresse().getNumero();
-                    tableauSocietes[i][2] = client.getAdresse().getNomRue();
-                    tableauSocietes[i][3] = String.valueOf(client.getAdresse().getCodePostal());
-                    tableauSocietes[i][4] = client.getAdresse().getVille();
-                    tableauSocietes[i][5] = client.getEmail();
-                    tableauSocietes[i][6] = client.getTelephone();
-                    tableauSocietes[i][7] = String.valueOf(client.getChiffreAffaire());
-                    tableauSocietes[i][8] = String.valueOf(client.getNbreEmploye());
-                    tableauSocietes[i][9] = client.getCommentaire();
-                }
-            } else if (choix.equals(ChoixClientProspect.PROSPECT)){
-                tableauSocietes = new String[listeSocietes.size()][10];
-                for (int i = 0; i < listeSocietes.size(); i++){
-                    Prospect prospect = (Prospect) listeSocietes.get(i);
-                    tableauSocietes[i][0] = prospect.getRaisonSociale();
-                    tableauSocietes[i][1] = prospect.getAdresse().getNumero();
-                    tableauSocietes[i][2] = prospect.getAdresse().getNomRue();
-                    tableauSocietes[i][3] = String.valueOf(prospect.getAdresse().getCodePostal());
-                    tableauSocietes[i][4] = prospect.getAdresse().getVille();
-                    tableauSocietes[i][5] = prospect.getEmail();
-                    tableauSocietes[i][6] = prospect.getTelephone();
-                    tableauSocietes[i][7] = prospect.getDateProspect().format(Utilitaires.formatDate());
-                    String interet = "";
-                    if (prospect.getInteretProspect() == 1){
-                        interet = "oui";
-                    }
-                    if (prospect.getInteretProspect() == 0){
-                        interet = "non";
-                    }
-                    tableauSocietes[i][8] = interet;
-                    tableauSocietes[i][9] = prospect.getCommentaire();
-                }
-            }
+            tableauSocietes = getTableauSocietes(listeSocietes);
         } catch (MetierException metierException) {
             JOptionPane.showMessageDialog(null, "erreur de saisie : " + metierException.getMessage());
         } catch (DaoException daoException){
@@ -270,7 +234,7 @@ public class VueAfficher extends JFrame{
         gbc.gridwidth = GridBagConstraints.REMAINDER;
         gbc.anchor = GridBagConstraints.BASELINE;
         gbc.insets = new Insets(5, 0, 10, 10);
-        affichage.add(title, gbc);
+        affichage.add(titleLabel, gbc);
 
         gbc.gridx = 1;
         gbc.gridy = 2;
@@ -312,7 +276,7 @@ public class VueAfficher extends JFrame{
      * @return String[] entetes de colonne
      */
 
-    public String[] nomColonne() {
+    private String[] nomColonne() {
         if (choix.equals(ChoixClientProspect.CLIENT)) {
             return new String[]{"Raison Sociale", "N°", "Nom de rue", "CP", "Ville", "Email", "Téléphone", "CA",
                     "Nbre d'employé", "commentaire"};
@@ -321,7 +285,48 @@ public class VueAfficher extends JFrame{
             return new String[]{"Raison Sociale", "N°", "Nom de rue", "CP", "Ville", "Email", "Téléphone",
                     "Date Prospection", "Intérêt", "commentaire"};
         } else {
-            return null;
+            return new String[0];
         }
+    }
+
+    private String[][] getTableauSocietes(List listeSocietes) {
+        String[][] tableauSocietes = new String[listeSocietes.size()][10];
+        if (choix.equals(ChoixClientProspect.CLIENT)) {
+            for (int i = 0; i < listeSocietes.size(); i++) {
+                Client client = (Client) listeSocietes.get(i);
+                tableauSocietes[i][0] = client.getRaisonSociale();
+                tableauSocietes[i][1] = client.getAdresse().getNumero();
+                tableauSocietes[i][2] = client.getAdresse().getNomRue();
+                tableauSocietes[i][3] = String.valueOf(client.getAdresse().getCodePostal());
+                tableauSocietes[i][4] = client.getAdresse().getVille();
+                tableauSocietes[i][5] = client.getEmail();
+                tableauSocietes[i][6] = client.getTelephone();
+                tableauSocietes[i][7] = String.valueOf(client.getChiffreAffaire());
+                tableauSocietes[i][8] = String.valueOf(client.getNbreEmploye());
+                tableauSocietes[i][9] = client.getCommentaire();
+            }
+        } else if (choix.equals(ChoixClientProspect.PROSPECT)) {
+            for (int i = 0; i < listeSocietes.size(); i++) {
+                Prospect prospect = (Prospect) listeSocietes.get(i);
+                tableauSocietes[i][0] = prospect.getRaisonSociale();
+                tableauSocietes[i][1] = prospect.getAdresse().getNumero();
+                tableauSocietes[i][2] = prospect.getAdresse().getNomRue();
+                tableauSocietes[i][3] = String.valueOf(prospect.getAdresse().getCodePostal());
+                tableauSocietes[i][4] = prospect.getAdresse().getVille();
+                tableauSocietes[i][5] = prospect.getEmail();
+                tableauSocietes[i][6] = prospect.getTelephone();
+                tableauSocietes[i][7] = prospect.getDateProspect().format(Utilitaires.formatDate());
+                String interet = "";
+                if (prospect.getInteretProspect() == 1) {
+                    interet = "oui";
+                }
+                if (prospect.getInteretProspect() == 0) {
+                    interet = "non";
+                }
+                tableauSocietes[i][8] = interet;
+                tableauSocietes[i][9] = prospect.getCommentaire();
+            }
+        }
+        return tableauSocietes;
     }
 }

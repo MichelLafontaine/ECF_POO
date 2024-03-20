@@ -34,7 +34,7 @@ public class DaoProspect {
      * @throws DaoException si pb avec la BDD
      * @throws SQLException
      */
-    public static List findAll() throws DaoException, SQLException {
+    public static List<Prospect> findAll() throws DaoException, SQLException {
         PreparedStatement pstmt = null;
 
         Connection connection = getInstance();
@@ -176,11 +176,6 @@ public class DaoProspect {
      * @throws DaoException si pb avec la BDD
      */
     public static void create(Prospect prospect) throws DaoException, SQLException {
-        PreparedStatement pstmtIdProspect = null;
-        PreparedStatement pstmtRS = null;
-        PreparedStatement pstmtUpdateSociete = null;
-        PreparedStatement pstmtInsertSociete = null;
-        PreparedStatement pstmtInsertProspect = null;
 
         Connection connection = getInstance();
 
@@ -201,12 +196,12 @@ public class DaoProspect {
                 "VALUES (NULL, ?, ?, ?);";
 
         // Vérifier si la id_prospect n'est pas existant dans la table client
-        try {
-            pstmtIdProspect = connection.prepareStatement(queryIdProspect);
-            pstmtRS = connection.prepareStatement(queryRS);
-            pstmtUpdateSociete = connection.prepareStatement(queryUpdateSociete);
-            pstmtInsertSociete = connection.prepareStatement(queryInsertSociete, Statement.RETURN_GENERATED_KEYS);
-            pstmtInsertProspect = connection.prepareStatement(queryInseretProspect);
+        try (PreparedStatement pstmtIdProspect = connection.prepareStatement(queryIdProspect);
+             PreparedStatement pstmtRS = connection.prepareStatement(queryRS);
+             PreparedStatement pstmtUpdateSociete = connection.prepareStatement(queryUpdateSociete);
+             PreparedStatement pstmtInsertSociete = connection.prepareStatement(queryInsertSociete, Statement.RETURN_GENERATED_KEYS);
+             PreparedStatement pstmtInsertProspect = connection.prepareStatement(queryInseretProspect)) {
+
             pstmtIdProspect.setString(1, prospect.getRaisonSociale());
             ResultSet rsIdClient = pstmtIdProspect.executeQuery();
             //si inexistante
@@ -264,22 +259,6 @@ public class DaoProspect {
             messageLog.append(e.getMessage()).append(" ").append(e);
             LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
             throw new DaoException(2, MESSAGE_FERMETURE);
-        } finally {
-            if (pstmtRS != null){
-                pstmtRS.close();
-            }
-            if (pstmtIdProspect != null){
-                pstmtIdProspect.close();
-            }
-            if (pstmtInsertProspect != null){
-                pstmtInsertProspect.close();
-            }
-            if (pstmtInsertSociete != null){
-                pstmtInsertSociete.close();
-            }
-            if (pstmtUpdateSociete != null){
-                pstmtUpdateSociete.close();
-            }
         }
     }
 
@@ -289,9 +268,6 @@ public class DaoProspect {
      * @throws DaoException si pb avec la BDD
      */
     public static void update(Prospect prospect) throws DaoException, SQLException {
-        PreparedStatement pstmtRS = null;
-        PreparedStatement pstmtUpdateSociete = null;
-        PreparedStatement pstmtUpdateProspect = null;
         int idSociete = prospect.getIdentifiant();
 
         Connection connection = getInstance();
@@ -300,10 +276,10 @@ public class DaoProspect {
         String queryUpdateSociete = "UPDATE societe SET NOM_SOCIETE = ?, ID_ADRESSE = ?, TEL_SOCIETE = ?, MAIL_SOCIETE = ?, COM_SOCIETE = ? WHERE ID_SOCIETE = ?";
         String queryUpdateProspect = "UPDATE prospect SET DATE_PROSPECT = ?, INTERET_PROSPECT = ? WHERE ID_SOCIETE = ?";
 
-        try {
-            pstmtRS = connection.prepareStatement(queryRS);
-            pstmtUpdateSociete = connection.prepareStatement(queryUpdateSociete);
-            pstmtUpdateProspect = connection.prepareStatement(queryUpdateProspect);
+        try (PreparedStatement pstmtRS = connection.prepareStatement(queryRS);
+            PreparedStatement pstmtUpdateSociete = connection.prepareStatement(queryUpdateSociete);
+            PreparedStatement pstmtUpdateProspect = connection.prepareStatement(queryUpdateProspect)) {
+
             // Recherche idAdresse et insertion Adresse si inexistante
             int idAdresse = DaoAdresse.creerAdresse(prospect.getAdresse());
             // Vérification nouvelle raison sociale n'existe pas dans la base de données avant modification
@@ -339,16 +315,6 @@ public class DaoProspect {
             messageLog.append(e.getMessage()).append(" ").append(e);
             LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
             throw new DaoException(2, MESSAGE_FERMETURE);
-        } finally {
-            if (pstmtRS != null){
-                pstmtRS.close();
-            }
-            if (pstmtUpdateSociete != null){
-                pstmtUpdateSociete.close();
-            }
-            if (pstmtUpdateProspect != null){
-                pstmtUpdateProspect.close();
-            }
         }
     }
 
@@ -358,9 +324,6 @@ public class DaoProspect {
      * @throws DaoException si pb avec la BDD
      */
     public static void delete(int idSociete) throws DaoException, SQLException {
-        PreparedStatement pstmtDeleteProspect = null;
-        PreparedStatement pstmtCheckClient = null;
-        PreparedStatement pstmtDeleteSociete = null;
 
         Connection connection = getInstance();
 
@@ -368,10 +331,9 @@ public class DaoProspect {
         String queryCheckClient = "SELECT ID_SOCIETE FROM client WHERE ID_SOCIETE = ?";
         String queryDeleteSociete = "DELETE FROM societe WHERE ID_SOCIETE = ?";
 
-        try {
-            pstmtDeleteProspect = connection.prepareStatement(queryDeleteProspect);
-            pstmtCheckClient = connection.prepareStatement(queryCheckClient);
-            pstmtDeleteSociete = connection.prepareStatement(queryDeleteSociete);
+        try (PreparedStatement pstmtDeleteProspect = connection.prepareStatement(queryDeleteProspect);
+            PreparedStatement pstmtCheckClient = connection.prepareStatement(queryCheckClient);
+            PreparedStatement pstmtDeleteSociete = connection.prepareStatement(queryDeleteSociete)) {
             pstmtDeleteProspect.setInt(1, idSociete);
             pstmtDeleteProspect.executeUpdate();
 
@@ -389,16 +351,6 @@ public class DaoProspect {
             messageLog.append(e.getMessage()).append(" ").append(e);
             LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
             throw new DaoException(2, MESSAGE_FERMETURE);
-        } finally {
-            if (pstmtDeleteProspect != null){
-                pstmtDeleteProspect.close();
-            }
-            if (pstmtCheckClient != null){
-                pstmtCheckClient.close();
-            }
-            if (pstmtDeleteSociete != null){
-                pstmtDeleteSociete.close();
-            }
         }
     }
 }

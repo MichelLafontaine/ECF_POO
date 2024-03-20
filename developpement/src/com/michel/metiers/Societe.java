@@ -134,7 +134,7 @@ public abstract class Societe {
     /**
      * constructeur sans attribut
      */
-    public Societe() {
+    protected Societe() {
     }
 
     /**
@@ -146,7 +146,7 @@ public abstract class Societe {
      * @param adresse Object Adresse
      * @throws MetierException envoi message à 'utilisateur
      */
-    public Societe(String raisonSociale, String email, String telephone,
+    protected Societe(String raisonSociale, String email, String telephone,
                    String commentaire, Adresse adresse) throws MetierException {
         setRaisonSociale(raisonSociale);
         setEmail(email);
@@ -165,7 +165,7 @@ public abstract class Societe {
      * @param adresse Object adresse
      * @throws MetierException envoi message à 'utilisateur
      */
-    public Societe(int identifiant, String raisonSociale, String email,
+    protected Societe(int identifiant, String raisonSociale, String email,
                    String telephone, String commentaire, Adresse adresse) throws MetierException {
         setIdentifiant(identifiant);
         setRaisonSociale(raisonSociale);

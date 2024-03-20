@@ -1,21 +1,19 @@
 
 w
-java:S3740$"/Provide the parametrized type for this generic.(±õ ùÿÿÿÿ8’–éÖå1J$baad6c15-a4bc-4b14-9aeb-39ba7d1ea6da
-‰
-java:S1192="FDefine a constant instead of duplicating this literal "Arial" 4 times.(”¯„‚8––éÖå1J$85ef7f2a-ad87-4a49-bfab-1e0aeca1440b
+java:S3740$"/Provide the parametrized type for this generic.(±õ ùÿÿÿÿ8áÒ„áå1J$d87ac45a-c3f8-4e1c-892b-e2524b2dff66
+x
+java:S3740¤"/Provide the parametrized type for this generic.(äòîáşÿÿÿÿ8åÒ„áå1J$685b211d-f941-4d96-90b1-fe2f188e2877
 k
-java:S1604F"(Make this anonymous inner class a lambda(¯ı©8˜–éÖå1J$176ab9e5-035a-43a8-8fd5-1274e48e9eaf
+java:S1604G"(Make this anonymous inner class a lambda(¯ı©8çÒ„áå1J$48eac115-8ce5-49e4-8ee5-33eb85d95561
 p
-java:S1604S"(Make this anonymous inner class a lambda(è±áËúÿÿÿÿ8˜–éÖå1J$e820cc1b-942a-4d80-b06b-cbe608f1445f
-l
-java:S2387"*"title" is the name of a field in "Frame".(Éº~8¥–éÖå1J$eda14e52-0455-48b5-b209-d12c44313f7c
+java:S1604T"(Make this anonymous inner class a lambda(è±áËúÿÿÿÿ8èÒ„áå1J$5cdd4c71-cef0-4c9d-a125-7a09f001a3c6
 w
-java:S1948$"/Make "listeSocietes" transient or serializable.(±õ ùÿÿÿÿ8¥§ìÖå1J$c7dcc220-8ff0-44cc-8a8a-3a06e58b60cd
+java:S1948$"/Make "listeSocietes" transient or serializable.(±õ ùÿÿÿÿ8ßÔ„áå1J$0015e19a-e390-4243-aace-4c6f3b196f1d
 š
-java:S3776,"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(—ÛÍÿÿÿÿÿ8©–éÖå1J$bcc21828-af55-4a1e-8abd-a7833e83ba84
+java:S3776-"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(—ÛÍÿÿÿÿÿ8ãÔ„áå1J$dde2d51f-498e-4abc-b35f-2e8e5b3062f3
 Â
-java:S1130²"~Remove the declaration of thrown exception 'com.michel.exceptions.MetierException', as it cannot be thrown from method's body.(Ùî§ä8Á–éÖå1J$5375cec2-8310-4c83-8050-cc6f67ea330d
+java:S1130"~Remove the declaration of thrown exception 'com.michel.exceptions.MetierException', as it cannot be thrown from method's body.(Ùî§ä8ùÔ„áå1J$8f78142c-7022-4bba-a6bf-580068a9c730
 ¿
-java:S1130²"{Remove the declaration of thrown exception 'com.michel.exceptions.DaoException', as it cannot be thrown from method's body.(Ùî§ä8Á–éÖå1J$bbf01bd3-f965-47d9-a495-4eadbed8738d
-j
-java:S1168Ä"&Return an empty array instead of null.(¥¹ï8Ä–éÖå1J$d3e7e530-2882-4371-841a-2098792192e2
+java:S1130"{Remove the declaration of thrown exception 'com.michel.exceptions.DaoException', as it cannot be thrown from method's body.(Ùî§ä8ùÔ„áå1J$0ca742be-6f2c-4c62-a157-aaa81441b352
+Œ
+java:S1117¥"CRename "tableauSocietes" which hides the field declared at line 37.(Ç‡êöúÿÿÿÿ8‚äŠáå1J$608b3011-09c2-4ff5-877c-c2121698162e

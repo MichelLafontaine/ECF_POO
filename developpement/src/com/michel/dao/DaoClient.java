@@ -174,11 +174,6 @@ public class DaoClient {
      */
     public static void create (Client client) throws DaoException, SQLException {
 
-        PreparedStatement pstmtIdClient = null;
-        PreparedStatement pstmtRS = null;
-        PreparedStatement pstmtUpdateSociete = null;
-        PreparedStatement pstmtInsertSociete = null;
-        PreparedStatement pstmtInsertClient = null;
         Connection connection = getInstance();
 
         String queryIdClient = "SELECT ID_CLIENT FROM client " +
@@ -197,12 +192,11 @@ public class DaoClient {
         String queryInsertClient = "INSERT INTO `client` (`ID_CLIENT`, `ID_SOCIETE`, `CA_CLIENT`, `NBRE_EMPLOYE`) " +
                 "VALUES (NULL, ?, ?, ?);";
         // Vérifier si la id_client n'est pas existant dans la table client
-        try {
-            pstmtIdClient = connection.prepareStatement(queryIdClient);
-            pstmtRS = connection.prepareStatement(queryRS);
-            pstmtUpdateSociete = connection.prepareStatement(queryUpdateSociete);
-            pstmtInsertSociete = connection.prepareStatement(queryInsertSociete, Statement.RETURN_GENERATED_KEYS);
-            pstmtInsertClient = connection.prepareStatement(queryInsertClient);
+        try (PreparedStatement pstmtIdClient = connection.prepareStatement(queryIdClient);
+            PreparedStatement pstmtRS = connection.prepareStatement(queryRS);
+            PreparedStatement pstmtUpdateSociete = connection.prepareStatement(queryUpdateSociete);
+            PreparedStatement pstmtInsertSociete = connection.prepareStatement(queryInsertSociete, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement pstmtInsertClient = connection.prepareStatement(queryInsertClient)) {
 
             pstmtIdClient.setString(1, client.getRaisonSociale());
             ResultSet rsIdClient = pstmtIdClient.executeQuery();
@@ -260,22 +254,6 @@ public class DaoClient {
             messageLog.append(e.getMessage()).append(" ").append(e);
             LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
             throw new DaoException(2, MESSAGE_FERMETURE);
-        } finally {
-            if (pstmtIdClient != null){
-                pstmtIdClient.close();
-            }
-            if (pstmtRS != null) {
-                pstmtRS.close();
-            }
-            if (pstmtUpdateSociete != null){
-                pstmtUpdateSociete.close();
-            }
-            if (pstmtInsertSociete != null){
-                pstmtInsertSociete.close();
-            }
-            if (pstmtInsertClient != null) {
-                pstmtInsertClient.close();
-            }
         }
     }
 
@@ -285,9 +263,6 @@ public class DaoClient {
      * @throws DaoException si pb avec la BDD
      */
     public static void update(Client client) throws DaoException, SQLException {
-        PreparedStatement pstmtRS = null;
-        PreparedStatement pstmtUpdateClient = null;
-        PreparedStatement pstmtUpdateSociete = null;
         int idSociete = client.getIdentifiant();
 
         Connection connection = getInstance();
@@ -297,10 +272,9 @@ public class DaoClient {
         String queryUpdateSociete = "UPDATE societe SET NOM_SOCIETE =?, ID_ADRESSE=?, TEL_SOCIETE=?, MAIL_SOCIETE=?, " +
                 "COM_SOCIETE=? WHERE ID_SOCIETE = ?";
 
-        try {
-            pstmtRS = connection.prepareStatement(queryRS);
-            pstmtUpdateClient = connection.prepareStatement(queryUpdateClient);
-            pstmtUpdateSociete = connection.prepareStatement(queryUpdateSociete);
+        try (PreparedStatement pstmtRS = connection.prepareStatement(queryRS);
+            PreparedStatement pstmtUpdateClient = connection.prepareStatement(queryUpdateClient);
+            PreparedStatement pstmtUpdateSociete = connection.prepareStatement(queryUpdateSociete)) {
             // Recherche idAdresse et insertion Adresse si inexistante
             int idAdresse = DaoAdresse.creerAdresse(client.getAdresse());
             // Vérification nouvelle raison sociale n'existe pas dans la base de données avant modification
@@ -334,16 +308,6 @@ public class DaoClient {
             messageLog.append(e.getMessage()).append(" ").append(e);
             LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
             throw new DaoException(2, MESSAGE_FERMETURE);
-        } finally {
-            if (pstmtRS != null){
-                pstmtRS.close();
-            }
-            if (pstmtUpdateSociete != null){
-                pstmtUpdateSociete.close();
-            }
-            if (pstmtUpdateClient != null){
-                pstmtUpdateClient.close();
-            }
         }
     }
 
@@ -353,9 +317,6 @@ public class DaoClient {
      * @throws DaoException si pb avec la BDD
      */
     public static void deleteClient (int idSociete) throws DaoException, SQLException {
-        PreparedStatement pstmtDeleteClient = null;
-        PreparedStatement pstmtSelectProspect = null;
-        PreparedStatement pstmtDeleteSociete = null;
 
         Connection connection =getInstance();
 
@@ -363,10 +324,9 @@ public class DaoClient {
         String selectProspectQuery = "SELECT ID_SOCIETE FROM prospect WHERE ID_SOCIETE = ?";
         String deleteSocieteQuery = "DELETE FROM societe WHERE ID_SOCIETE = ?";
 
-        try {
-            pstmtDeleteClient = connection.prepareStatement(deleteClientQuery);
-            pstmtSelectProspect = connection.prepareStatement(selectProspectQuery);
-            pstmtDeleteSociete = connection.prepareStatement(deleteSocieteQuery);
+        try (PreparedStatement pstmtDeleteClient = connection.prepareStatement(deleteClientQuery);
+            PreparedStatement pstmtSelectProspect = connection.prepareStatement(selectProspectQuery);
+            PreparedStatement pstmtDeleteSociete = connection.prepareStatement(deleteSocieteQuery)){
             // Supprimer dans la table client
             pstmtDeleteClient.setInt(1, idSociete);
             pstmtDeleteClient.executeUpdate();
@@ -385,16 +345,6 @@ public class DaoClient {
             messageLog.append(e.getMessage()).append(" ").append(e);
             LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
             throw new DaoException(2, "Problème de connexion avec la base de données, le logiciel va fermer");
-        } finally {
-            if (pstmtDeleteClient != null){
-                pstmtDeleteClient.close();
-            }
-            if (pstmtDeleteSociete != null){
-                pstmtDeleteSociete.close();
-            }
-            if (pstmtSelectProspect != null){
-                pstmtSelectProspect.close();
-            }
         }
     }
 }

@@ -4,11 +4,11 @@ import com.michel.controllers.ControllerAccueil;
 import com.michel.exceptions.ControllerException;
 import com.michel.exceptions.DaoException;
 import com.michel.exceptions.MetierException;
-import com.michel.metiers.Societe;
 import com.michel.utilitaires.ChoixClientProspect;
 import com.michel.utilitaires.EnumOption;
 import com.michel.utilitaires.LoggerReverso;
 
+import javax.print.attribute.standard.MediaSize;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -42,6 +42,8 @@ public class VueAccueil extends JFrame {
     private EnumOption option;
     private String societe;
     private ControllerAccueil controllerAccueil;
+    private final static String NAME_FONT = "Arial";
+    private static final String MESSAGE_EXCEPTION = "Erreur, le logiciel va fermer";
 
     /**
      * contructeur Vue Accueil
@@ -64,14 +66,14 @@ public class VueAccueil extends JFrame {
 
         //Creation et initialisation des éléments
         titleAccueil = new JLabel("ACCUEIL");
-        titleAccueil.setFont(new Font("Arial", Font.PLAIN, 30));
+        titleAccueil.setFont(new Font(NAME_FONT, Font.PLAIN, 30));
 
         reverso = new JLabel("REVERSO");
-        reverso.setFont(new Font("Arial", Font.BOLD, 25));
+        reverso.setFont(new Font(NAME_FONT, Font.BOLD, 25));
 
 
         exit = new JButton("Quitter");
-        exit.setFont(new Font("Arial", Font.PLAIN, 15));
+        exit.setFont(new Font(NAME_FONT, Font.PLAIN, 15));
         exit.setPreferredSize(new Dimension(250, 50));
         exit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -83,7 +85,7 @@ public class VueAccueil extends JFrame {
 
 
         client = new JButton("Client");
-        client.setFont(new Font("Arial", Font.PLAIN, 15));
+        client.setFont(new Font(NAME_FONT, Font.PLAIN, 15));
         client.setPreferredSize(new Dimension(250, 50));
         client.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -103,7 +105,7 @@ public class VueAccueil extends JFrame {
         });
 
         prospect = new JButton("Prospect");
-        prospect.setFont(new Font("Arial", Font.PLAIN, 15));
+        prospect.setFont(new Font(NAME_FONT, Font.PLAIN, 15));
         prospect.setPreferredSize(new Dimension(250, 50));
         prospect.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -123,7 +125,7 @@ public class VueAccueil extends JFrame {
         });
 
         creer = new JButton("Créer");
-        creer.setFont(new Font("Arial", Font.PLAIN, 15));
+        creer.setFont(new Font(NAME_FONT, Font.PLAIN, 15));
         creer.setPreferredSize(new Dimension(250, 50));
         creer.setVisible(false);
         creer.addActionListener(new ActionListener() {
@@ -138,7 +140,7 @@ public class VueAccueil extends JFrame {
 
 
         modifier = new JButton("Modifier");
-        modifier.setFont(new Font("Arial", Font.PLAIN, 15));
+        modifier.setFont(new Font(NAME_FONT, Font.PLAIN, 15));
         modifier.setPreferredSize(new Dimension(250, 50));
         modifier.setVisible(false);
         modifier.addActionListener(new ActionListener() {
@@ -159,14 +161,14 @@ public class VueAccueil extends JFrame {
                     StringBuilder messageLog = new StringBuilder("Exception Accueil bouton modifier");
                     messageLog.append(exception.getMessage()).append(" ").append(e);
                     LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
-                    JOptionPane.showMessageDialog(null, "Erreur, le logiciel va fermer");
+                    JOptionPane.showMessageDialog(null, MESSAGE_EXCEPTION);
                     System.exit(1);
                 }
             }
         });
 
         afficher = new JButton("Afficher");
-        afficher.setFont(new Font("Arial", Font.PLAIN, 15));
+        afficher.setFont(new Font(NAME_FONT, Font.PLAIN, 15));
         afficher.setPreferredSize(new Dimension(250, 50));
         afficher.setVisible(false);
         afficher.addActionListener(new ActionListener() {
@@ -180,7 +182,7 @@ public class VueAccueil extends JFrame {
         });
 
         supprimer = new JButton("Supprimer");
-        supprimer.setFont(new Font("Arial", Font.PLAIN, 15));
+        supprimer.setFont(new Font(NAME_FONT, Font.PLAIN, 15));
         supprimer.setPreferredSize(new Dimension(250, 50));
         supprimer.setVisible(false);
         supprimer.addActionListener(new ActionListener() {
@@ -201,14 +203,14 @@ public class VueAccueil extends JFrame {
                     StringBuilder messageLog = new StringBuilder("Exception Accueil bouton supprimer");
                     messageLog.append(exception.getMessage()).append(" ").append(e);
                     LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
-                    JOptionPane.showMessageDialog(null, "Erreur, le logiciel va fermer");
+                    JOptionPane.showMessageDialog(null, MESSAGE_EXCEPTION);
                     System.exit(1);
                 }
             }
         });
 
         reinitialiser = new JButton("Réinitialiser");
-        reinitialiser.setFont(new Font("Arial", Font.PLAIN, 15));
+        reinitialiser.setFont(new Font(NAME_FONT, Font.PLAIN, 15));
         reinitialiser.setPreferredSize(new Dimension(250, 50));
         reinitialiser.setVisible(false);
         reinitialiser.addActionListener(new ActionListener() {
@@ -229,7 +231,7 @@ public class VueAccueil extends JFrame {
         });
 
         valider = new JButton("Valider");
-        valider.setFont(new Font("Arial", Font.PLAIN, 15));
+        valider.setFont(new Font(NAME_FONT, Font.PLAIN, 15));
         valider.setPreferredSize(new Dimension(250, 50));
         valider.setVisible(false);
         valider.addActionListener(new ActionListener() {
@@ -254,7 +256,7 @@ public class VueAccueil extends JFrame {
                     StringBuilder messageLog = new StringBuilder("Exception Accueil bouton valider");
                     messageLog.append(exception.getMessage()).append(" ").append(e);
                     LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
-                    JOptionPane.showMessageDialog(null, "Erreur, le logiciel va fermer");
+                    JOptionPane.showMessageDialog(null, MESSAGE_EXCEPTION);
                     System.exit(1);
                 }
             }
@@ -447,7 +449,7 @@ public class VueAccueil extends JFrame {
     private void choixSociete (GridBagConstraints gbc) throws Exception {
         societes = ControllerAccueil.listeSociete(choix);
         jComboBoxSociete = new JComboBox(societes);
-        jComboBoxSociete.setFont(new Font("Arial", Font.PLAIN, 25));
+        jComboBoxSociete.setFont(new Font(NAME_FONT, Font.PLAIN, 25));
 
         jComboBoxSociete.addActionListener(new ActionListener() {
             @Override

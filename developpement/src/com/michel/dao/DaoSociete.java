@@ -35,7 +35,7 @@ public class DaoSociete {
 
         List<String> societes = new ArrayList<>();
         societes.add(" ");
-        String querySociete = null;
+        String querySociete;
 
         if (ChoixClientProspect.CLIENT.equals(choix)) {
             querySociete = "SELECT NOM_SOCIETE FROM societe INNER JOIN client ON client.ID_SOCIETE = societe.ID_SOCIETE;";

@@ -118,3 +118,12 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 20/03/2024 11:45:45 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
 20/03/2024 11:45:47 Level : INFO / Message : connection BDD réussite / Méthode : getInstance / Classe : com.michel.dao.DaoConnection
 20/03/2024 11:46:16 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+20/03/2024 14:55:20 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+20/03/2024 14:55:23 Level : INFO / Message : connection BDD réussite / Méthode : getInstance / Classe : com.michel.dao.DaoConnection
+20/03/2024 14:55:26 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+20/03/2024 15:06:01 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+20/03/2024 15:06:05 Level : INFO / Message : connection BDD réussite / Méthode : getInstance / Classe : com.michel.dao.DaoConnection
+20/03/2024 15:06:42 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+20/03/2024 15:25:01 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+20/03/2024 15:25:04 Level : INFO / Message : connection BDD réussite / Méthode : getInstance / Classe : com.michel.dao.DaoConnection
+20/03/2024 15:25:22 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection

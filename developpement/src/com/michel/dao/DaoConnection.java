@@ -18,6 +18,7 @@ import java.util.logging.Level;
  */
 public class DaoConnection {
     private static Connection connection = null;
+    private static final String MESSAGE_ERREUR = "Problème survenue dans la Base de Données";
     final Properties dataProperties = new Properties();
 //(InputStream input = Files.newInputStream(path))
     /**
@@ -36,22 +37,22 @@ public class DaoConnection {
             StringBuilder messageLog = new StringBuilder("problème ouverture BDD SQLException, ");
             messageLog.append(e.getMessage()).append(" ").append(e);
             LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
-            throw new DaoException(2, "Problème survenue dans la Base de Données");
+            throw new DaoException(2, MESSAGE_ERREUR);
         } catch (FileNotFoundException e) {
             StringBuilder messageLog = new StringBuilder("problème ouverture BDD FileNotFoundException, ");
             messageLog.append(e.getMessage()).append(" ").append(e);
             LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
-            throw new DaoException(2, "Problème survenue dans la Base de Données");
+            throw new DaoException(2, MESSAGE_ERREUR);
         } catch (IOException e) {
             StringBuilder messageLog = new StringBuilder("problème ouverture BDD IOException, ");
             messageLog.append(e.getMessage()).append(" ").append(e);
             LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
-            throw new DaoException(2, "Problème survenue dans la Base de Données");
+            throw new DaoException(2, MESSAGE_ERREUR);
         } catch (Exception e) {
             StringBuilder messageLog = new StringBuilder("problème Ouverture BDD, ");
             messageLog.append(e.getMessage()).append(" ").append(e);
             LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
-            throw new DaoException(2, "Problème survenue dans la Base de Données");
+            throw new DaoException(2, MESSAGE_ERREUR);
         }
     }
 

@@ -1,9 +1,6 @@
 package com.michel.vues;
 
-import com.michel.controllers.ControllerAccueil;
 import com.michel.controllers.ControllerFormulaire;
-import com.michel.dao.DaoClient;
-import com.michel.dao.DaoProspect;
 import com.michel.exceptions.ControllerException;
 import com.michel.exceptions.DaoException;
 import com.michel.exceptions.MetierException;
@@ -35,7 +32,7 @@ public class VueFormulaire extends JFrame {
     private Dimension screenSize;
     private int screenWidth;
     private int screenHeight;
-    private JLabel title;
+    private JLabel titleLabel;
     private JLabel reverso;
     private JButton exit;
     private JSeparator trait;
@@ -370,8 +367,8 @@ public class VueFormulaire extends JFrame {
 
         GridBagConstraints gbc = new GridBagConstraints();
 
-        title = new JLabel("FORMULAIRE");
-        title.setFont(new Font("Arial", Font.PLAIN, 30));
+        titleLabel = new JLabel("FORMULAIRE");
+        titleLabel.setFont(new Font("Arial", Font.PLAIN, 30));
 
         reverso = new JLabel("REVERSO");
         reverso.setFont(new Font("Arial", Font.BOLD, 25));
@@ -674,7 +671,7 @@ public class VueFormulaire extends JFrame {
         gbc.gridwidth = GridBagConstraints.REMAINDER;
         gbc.anchor = GridBagConstraints.BASELINE;
         gbc.insets = new Insets(5, 0, 10, 10);
-        formulaire.add(title, gbc);
+        formulaire.add(titleLabel, gbc);
 
         gbc.gridx = 1;
         gbc.gridy = 2;
@@ -937,15 +934,15 @@ public class VueFormulaire extends JFrame {
         switch (option) {
             case EnumOption.CREER:
                 setTitle("Créer un " + choix);
-                title.setText("CREER UN NOUVEAU " + choix);
+                titleLabel.setText("CREER UN NOUVEAU " + choix);
                 break;
             case EnumOption.MODIFIER :
                 setTitle("Modifier un " + choix);
-                title.setText("MODIFIER UN " + choix);
+                titleLabel.setText("MODIFIER UN " + choix);
                 break;
             case EnumOption.SUPPRIMER:
                 setTitle(("Supprimer un " + choix));
-                title.setText("SUPPRIMER UN " + choix);
+                titleLabel.setText("SUPPRIMER UN " + choix);
                 //On bloque toute possibilité de modification
                 tRaisonSociale.setEnabled(false);
                 tRaisonSociale.setDisabledTextColor(Color.BLACK);
