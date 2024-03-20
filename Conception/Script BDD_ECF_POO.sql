@@ -35,7 +35,7 @@ create table CLIENT
 (
    ID_CLIENT            int not null auto_increment,
    ID_SOCIETE           int not null,
-   CA_CLIENT            float(8,2) not null CHECK (CA_CLIENT >= 200),
+   CA_CLIENT            float(15,2) not null CHECK (CA_CLIENT >= 200),
    NBRE_EMPLOYE         int not null CHECK (NBRE_EMPLOYE > 0),
    primary key (ID_CLIENT)
 );
@@ -47,7 +47,7 @@ create table CODE_POSTAL
 (
    ID_CP                int not null auto_increment,
    ID_VILLE             int not null,
-   NUM_CP               int not null,
+   NUM_CP               varchar(5) not null,
    primary key (ID_CP)
 );
 
