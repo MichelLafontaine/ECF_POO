@@ -2,11 +2,18 @@ package com.michel.vues;
 
 import com.michel.controllers.ControllerAccueil;
 import com.michel.controllers.ControllerFormulaire;
+import com.michel.dao.DaoClient;
+import com.michel.dao.DaoProspect;
 import com.michel.exceptions.ControllerException;
 import com.michel.exceptions.DaoException;
 import com.michel.exceptions.MetierException;
+import com.michel.metiers.Adresse;
+import com.michel.metiers.Client;
+import com.michel.metiers.Prospect;
+import com.michel.metiers.Societe;
 import com.michel.utilitaires.ChoixClientProspect;
 import com.michel.utilitaires.EnumOption;
+import com.michel.utilitaires.InteretProspect;
 import com.michel.utilitaires.LoggerReverso;
 
 import javax.swing.*;
@@ -75,9 +82,9 @@ public class VueFormulaire extends JFrame {
     private String dateJour;
     private String dateMois;
     private String dateAnnee;
-    private LocalDate date;
+    private LocalDate date = LocalDate.of(1900,1,1);
     private JComboBox jComboBoxInterets;
-    private String interet;
+    private InteretProspect interet = InteretProspect.OUI;
     private ChoixClientProspect choix; // client ou prospect
 
     public void setIdentifiant(int identifiant) {
@@ -88,7 +95,7 @@ public class VueFormulaire extends JFrame {
      *initialise raison Social du JtextField
      * @param raisonSociale String raison sociale
      */
-    public void setRaisonSociale(String raisonSociale) {
+    private void setRaisonSociale(String raisonSociale) {
         this.tRaisonSociale.setText(raisonSociale);
     }
 
@@ -96,7 +103,7 @@ public class VueFormulaire extends JFrame {
      *initialise email du JtextField
      * @param email String email
      */
-    public void setEmail(String email) {
+    private void setEmail(String email) {
         this.tEmail.setText(email);
     }
 
@@ -104,7 +111,7 @@ public class VueFormulaire extends JFrame {
      *initialise telephone du JtextField
      * @param telephone String telephone
      */
-    public void setTelephone(String telephone) {
+    private void setTelephone(String telephone) {
         this.tTelephone.setText(telephone);
     }
 
@@ -112,7 +119,7 @@ public class VueFormulaire extends JFrame {
      *initialise commentaire du JtextField
      * @param commentaire String commentaire
      */
-    public void setCommentaire(String commentaire) {
+    private void setCommentaire(String commentaire) {
         this.tCommentaire.setText(commentaire);
     }
 
@@ -120,7 +127,7 @@ public class VueFormulaire extends JFrame {
      *initialise telephone du JtextField
      * @param numero String numero de rue
      */
-    public void setNumero(String numero) {
+    private void setNumero(String numero) {
         this.tNumero.setText(numero);
     }
 
@@ -128,7 +135,7 @@ public class VueFormulaire extends JFrame {
      * initialise nom de rue du JtextField
      * @param nomRue String nom de rue
      */
-    public void setNomRue(String nomRue) {
+    private void setNomRue(String nomRue) {
         this.tNomRue.setText(nomRue);
     }
 
@@ -136,7 +143,7 @@ public class VueFormulaire extends JFrame {
      *initialise vile du JtextField
      * @param ville String ville
      */
-    public void setVille(String ville) {
+    private void setVille(String ville) {
         this.tVille.setText(ville);
     }
 
@@ -144,7 +151,7 @@ public class VueFormulaire extends JFrame {
      *initialise codepostal du JtextField
      * @param codePostal String code postal
      */
-    public void setCodePostal(String codePostal) {
+    private void setCodePostal(String codePostal) {
         this.tCodePostal.setText(codePostal);
     }
 
@@ -152,7 +159,7 @@ public class VueFormulaire extends JFrame {
      *initialise chiffre d'affaire du JtextField
      * @param tCA double chiffre d'affaire
      */
-    public void setCA(double tCA) {
+    private void setCA(double tCA) {
         this.tCA.setText(String.valueOf(tCA));
     }
 
@@ -160,7 +167,7 @@ public class VueFormulaire extends JFrame {
      *initialise nombre d'employé du JtextField
      * @param nbreEmploye String nombre emloye
      */
-    public void settNbreEmploye(String nbreEmploye) {
+    private void settNbreEmploye(String nbreEmploye) {
         this.tNbreEmploye.setText(nbreEmploye);
     }
 
@@ -168,7 +175,7 @@ public class VueFormulaire extends JFrame {
      *initialise le jour de date prospection (combobox)
      * @param jour String jour
      */
-    public void setjComboBoxJours(int jour) {
+    private void setjComboBoxJours(int jour) {
         this.jComboBoxJours.setSelectedIndex(jour);
     }
 
@@ -176,7 +183,7 @@ public class VueFormulaire extends JFrame {
      *initialise le mois de date prospection (combobox)
      * @param mois String mois
      */
-    public void setjComboBoxMois(int mois) {
+    private void setjComboBoxMois(int mois) {
         this.jComboBoxMois.setSelectedIndex(mois);
     }
 
@@ -184,7 +191,7 @@ public class VueFormulaire extends JFrame {
      *initialise l'année de date prospection (combobox)
      * @param annee String annee
      */
-    public void setjComboBoxAnnee(String annee) {
+    private void setjComboBoxAnnee(String annee) {
         this.jComboBoxAnnee.setSelectedIndex(annees.indexOf(annee));
     }
 
@@ -192,15 +199,21 @@ public class VueFormulaire extends JFrame {
      *initialise interet du prospect (combobox)
      * @param interet String oui ou non
      */
-    public void setInteret(String interet) {
-        this.jComboBoxInterets.setSelectedItem(interet);
+    private void setInteret(int interet) {
+        if (interet == 1){
+            this.interet = InteretProspect.OUI;
+        }
+        if (interet == 0){
+            this.interet = InteretProspect.NON;
+        }
+        this.jComboBoxInterets.setSelectedItem(this.interet);
     }
 
     /**
      *initialise date de prospection
      * @param date LocalDate
      */
-    public void setDate(LocalDate date) {
+    private void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -208,7 +221,7 @@ public class VueFormulaire extends JFrame {
      *retourne raison sociale du JTextField
      * @return String raison Sociale
      */
-    public String getRaisonSociale() {
+    private String getRaisonSociale() {
         return tRaisonSociale.getText();
     }
 
@@ -216,7 +229,7 @@ public class VueFormulaire extends JFrame {
      *retourne email du JTextField
      * @return String email
      */
-    public String getEmail() {
+    private String getEmail() {
         return tEmail.getText();
     }
 
@@ -224,7 +237,7 @@ public class VueFormulaire extends JFrame {
      *retourne telephone du JTextField
      * @return String telephone
      */
-    public String getTelephone() {
+    private String getTelephone() {
         return tTelephone.getText();
     }
 
@@ -232,7 +245,7 @@ public class VueFormulaire extends JFrame {
      *retourne commentaire du JTextField
      * @return String commentaire
      */
-    public String getCommentaire() {
+    private String getCommentaire() {
         return tCommentaire.getText();
     }
 
@@ -240,7 +253,7 @@ public class VueFormulaire extends JFrame {
      *retourne numero du JTextField
      * @return String numero de rue
      */
-    public String getNumero() {
+    private String getNumero() {
         return tNumero.getText();
     }
 
@@ -248,7 +261,7 @@ public class VueFormulaire extends JFrame {
      *retourne nom rue du JTextField
      * @return String nom de rue
      */
-    public String getNomRue() {
+    private String getNomRue() {
         return tNomRue.getText();
     }
 
@@ -256,7 +269,7 @@ public class VueFormulaire extends JFrame {
      *retourne ville du JTextField
      * @return String ville
      */
-    public String getVille() {
+    private String getVille() {
         return tVille.getText();
     }
 
@@ -264,7 +277,7 @@ public class VueFormulaire extends JFrame {
      *retourne code postal du JTextField
      * @return String code postal
      */
-    public String getCodePostal() {
+    private String getCodePostal() {
         return tCodePostal.getText();
     }
 
@@ -272,7 +285,7 @@ public class VueFormulaire extends JFrame {
      *retourne chiffre d'affaire du JTextField
      * @return Double chiffre d'affaire
      */
-    public double getCA() {
+    private double getCA() {
         return Double.parseDouble(tCA.getText());
     }
 
@@ -280,27 +293,70 @@ public class VueFormulaire extends JFrame {
      *retourne nombre d'employé du JTextField
      * @return int nbre employé
      */
-    public int gettNbreEmploye() {
+    private int gettNbreEmploye() {
         return Integer.parseInt(tNbreEmploye.getText());
     }
 
     /**
      *retourne intéret du JTextField
-     * @return String oui ou non
+     * @return int 0 ou 1
      */
-    public String getInteret() {
-        return interet;
+    private int getInteret(InteretProspect interet) {
+        if (interet.equals(InteretProspect.OUI)){
+            return 1;
+        }
+        if (interet.equals(InteretProspect.NON)){
+            return 0;
+        }
+        return -1;
+    }
+
+    public VueFormulaire(ChoixClientProspect choix, EnumOption option) {
+        this.choix = choix;
+        this.option = option;
+
+        afficher();
+    }
+
+    public VueFormulaire (ChoixClientProspect choix, EnumOption option, Object entite) {
+
+
+        this.choix = choix;
+        this.option = option;
+
+        afficher();
+
+        Societe societe = (Societe) entite;
+        setRaisonSociale(societe.getRaisonSociale());
+        setIdentifiant(societe.getIdentifiant());
+        setNumero(societe.getAdresse().getNumero());
+        setNomRue(societe.getAdresse().getNomRue());
+        setCodePostal(societe.getAdresse().getCodePostal());
+        setVille(societe.getAdresse().getVille());
+        setEmail(societe.getEmail());
+        setTelephone(societe.getTelephone());
+        setCommentaire(societe.getCommentaire());
+
+        if (choix.equals(ChoixClientProspect.CLIENT)){
+            Client client = (Client) entite;
+            setCA(client.getChiffreAffaire());
+            settNbreEmploye(String.valueOf(client.getNbreEmploye()));
+        }
+        if (choix.equals(ChoixClientProspect.PROSPECT)) {
+            Prospect prospect = (Prospect) entite;
+            setInteret(prospect.getInteretProspect());
+            setDate(prospect.getDateProspect());
+            setjComboBoxJours(date.getDayOfMonth());
+            setjComboBoxAnnee(String.valueOf(date.getYear()));
+            setjComboBoxMois(date.getMonthValue());
+        }
     }
 
     /**
      * initalisation Vue
-     * @param choix Enum ChoixClientProspect client ou prospect
-     * @param option String creer modifier ou supprimr
      */
-    public VueFormulaire (ChoixClientProspect choix, EnumOption option) {
+    private void afficher () {
 
-        this.choix = choix;
-        this.option = option;
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         screenWidth = (int) screenSize.getWidth();
         screenHeight = (int) screenSize.getHeight();
@@ -336,19 +392,7 @@ public class VueFormulaire extends JFrame {
         accueil.setPreferredSize(new Dimension(250, 50));
         accueil.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                try {
-                    onAccueil();
-                } catch (MetierException metierException) {
-                    JOptionPane.showMessageDialog(null, "erreur de saisie : " + metierException.getMessage());
-                } catch (DaoException daoException){
-                    JOptionPane.showMessageDialog(null, "erreur BDD" + daoException.getMessage());
-                    if (daoException.getCritere() == 2){
-                        System.exit(1);
-                    }
-                } catch (Exception exception){
-                    JOptionPane.showMessageDialog(null, "Erreur, le logiciel va fermer");
-                    System.exit(1);
-                }
+                onAccueil();
             }
         });
 
@@ -472,13 +516,13 @@ public class VueFormulaire extends JFrame {
         });
         jComboBoxAnnee.setVisible(false);
 
-        jComboBoxInterets = new JComboBox(new String[]{"","oui", "non"});
+        jComboBoxInterets = new JComboBox(new InteretProspect[]{InteretProspect.OUI, InteretProspect.NON});
         jComboBoxInterets.setFont(new Font("Arial", Font.PLAIN, 25));
         jComboBoxInterets.setRenderer(listRenderer);
         jComboBoxInterets.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                interet = (String) jComboBoxInterets.getSelectedItem();
+                interet = (InteretProspect) jComboBoxInterets.getSelectedItem();
             }
         });
         jComboBoxInterets.setVisible(false);
@@ -503,14 +547,21 @@ public class VueFormulaire extends JFrame {
                 } catch (MetierException metierException) {
                     JOptionPane.showMessageDialog(null, "erreur de saisie : " + metierException.getMessage());
                 } catch (DaoException daoException){
-                    JOptionPane.showMessageDialog(null, "erreur BDD" + daoException.getMessage());
+                    JOptionPane.showMessageDialog(null, "erreur BDD : " + daoException.getMessage());
                     if (daoException.getCritere() == 2){
                         System.exit(1);
                     }
-                } catch (ControllerException controllerException) {
-                    JOptionPane.showMessageDialog(null, "erreur logiciel" + controllerException.getMessage());
-                    System.exit(1);
+                } catch (NumberFormatException numberFormatException){
+                    if (choix.equals(ChoixClientProspect.PROSPECT)) {
+                        JOptionPane.showMessageDialog(null, "Attention, ne mettre que des nombres dans la date");
+                    }
+                    if (choix.equals(ChoixClientProspect.CLIENT)){
+                        JOptionPane.showMessageDialog(null, "Attention, nbre d'employé et CA sont des nombres");
+                    }
                 } catch (Exception exception){
+                    StringBuilder messageLog = new StringBuilder("Exception bouton valider");
+                    messageLog.append(exception.getMessage()).append(" ").append(e);
+                    LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
                     JOptionPane.showMessageDialog(null, "Erreur, le logiciel va fermer");
                     System.exit(1);
                 }
@@ -801,10 +852,8 @@ public class VueFormulaire extends JFrame {
 
     /**
      * retour accueil
-     * @throws MetierException propagation
-     * @throws DaoException propagation
      */
-    private void onAccueil() throws MetierException, DaoException {
+    private void onAccueil() {
         dispose();
         ControllerFormulaire.accueil();
     }
@@ -846,17 +895,24 @@ public class VueFormulaire extends JFrame {
      * @throws DaoException propagation
      * @throws ControllerException propagation
      */
-    public void actionValider()
-            throws MetierException, DaoException, ControllerException {
+    private void actionValider()
+            throws Exception {
         int choixValidation = JOptionPane.showConfirmDialog(null,
                 "Voulez vous " + option + " le " + choix + " " + tRaisonSociale.getText());
         if (choixValidation == JOptionPane.YES_OPTION) {
-            if (dateJour != null && dateMois != null && dateAnnee != null){
-                date = LocalDate.of(Integer.parseInt(dateAnnee), Integer.parseInt(dateMois), Integer.parseInt(dateJour));
+            ControllerFormulaire controllerFormulaire = new ControllerFormulaire(choix, option, identifiant);
+            Adresse adresse = new Adresse(getNumero(), getNomRue(), getVille(), getCodePostal());
+            if (choix.equals(ChoixClientProspect.CLIENT)){
+                Client client = new Client(identifiant, getRaisonSociale(), getEmail(), getTelephone(),
+                        getCommentaire(), adresse, getCA(), gettNbreEmploye());
+                controllerFormulaire.valider(client);
             }
-            ControllerFormulaire controllerFormulaire = new ControllerFormulaire(choix, option, getRaisonSociale(), identifiant);
-            controllerFormulaire.valider(getNumero(), getNomRue(), getCodePostal(), getVille(),
-                    getEmail(), getTelephone(), getCA(), gettNbreEmploye(), date, getInteret(), getCommentaire());
+            if (choix.equals(ChoixClientProspect.PROSPECT)){
+                date = LocalDate.of(Integer.parseInt(dateAnnee), Integer.parseInt(dateMois), Integer.parseInt(dateJour));
+                Prospect prospect = new Prospect(identifiant, getRaisonSociale(), getEmail(), getTelephone(),
+                        getCommentaire(), adresse, date, getInteret(interet));
+                controllerFormulaire.valider(prospect);
+            }
             JOptionPane.showMessageDialog(null, "Vous avez " + option + " le " +
                     choix + " " + getRaisonSociale() + "\nVous allez retourner à l'accueil");
             onAccueil();
@@ -866,7 +922,7 @@ public class VueFormulaire extends JFrame {
      * liste des années depuis 2000
      * @return ArrayList String
      */
-    public ArrayList<String> years (){
+    private ArrayList<String> years (){
         ArrayList<String> listAnnee = new ArrayList<>();
         listAnnee.add("années");
         int anneeActuelle = LocalDate.now().getYear();
@@ -877,7 +933,7 @@ public class VueFormulaire extends JFrame {
         return listAnnee;
     }
 
-    public void initOption(){
+    private void initOption(){
         switch (option) {
             case EnumOption.CREER:
                 setTitle("Créer un " + choix);
@@ -930,4 +986,6 @@ public class VueFormulaire extends JFrame {
                 System.exit(1);
         }
     }
+
+
 }

@@ -7,12 +7,12 @@ import com.michel.metiers.Adresse;
 import com.michel.metiers.Client;
 import com.michel.utilitaires.LoggerReverso;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
+
+import static com.michel.dao.DaoConnection.*;
 
 /**
  * création modification suppression et recherche dans la table client de la BDD
@@ -22,8 +22,10 @@ public class DaoClient {
     private static final String ERREUR_MESSAGE ="problème lecture BDD, ";
     private static final String MESSAGE_FERMETURE ="problème de connection avec la base de données, " +
             "le logiciel va fermer";
+    private static final String MESSAGE_METIER = "problème métier dans la base de données";
 
-    private DaoClient(){}
+    private DaoClient() {
+    }
     /**
      * finAll client
      * @return ArraysList Objet Client
@@ -31,7 +33,9 @@ public class DaoClient {
      * @throws DaoException si pb avec la BDD
      */
 
-    public static List<Client> findAll() throws MetierException, DaoException {
+    public static List<Client> findAll() throws DaoException, SQLException {
+        PreparedStatement pstmt = null;
+        Connection connection = getInstance();
 
         String query = "SELECT societe.ID_SOCIETE AS 'identifiant', " +
                 "NOM_SOCIETE AS 'raisonSociale', " +
@@ -51,8 +55,9 @@ public class DaoClient {
                 "INNER JOIN ville on ville.ID_VILLE = code_postal.ID_VILLE;";
         ArrayList<Client> clients = new ArrayList<>();
 
-        try (Statement stmt = DaoConnection.getInstance().createStatement()) {
-            ResultSet rs = stmt.executeQuery(query);
+        try {
+            pstmt = connection.prepareStatement(query);
+            ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 //Création objet Adresse
                 Adresse adresse = new Adresse(rs.getString("numero"),
@@ -71,11 +76,23 @@ public class DaoClient {
                 //Insertion Client dans ArraysList
                 clients.add(client);
             }
-        }catch (SQLException e) {
+        }
+        catch (MetierException e){
+            StringBuilder messageLog = new StringBuilder(MESSAGE_METIER);
+            messageLog.append(e.getMessage()).append(" ").append(e);
+            LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
+            throw new DaoException(2, "Erreur base de donnée, le logiciel va fermer");
+        }
+        catch (SQLException e) {
             StringBuilder messageLog = new StringBuilder(ERREUR_MESSAGE);
             messageLog.append(e.getMessage()).append(" ").append(e);
             LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
             throw new DaoException(2, "problème connection base de donnée, le logiciel va fermer");
+        } finally {
+            if (pstmt != null){
+                pstmt.close();
+            }
+
         }
         return clients;
     }
@@ -84,11 +101,12 @@ public class DaoClient {
      * findByName
      * @param raisonSociale String non null
      * @return Objet Client
-     * @throws MetierException propagation
      * @throws DaoException si pb connetion BDD
      */
-    public static Client findByName(String raisonSociale) throws MetierException, DaoException {
+    public static Client findByName(String raisonSociale) throws DaoException, SQLException {
 
+        PreparedStatement pstmt = null;
+        Connection connection = getInstance();
 
         if (raisonSociale == null || raisonSociale.trim().isEmpty()){
             throw new DaoException(1, "attention la raison Sociale est vide");
@@ -110,10 +128,12 @@ public class DaoClient {
                 "INNER JOIN adresse on adresse.ID_ADRESSE = societe.ID_ADRESSE " +
                 "INNER JOIN code_postal on code_postal.ID_CP = adresse.ID_CP " +
                 "INNER JOIN ville on ville.ID_VILLE = code_postal.ID_VILLE " +
-                "WHERE NOM_SOCIETE LIKE '" + raisonSociale + "';";
+                "WHERE NOM_SOCIETE LIKE ?;";
 
-        try (Statement stmt = DaoConnection.getInstance().createStatement()) {
-            ResultSet rs = stmt.executeQuery(query);
+        try  {
+            pstmt = connection.prepareStatement(query);
+            pstmt.setString(1, raisonSociale);
+            ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 Adresse adresse = new Adresse(rs.getString("numero"),
                         rs.getString("nomRue"),
@@ -129,11 +149,20 @@ public class DaoClient {
                         rs.getDouble("chiffreAffaire"),
                         rs.getInt("nbreEmploye"));
             }
+        } catch (MetierException e){
+            StringBuilder messageLog = new StringBuilder(MESSAGE_METIER);
+            messageLog.append(e.getMessage()).append(" ").append(e);
+            LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
+            throw new DaoException(2, "Erreur base de donnée, le logiciel va fermer");
         } catch (SQLException e) {
             StringBuilder messageLog = new StringBuilder(ERREUR_MESSAGE);
             messageLog.append(e.getMessage()).append(" ").append(e);
             LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
             throw new DaoException(2, MESSAGE_FERMETURE);
+        } finally {
+            if (pstmt != null){
+                pstmt.close();
+            }
         }
         return client;
     }
@@ -143,95 +172,178 @@ public class DaoClient {
      * @param client Object Client
      * @throws DaoException si pb avec la BDD
      */
-    public static void create (Client client) throws DaoException {
+    public static void create (Client client) throws DaoException, SQLException {
+
+        PreparedStatement pstmtIdClient = null;
+        PreparedStatement pstmtRS = null;
+        PreparedStatement pstmtUpdateSociete = null;
+        PreparedStatement pstmtInsertSociete = null;
+        PreparedStatement pstmtInsertClient = null;
+        Connection connection = getInstance();
 
         String queryIdClient = "SELECT ID_CLIENT FROM client " +
                 "INNER JOIN societe on client.ID_SOCIETE = societe.ID_SOCIETE " +
-                "WHERE NOM_SOCIETE LIKE '" + client.getRaisonSociale() + "';";
+                "WHERE NOM_SOCIETE LIKE ?;";
+        String queryRS = "SELECT ID_SOCIETE, NOM_SOCIETE FROM societe " +
+                "WHERE NOM_SOCIETE LIKE ?";
+        String queryUpdateSociete = "UPDATE societe SET NOM_SOCIETE = ?," +
+                "ID_ADRESSE= ?," +
+                "TEL_SOCIETE= ?," +
+                "MAIL_SOCIETE= ?," +
+                "COM_SOCIETE= ? WHERE ID_SOCIETE = ?;";
+        String queryInsertSociete = "INSERT INTO `societe` (`ID_SOCIETE`, `NOM_SOCIETE`, `ID_ADRESSE`, " +
+                "`TEL_SOCIETE`, `MAIL_SOCIETE`, `COM_SOCIETE`) " +
+                "VALUES (NULL, ?, ?, ?, ?, ?);";
+        String queryInsertClient = "INSERT INTO `client` (`ID_CLIENT`, `ID_SOCIETE`, `CA_CLIENT`, `NBRE_EMPLOYE`) " +
+                "VALUES (NULL, ?, ?, ?);";
         // Vérifier si la id_client n'est pas existant dans la table client
-        try (Statement stmt = DaoConnection.getInstance().createStatement()) {
-            ResultSet rsIdClient = stmt.executeQuery(queryIdClient);
+        try {
+            pstmtIdClient = connection.prepareStatement(queryIdClient);
+            pstmtRS = connection.prepareStatement(queryRS);
+            pstmtUpdateSociete = connection.prepareStatement(queryUpdateSociete);
+            pstmtInsertSociete = connection.prepareStatement(queryInsertSociete, Statement.RETURN_GENERATED_KEYS);
+            pstmtInsertClient = connection.prepareStatement(queryInsertClient);
+
+            pstmtIdClient.setString(1, client.getRaisonSociale());
+            ResultSet rsIdClient = pstmtIdClient.executeQuery();
             //si inexistante
             if(!rsIdClient.next()){
                 int idSociete = 0;
                 //recherche idAdresse et insertion Adresse si inexistante
                 int idAdresse = DaoAdresse.creerAdresse(client.getAdresse());
                 //verfication si raison sociale existe
-                String queryRS = "SELECT ID_SOCIETE, NOM_SOCIETE FROM societe " +
-                        "WHERE NOM_SOCIETE LIKE '" + client.getRaisonSociale() + "'";
-                ResultSet rsRaisonSociale = stmt.executeQuery(queryRS);
+                pstmtRS.setString(1, client.getRaisonSociale());
+                ResultSet rsRaisonSociale = pstmtRS.executeQuery();
                 if (rsRaisonSociale.next()){
                     while (rsRaisonSociale.next()){
                         idSociete = rsRaisonSociale.getInt(1);
                     }
-                    stmt.execute("UPDATE societe SET NOM_SOCIETE ='" + client.getRaisonSociale() + "'," +
-                            "ID_ADRESSE='" + idAdresse + "'," +
-                            "TEL_SOCIETE='" + client.getTelephone() + "'," +
-                            "MAIL_SOCIETE='" + client.getEmail() + "'," +
-                            "COM_SOCIETE='" + client.getCommentaire() + "' WHERE ID_SOCIETE = " + idSociete + ";");
+                    pstmtUpdateSociete.setString(1, client.getRaisonSociale());
+                    pstmtUpdateSociete.setInt(2, idAdresse);
+                    pstmtUpdateSociete.setString(3, client.getTelephone());
+                    pstmtUpdateSociete.setString(4, client.getEmail());
+                    pstmtUpdateSociete.setString(5, client.getCommentaire());
+                    pstmtUpdateSociete.setInt(6, idSociete);
+                    pstmtUpdateSociete.executeUpdate();
                 } else {
                     //insertion nouvelle societe dans la table societe si raison sociale inexistante
-                    stmt.execute("INSERT INTO `societe` (`ID_SOCIETE`, `NOM_SOCIETE`, `ID_ADRESSE`, " +
-                            "`TEL_SOCIETE`, `MAIL_SOCIETE`, `COM_SOCIETE`) " +
-                            "VALUES (NULL, '" + client.getRaisonSociale() + "', " +
-                            "'" + idAdresse + "', " +
-                            "'" + client.getTelephone() + "', " +
-                            "'" + client.getEmail() + "', " +
-                            "'" + client.getCommentaire() + "');", Statement.RETURN_GENERATED_KEYS);
+                    pstmtInsertSociete.setString(1, client.getRaisonSociale());
+                    pstmtInsertSociete.setInt(2, idAdresse);
+                    pstmtInsertSociete.setString(3, client.getTelephone());
+                    pstmtInsertSociete.setString(4, client.getEmail());
+                    pstmtInsertSociete.setString(5, client.getCommentaire());
+                    pstmtInsertSociete.executeUpdate();
                     //retour clé primaire
-                    ResultSet rsIdSociete = stmt.getGeneratedKeys();
-                    while (rsIdSociete.next()) {
+                    ResultSet rsIdSociete = pstmtInsertSociete.getGeneratedKeys();
+                    if (rsIdSociete.next()) {
                         idSociete = rsIdSociete.getInt(1);
                     }
                 }
                 //insertion dans la table client
-                stmt.execute("INSERT INTO `client` (`ID_CLIENT`, `ID_SOCIETE`, `CA_CLIENT`, `NBRE_EMPLOYE`) " +
-                        "VALUES (NULL, '" + idSociete + "', " +
-                        "'" + client.getChiffreAffaire() + "', " +
-                        "'" + client.getNbreEmploye() + "');");
+                pstmtInsertClient.setInt(1, idSociete);
+                pstmtInsertClient.setDouble(2, client.getChiffreAffaire());
+                pstmtInsertClient.setInt(3, client.getNbreEmploye());
+                pstmtInsertClient.executeUpdate();
             // si dèjà existante retour message utilisateur
             } else {
                 throw new DaoException(1, "Cette entreprise est cliente");
+            }
+        } catch (SQLIntegrityConstraintViolationException sqlIntegrity){
+            if (sqlIntegrity.getErrorCode() == 1062){
+                throw new DaoException(1, "Attention cette socièté existe");
+            }
+            if (sqlIntegrity.getErrorCode() == 1406) {
+                throw new DaoException(1, "Un paramètre n'est pas bon");
             }
         } catch (SQLException e) {
             StringBuilder messageLog = new StringBuilder(ERREUR_MESSAGE);
             messageLog.append(e.getMessage()).append(" ").append(e);
             LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
             throw new DaoException(2, MESSAGE_FERMETURE);
+        } finally {
+            if (pstmtIdClient != null){
+                pstmtIdClient.close();
+            }
+            if (pstmtRS != null) {
+                pstmtRS.close();
+            }
+            if (pstmtUpdateSociete != null){
+                pstmtUpdateSociete.close();
+            }
+            if (pstmtInsertSociete != null){
+                pstmtInsertSociete.close();
+            }
+            if (pstmtInsertClient != null) {
+                pstmtInsertClient.close();
+            }
         }
     }
 
     /**
      * update
      * @param client Objet client
-     * @param idSociete ID_CLIENT de la table client de la BDD
      * @throws DaoException si pb avec la BDD
      */
-    public static void update(Client client, int idSociete) throws DaoException {
+    public static void update(Client client) throws DaoException, SQLException {
+        PreparedStatement pstmtRS = null;
+        PreparedStatement pstmtUpdateClient = null;
+        PreparedStatement pstmtUpdateSociete = null;
+        int idSociete = client.getIdentifiant();
 
-        //recherche idAdresse et insertion Adresse si inexistante
-        int idAdresse = DaoAdresse.creerAdresse(client.getAdresse());
-        //verification nouvelle raison sociale n'existe pas dans la base de données avant modification
-        String queryRS = "SELECT NOM_SOCIETE FROM societe WHERE NOM_SOCIETE LIKE '" + client.getRaisonSociale() + "' " +
-                "AND ID_SOCIETE != " + idSociete + ";";
-        String queryUpDateCLient = "UPDATE `client` SET `CA_CLIENT`='"+client.getChiffreAffaire()+"" +
-                "',`NBRE_EMPLOYE`='"+client.getNbreEmploye()+"' WHERE ID_SOCIETE = 1;";
-        try (Statement stmt = DaoConnection.getInstance().createStatement()) {
-            ResultSet rsRaisonSociale = stmt.executeQuery(queryRS);
-            if(rsRaisonSociale.next()){
+        Connection connection = getInstance();
+
+        String queryRS = "SELECT NOM_SOCIETE FROM societe WHERE NOM_SOCIETE LIKE ? AND ID_SOCIETE != ?";
+        String queryUpdateClient = "UPDATE client SET CA_CLIENT=?, NBRE_EMPLOYE=? WHERE ID_SOCIETE = ?";
+        String queryUpdateSociete = "UPDATE societe SET NOM_SOCIETE =?, ID_ADRESSE=?, TEL_SOCIETE=?, MAIL_SOCIETE=?, " +
+                "COM_SOCIETE=? WHERE ID_SOCIETE = ?";
+
+        try {
+            pstmtRS = connection.prepareStatement(queryRS);
+            pstmtUpdateClient = connection.prepareStatement(queryUpdateClient);
+            pstmtUpdateSociete = connection.prepareStatement(queryUpdateSociete);
+            // Recherche idAdresse et insertion Adresse si inexistante
+            int idAdresse = DaoAdresse.creerAdresse(client.getAdresse());
+            // Vérification nouvelle raison sociale n'existe pas dans la base de données avant modification
+            pstmtRS.setString(1, client.getRaisonSociale());
+            pstmtRS.setInt(2, idSociete);
+            ResultSet rsRaisonSociale = pstmtRS.executeQuery();
+            if (rsRaisonSociale.next()) {
                 throw new DaoException(1, "Raison sociale déjà existante");
             }
-            stmt.execute("UPDATE societe SET NOM_SOCIETE ='" + client.getRaisonSociale() + "'," +
-                    "ID_ADRESSE='" + idAdresse + "'," +
-                    "TEL_SOCIETE='" + client.getTelephone() + "'," +
-                    "MAIL_SOCIETE='" + client.getEmail() + "'," +
-                    "COM_SOCIETE='" + client.getCommentaire() + "' WHERE ID_SOCIETE = " + idSociete + ";");
-            stmt.execute(queryUpDateCLient);
+            pstmtUpdateSociete.setString(1, client.getRaisonSociale());
+            pstmtUpdateSociete.setInt(2, idAdresse);
+            pstmtUpdateSociete.setString(3, client.getTelephone());
+            pstmtUpdateSociete.setString(4, client.getEmail());
+            pstmtUpdateSociete.setString(5, client.getCommentaire());
+            pstmtUpdateSociete.setInt(6, idSociete);
+            pstmtUpdateSociete.executeUpdate();
+
+            pstmtUpdateClient.setDouble(1, client.getChiffreAffaire());
+            pstmtUpdateClient.setInt(2, client.getNbreEmploye());
+            pstmtUpdateClient.setInt(3, idSociete);
+            pstmtUpdateClient.executeUpdate();
+        } catch (SQLIntegrityConstraintViolationException sqlIntegrity){
+            if (sqlIntegrity.getErrorCode() == 1062){
+                throw new DaoException(1, "Attention cette socièté existe");
+            }
+            if (sqlIntegrity.getErrorCode() == 1406) {
+                throw new DaoException(1, "Un paramètre n'est pas bon");
+            }
         } catch (SQLException e) {
             StringBuilder messageLog = new StringBuilder(ERREUR_MESSAGE);
             messageLog.append(e.getMessage()).append(" ").append(e);
             LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
             throw new DaoException(2, MESSAGE_FERMETURE);
+        } finally {
+            if (pstmtRS != null){
+                pstmtRS.close();
+            }
+            if (pstmtUpdateSociete != null){
+                pstmtUpdateSociete.close();
+            }
+            if (pstmtUpdateClient != null){
+                pstmtUpdateClient.close();
+            }
         }
     }
 
@@ -240,23 +352,49 @@ public class DaoClient {
      * @param idSociete ID_SOCIETE de la table societe de la BDD
      * @throws DaoException si pb avec la BDD
      */
-    public static void deleteClient (int idSociete) throws DaoException {
+    public static void deleteClient (int idSociete) throws DaoException, SQLException {
+        PreparedStatement pstmtDeleteClient = null;
+        PreparedStatement pstmtSelectProspect = null;
+        PreparedStatement pstmtDeleteSociete = null;
 
-        try(Statement stmt = DaoConnection.getInstance().createStatement()){
-            //supprimer dans la table client
-            stmt.execute("DELETE FROM client WHERE ID_SOCIETE = " + idSociete + ";");
-            String queryProspect = "SELECT ID_SOCIETE FROM prospect WHERE ID_SOCIETE = " + idSociete + ";";
-            ResultSet rsProspect = stmt.executeQuery(queryProspect);
-            // si la societe n'est pas rattaché au prospect on supprime la socièté
-            if (!rsProspect.next()){
-                stmt.execute("DELETE FROM societe WHERE ID_SOCIETE = " + idSociete + ";");
+        Connection connection =getInstance();
+
+        String deleteClientQuery = "DELETE FROM client WHERE ID_SOCIETE = ?";
+        String selectProspectQuery = "SELECT ID_SOCIETE FROM prospect WHERE ID_SOCIETE = ?";
+        String deleteSocieteQuery = "DELETE FROM societe WHERE ID_SOCIETE = ?";
+
+        try {
+            pstmtDeleteClient = connection.prepareStatement(deleteClientQuery);
+            pstmtSelectProspect = connection.prepareStatement(selectProspectQuery);
+            pstmtDeleteSociete = connection.prepareStatement(deleteSocieteQuery);
+            // Supprimer dans la table client
+            pstmtDeleteClient.setInt(1, idSociete);
+            pstmtDeleteClient.executeUpdate();
+
+            // Vérifier si la société est liée à un prospect
+            pstmtSelectProspect.setInt(1, idSociete);
+            ResultSet rsProspect = pstmtSelectProspect.executeQuery();
+
+            // Si la société n'est pas rattachée au prospect, on supprime la société
+            if (!rsProspect.next()) {
+                pstmtDeleteSociete.setInt(1, idSociete);
+                pstmtDeleteSociete.executeUpdate();
             }
         } catch (SQLException e) {
             StringBuilder messageLog = new StringBuilder(ERREUR_MESSAGE);
             messageLog.append(e.getMessage()).append(" ").append(e);
             LoggerReverso.LOGGER.log(Level.SEVERE, messageLog.toString());
-            throw new DaoException(2, "problème de connection avec la base de données, le logiciel va fermer");
-
+            throw new DaoException(2, "Problème de connexion avec la base de données, le logiciel va fermer");
+        } finally {
+            if (pstmtDeleteClient != null){
+                pstmtDeleteClient.close();
+            }
+            if (pstmtDeleteSociete != null){
+                pstmtDeleteSociete.close();
+            }
+            if (pstmtSelectProspect != null){
+                pstmtSelectProspect.close();
+            }
         }
     }
 }

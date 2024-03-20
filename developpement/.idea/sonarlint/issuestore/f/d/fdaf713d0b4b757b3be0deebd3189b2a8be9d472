@@ -1,4 +1,5 @@
 
-…	java:S107”"=Method has 11 parameters, which is greater than 7 authorized.(ÊÿÔİúÿÿÿÿ8÷ªêá1J$5fc7178f-e94f-461a-80c0-a556ce6372a8
-€	java:S107Â"=Method has 11 parameters, which is greater than 7 authorized.(Œ¿ÒÓ8÷ªêá1J$29c93cd2-6748-4a6c-99ad-fe6f0a894902
-€	java:S107ş"=Method has 11 parameters, which is greater than 7 authorized.(Ä½×Ò8÷ªêá1J$f060330d-b8de-4c3c-9c93-0b3b565e7a91
+g	java:S112F"FDefine and throw a dedicated exception instead of using a generic one.(èİÎÑşÿÿÿÿ8Ä²§Şå1
+g	java:S112^"FDefine and throw a dedicated exception instead of using a generic one.(èİÎÑşÿÿÿÿ8Ä²§Şå1
+g	java:S112p"FDefine and throw a dedicated exception instead of using a generic one.(èİÎÑşÿÿÿÿ8Ä²§Şå1
+b	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(ñ·È·8Å²§Şå1

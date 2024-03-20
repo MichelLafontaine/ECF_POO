@@ -6,7 +6,7 @@ import com.michel.utilitaires.Utilitaires;
 /**
  * classe mere
  */
-public class Societe {
+public abstract class Societe {
     private int identifiant;
     private String raisonSociale;
     private String email;
@@ -44,8 +44,11 @@ public class Societe {
      * @throws MetierException si null ou vide ou >100
      */
     public void setRaisonSociale(String raisonSociale) throws MetierException {
-        if (raisonSociale == null || raisonSociale.trim().isEmpty() || raisonSociale.length() > 100){
-            throw new MetierException("La raison sociale n'est pas correcte");
+        if (raisonSociale == null || raisonSociale.trim().isEmpty()){
+            throw new MetierException("La raison sociale ne doit pas être vide");
+        }
+        if (raisonSociale.length() > 100){
+            throw new MetierException("La raison sociale dépasse les 100 caractères");
         }
         this.raisonSociale = raisonSociale.toUpperCase();
     }
@@ -65,7 +68,10 @@ public class Societe {
      */
     public void setEmail(String email) throws MetierException {
         if (email == null || email.trim().isEmpty() || !Utilitaires.PATTERN_MAIL.matcher(email).matches()){
-            throw new MetierException("l'adresse email n'est pas correcte");
+            throw new MetierException("l'adresse email ne doit pas être vide");
+        }
+        if (!Utilitaires.PATTERN_MAIL.matcher(email).matches()) {
+            throw new MetierException("L'email n'est pas au bon format");
         }
         this.email = email.toLowerCase();
     }
@@ -84,8 +90,11 @@ public class Societe {
      * @throws MetierException si null ou vide ou != pattern
      */
     public void setTelephone(String telephone) throws MetierException {
-        if (telephone == null || telephone.trim().isEmpty() || !Utilitaires.PATTERN_TEL.matcher(telephone).matches()){
-            throw new MetierException("Le numéro de téléphone n'est pas correct");
+        if (telephone == null || telephone.trim().isEmpty()){
+            throw new MetierException("Le numéro de téléphone ne doit pas être vide");
+        }
+        if (!Utilitaires.PATTERN_TEL.matcher(telephone).matches()) {
+            throw new MetierException("Le numéro de téléphone n'est pas au bon format");
         }
         this.telephone = telephone.toLowerCase();
     }

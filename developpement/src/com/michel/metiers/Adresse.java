@@ -26,8 +26,11 @@ public class Adresse {
      * @throws MetierException envoi message à 'utilisateur
      */
     public void setNumero(String numero) throws MetierException {
-        if (numero == null || numero.trim().isEmpty() || numero.length() > 10){
-            throw new MetierException("Le numéro de la rue n'est pas correct");
+        if (numero == null || numero.trim().isEmpty()){
+            throw new MetierException("Le numéro de la rue ne doit pas être vide");
+        }
+        if (numero.length() > 10) {
+            throw new MetierException("Le numéro de la rue dépasse 10 caractères");
         }
         this.numero = numero.toUpperCase();
     }
@@ -46,8 +49,11 @@ public class Adresse {
      * @throws MetierException envoi message à 'utilisateur
      */
     public void setNomRue(String nomRue) throws MetierException {
-        if (nomRue == null || nomRue.trim().isEmpty() || nomRue.length() > 150){
-            throw new MetierException("Le nom de la rue n'est pas correct");
+        if (nomRue == null || nomRue.trim().isEmpty()){
+            throw new MetierException("Le nom de la rue ne doit pas être vide");
+        }
+        if (nomRue.length() > 150){
+            throw new MetierException("Le nom de la rue dépasse les 150 caractères");
         }
         this.nomRue = nomRue.toUpperCase();
     }
@@ -66,8 +72,11 @@ public class Adresse {
      * @throws MetierException envoi message à 'utilisateur
      */
     public void setVille(String ville) throws MetierException {
-        if (ville == null || ville.trim().isEmpty() || ville.length() > 50){
-            throw new MetierException("Le nom de la ville n'est pas correct");
+        if (ville == null || ville.trim().isEmpty()){
+            throw new MetierException("Le nom de la ville ne doit pas être vide");
+        }
+        if (ville.length() > 50){
+            throw new MetierException("Le nom de la rue dépasse les 50 caractères");
         }
         this.ville = ville.toUpperCase();
     }
@@ -86,8 +95,11 @@ public class Adresse {
      * @throws MetierException envoi message à 'utilisateur
      */
     public void setCodePostal(String codePostal) throws MetierException {
-        if (codePostal == null|| codePostal.trim().isEmpty() || !Utilitaires.PATTERN_CODEPOSTAL.matcher((codePostal)).matches()){
-            throw new MetierException("le Code Postal n'est pas correct");
+        if (codePostal == null|| codePostal.trim().isEmpty()){
+            throw new MetierException("le Code Postal ne doit pas être vide");
+        }
+        if (!Utilitaires.PATTERN_CODEPOSTAL.matcher((codePostal)).matches()){
+            throw new MetierException("le Code Postal n'est pas au bon format : 5 chiffres");
         }
         this.codePostal = codePostal;
     }

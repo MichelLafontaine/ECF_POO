@@ -1,19 +1,21 @@
 
-‚
-java:S11928"FDefine a constant instead of duplicating this literal "Arial" 4 times.(”¯„‚J$17ef4c3d-3010-45e7-9f3c-c1097609a14e
-d
-java:S1604A"(Make this anonymous inner class a lambda(¯ı©J$024db26a-f648-4ef1-9818-c3e6b47b4aa0
-i
-java:S1604N"(Make this anonymous inner class a lambda(è±áËúÿÿÿÿJ$49236618-012c-4a0b-86e0-5dca5bee4e43
-e
-java:S2387"*"title" is the name of a field in "Frame".(Éº~J$ad92586c-8684-4665-a37d-6a7357cf062e
-“
-java:S3776'"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(—ÛÍÿÿÿÿÿJ$dfd515f1-bd5c-47e4-a62b-31363eadcb7f
-»
-java:S1130‡"~Remove the declaration of thrown exception 'com.michel.exceptions.MetierException', as it cannot be thrown from method's body.(Ùî§äJ$0d01141b-0f78-4c70-a4f5-f09c7af936ba
-¸
-java:S1130‡"{Remove the declaration of thrown exception 'com.michel.exceptions.DaoException', as it cannot be thrown from method's body.(Ùî§äJ$7768f13d-67f1-44ff-bfe9-e686c2a7d972
-c
-java:S1168™"&Return an empty array instead of null.(¥¹ïJ$a4884883-6d5e-4e23-bc43-f713dfb60f91
+w
+java:S3740$"/Provide the parametrized type for this generic.(±õ ùÿÿÿÿ8’–éÖå1J$baad6c15-a4bc-4b14-9aeb-39ba7d1ea6da
 ‰
-java:S1128"FRemove this unused import 'com.michel.exceptions.ControllerException'.(à­çÜ8»˜Àëá1J$ec9e462c-e964-4d68-9584-9a6efb8d2624
+java:S1192="FDefine a constant instead of duplicating this literal "Arial" 4 times.(”¯„‚8––éÖå1J$85ef7f2a-ad87-4a49-bfab-1e0aeca1440b
+k
+java:S1604F"(Make this anonymous inner class a lambda(¯ı©8˜–éÖå1J$176ab9e5-035a-43a8-8fd5-1274e48e9eaf
+p
+java:S1604S"(Make this anonymous inner class a lambda(è±áËúÿÿÿÿ8˜–éÖå1J$e820cc1b-942a-4d80-b06b-cbe608f1445f
+l
+java:S2387"*"title" is the name of a field in "Frame".(Éº~8¥–éÖå1J$eda14e52-0455-48b5-b209-d12c44313f7c
+w
+java:S1948$"/Make "listeSocietes" transient or serializable.(±õ ùÿÿÿÿ8¥§ìÖå1J$c7dcc220-8ff0-44cc-8a8a-3a06e58b60cd
+š
+java:S3776,"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(—ÛÍÿÿÿÿÿ8©–éÖå1J$bcc21828-af55-4a1e-8abd-a7833e83ba84
+Â
+java:S1130²"~Remove the declaration of thrown exception 'com.michel.exceptions.MetierException', as it cannot be thrown from method's body.(Ùî§ä8Á–éÖå1J$5375cec2-8310-4c83-8050-cc6f67ea330d
+¿
+java:S1130²"{Remove the declaration of thrown exception 'com.michel.exceptions.DaoException', as it cannot be thrown from method's body.(Ùî§ä8Á–éÖå1J$bbf01bd3-f965-47d9-a495-4eadbed8738d
+j
+java:S1168Ä"&Return an empty array instead of null.(¥¹ï8Ä–éÖå1J$d3e7e530-2882-4371-841a-2098792192e2

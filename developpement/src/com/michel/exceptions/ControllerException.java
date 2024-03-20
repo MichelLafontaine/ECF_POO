@@ -16,6 +16,6 @@ public class ControllerException extends Exception{
      * @param message String message pour l'utilisateur
      */
     public ControllerException (String message){
-        super((message));
+        super(message);
     }
 }

@@ -59,3 +59,15 @@ b
 -src/com/michel/utilitaires/LoggerReverso.java,f\5\f52da86b6057937e170e94eb1bad11d787fc62fc
 \
 ,src/com/michel/controllers/package-info.java,f\a\fa98662ad57f9e3fb9b0506ca9eda45318e15847
+S
+#src/com/michel/metiers/Societe.java,e\f\ef26b39fd943dd6705e0bdc78d4e373642ec9c17
+C
+database.properties,a\1\a15852150b1eb576d35094f69c953c3c46fd3041
+T
+$src/com/michel/metiers/Prospect.java,c\0\c0f3b2e9798603ff98d22a472e9e3eb8339b969d
+S
+#src/com/michel/metiers/Adresse.java,1\c\1ce187a520077fa11b7f43b36835855c76c9832d
+R
+"src/com/michel/metiers/Client.java,f\7\f781b5341031f31083c48a098b57309d1ac1fc09
+_
+/src/com/michel/utilitaires/InteretProspect.java,7\3\73b9d531df97cb23f8433572c095b9ead4cd7f44

@@ -1,0 +1,13 @@
+
+’
+java:S20950"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ØŠˆì8ú¼õµå1J$f27cadf6-e972-43d2-a25d-11a067865bbf
+‘
+java:S2095/"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Î“©p8û¼õµå1J$d8080546-14dc-4941-9382-d469e883c3e1
+—
+java:S2095-"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ñÿşşÿÿÿÿ8û¼õµå1J$741909e5-af73-49a3-a605-e59f9614beb3
+’
+java:S2095."OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(°¸õ8ú¼õµå1J$428374b4-f902-4c1f-bca8-6dfc58609b36
+—
+java:S2095,"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(„®¬½ùÿÿÿÿ8ú¼õµå1J$b8439096-f5b2-4559-8941-e0529198a6f0
+š
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(¥±Ïıÿÿÿÿ8ı¼õµå1J$1ccf89b9-e2e9-4fc7-8cfe-46714393eed4

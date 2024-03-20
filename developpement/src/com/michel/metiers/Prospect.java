@@ -76,8 +76,8 @@ public class Prospect extends Societe{
     public Prospect(String raisonSociale, String email, String telephone, String commentaire, Adresse adresse,
                     LocalDate dateProspect, int interetProspect) throws MetierException {
         super(raisonSociale, email, telephone, commentaire, adresse);
-        this.dateProspect = dateProspect;
-        this.interetProspect = interetProspect;
+        setDateProspect(dateProspect);
+        setInteretProspect(interetProspect);
     }
 
     /**

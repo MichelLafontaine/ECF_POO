@@ -48,7 +48,7 @@ public class ControllerAccueil {
      * @return String[] raison sociale
      * @throws DaoException propagation à la vue
      */
-    public static String[] listeSociete(ChoixClientProspect choix) throws DaoException {
+    public static String[] listeSociete(ChoixClientProspect choix) throws Exception {
         List<String> listeSociete = DaoSociete.raisonSociales(choix);
         return listeSociete.toArray(new String[0]);
     }
@@ -60,7 +60,7 @@ public class ControllerAccueil {
      * @throws DaoException propagation à la vue
      */
     public void validerChoix()
-            throws ControllerException,  MetierException, DaoException {
+            throws Exception {
         
         switch (option) {
             case EnumOption.CREER, EnumOption.MODIFIER, EnumOption.SUPPRIMER:

@@ -1,16 +1,20 @@
 package com.michel.vues;
 
 import com.michel.controllers.ControllerAffichage;
-import com.michel.exceptions.ControllerException;
 import com.michel.exceptions.DaoException;
 import com.michel.exceptions.MetierException;
+import com.michel.metiers.Client;
+import com.michel.metiers.Prospect;
 import com.michel.utilitaires.ChoixClientProspect;
+import com.michel.utilitaires.Utilitaires;
 
 import javax.swing.*;
 import javax.swing.table.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import java.util.List;
 
 /**
  * Claase de la vue affichage données client/prospeect
@@ -29,7 +33,8 @@ public class VueAfficher extends JFrame{
     private JButton accueil;
     private JTable tableAffichage;
     private String[] colonne;
-    private String[][] listeSociete;
+    private List listeSocietes;
+    private String[][] tableauSocietes;
     DefaultTableModel tableModel;
 
     /**
@@ -96,7 +101,45 @@ public class VueAfficher extends JFrame{
         colonne = nomColonne();
         try {
             ControllerAffichage controllerAffichage = new ControllerAffichage(choix);
-            listeSociete = controllerAffichage.findAll();
+            listeSocietes = controllerAffichage.findAll();
+            if (choix.equals(ChoixClientProspect.CLIENT)) {
+                tableauSocietes = new String[listeSocietes.size()][10];
+                for (int i = 0; i < listeSocietes.size(); i++) {
+                    Client client = (Client) listeSocietes.get(i);
+                    tableauSocietes[i][0] = client.getRaisonSociale();
+                    tableauSocietes[i][1] = client.getAdresse().getNumero();
+                    tableauSocietes[i][2] = client.getAdresse().getNomRue();
+                    tableauSocietes[i][3] = String.valueOf(client.getAdresse().getCodePostal());
+                    tableauSocietes[i][4] = client.getAdresse().getVille();
+                    tableauSocietes[i][5] = client.getEmail();
+                    tableauSocietes[i][6] = client.getTelephone();
+                    tableauSocietes[i][7] = String.valueOf(client.getChiffreAffaire());
+                    tableauSocietes[i][8] = String.valueOf(client.getNbreEmploye());
+                    tableauSocietes[i][9] = client.getCommentaire();
+                }
+            } else if (choix.equals(ChoixClientProspect.PROSPECT)){
+                tableauSocietes = new String[listeSocietes.size()][10];
+                for (int i = 0; i < listeSocietes.size(); i++){
+                    Prospect prospect = (Prospect) listeSocietes.get(i);
+                    tableauSocietes[i][0] = prospect.getRaisonSociale();
+                    tableauSocietes[i][1] = prospect.getAdresse().getNumero();
+                    tableauSocietes[i][2] = prospect.getAdresse().getNomRue();
+                    tableauSocietes[i][3] = String.valueOf(prospect.getAdresse().getCodePostal());
+                    tableauSocietes[i][4] = prospect.getAdresse().getVille();
+                    tableauSocietes[i][5] = prospect.getEmail();
+                    tableauSocietes[i][6] = prospect.getTelephone();
+                    tableauSocietes[i][7] = prospect.getDateProspect().format(Utilitaires.formatDate());
+                    String interet = "";
+                    if (prospect.getInteretProspect() == 1){
+                        interet = "oui";
+                    }
+                    if (prospect.getInteretProspect() == 0){
+                        interet = "non";
+                    }
+                    tableauSocietes[i][8] = interet;
+                    tableauSocietes[i][9] = prospect.getCommentaire();
+                }
+            }
         } catch (MetierException metierException) {
             JOptionPane.showMessageDialog(null, "erreur de saisie : " + metierException.getMessage());
         } catch (DaoException daoException){
@@ -109,7 +152,7 @@ public class VueAfficher extends JFrame{
             System.exit(1);
         }
 
-        tableModel = new DefaultTableModel(listeSociete, colonne);
+        tableModel = new DefaultTableModel(tableauSocietes, colonne);
         tableAffichage = new JTable(tableModel);
         TableColumnModel columnModel = tableAffichage.getColumnModel();
         int tailleColonne = 100;
