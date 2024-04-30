@@ -127,3 +127,15 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 20/03/2024 15:25:01 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
 20/03/2024 15:25:04 Level : INFO / Message : connection BDD réussite / Méthode : getInstance / Classe : com.michel.dao.DaoConnection
 20/03/2024 15:25:22 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+21/03/2024 08:15:45 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+21/03/2024 08:15:48 Level : SEVERE / Message : problème ouverture BDD SQLException, Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server. com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server. / Méthode : <init> / Classe : com.michel.dao.DaoConnection
+21/03/2024 08:16:00 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+21/03/2024 08:16:07 Level : INFO / Message : connection BDD réussite / Méthode : getInstance / Classe : com.michel.dao.DaoConnection
+21/03/2024 08:16:12 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection
+15/04/2024 10:44:31 Level : INFO / Message : début pg / Méthode : lancerLog / Classe : com.michel.utilitaires.LancerLog
+15/04/2024 10:44:35 Level : INFO / Message : connection BDD réussite / Méthode : getInstance / Classe : com.michel.dao.DaoConnection
+15/04/2024 10:44:52 Level : INFO / Message : fermeture BDD / Méthode : lambda$static$0 / Classe : com.michel.dao.DaoConnection

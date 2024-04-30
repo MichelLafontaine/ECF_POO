@@ -71,3 +71,5 @@ R
 "src/com/michel/metiers/Client.java,f\7\f781b5341031f31083c48a098b57309d1ac1fc09
 _
 /src/com/michel/utilitaires/InteretProspect.java,7\3\73b9d531df97cb23f8433572c095b9ead4cd7f44
+T
+$com/michel/dao/DaoAdresse.class.html,d\4\d4bf82325456069cea703ebfdbae88bda38fca0b
